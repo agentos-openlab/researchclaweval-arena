@@ -1,0 +1,8 @@
+import {tasks} from '@/lib/data';import {PageIntro,Notice} from '@/components/shared';
+const names:Record<string,string>={arc:'ARC-WBE-2026',mc:'MountainCar-Continuous',babylm:'BabyLM-10M（Strict-Small）',psydef:'PsyDefDetect',tdc:'TDC-ADMET-Tox'};
+const areas:Record<string,string>={arc:'科学计算',mc:'强化学习',babylm:'语言建模',psydef:'分类',tdc:'分子性质预测'};
+const metrics:Record<string,string>={arc:'调整后的末层分数',mc:'平均奖励',babylm:'验证集困惑度（PPL）',psydef:'宏平均 F1（标签 1–8）',tdc:'平均 AUROC（AMES、hERG、DILI）'};
+const inputs:Record<string,string>={arc:'多层感知机权重',mc:'环境与 PPO 起始代码',babylm:'Strict-Small 训练文本',psydef:'带标签的对话输入',tdc:'公开分子特征'};
+const outputs:Record<string,string>={arc:'估计器与提交结果',mc:'可运行的训练策略',babylm:'训练后的语言模型与实验轨迹',psydef:'评测集上的预测结果',tdc:'三个终点的预测概率'};
+const boundaries:Record<string,string>={arc:'预测结果必须符合规定形状；标签保留在主机侧。',mc:'需记录所用评价器与策略身份。',babylm:'比较时须匹配验证文本、NLL 单位、分母及未知词处理方式。',psydef:'使用指定数据切分，并排除标签 0。',tdc:'隐藏标签保留在主机侧；公开数据与测试数据目录分离。'};
+export default function ChineseTasks(){return <main className="container page"><PageIntro label="02 / 任务目录" title="五项科研任务。">不同学科、交付物和评价器，通过明确任务边界和统一接口组织起来。</PageIntro><Notice>其中四项任务为无基线起步。MountainCar 保留记录中的 PPO 起始实现；适用任务的隐藏测试标签仅由主机持有。</Notice><div className="task-list">{tasks.map((t,i)=><article className="task-row" key={t.id}><div><span className="index">0{i+1} / {areas[t.id]}</span><h2>{names[t.id]}</h2><span className="tag">{t.id==='mc'?'固定的 MLGym PPO 起始实现':'无基线起步'}</span></div><div><h4>输入与交付物</h4><p>{inputs[t.id]} → {outputs[t.id]}</p><h4>验证边界</h4><p>{boundaries[t.id]}</p></div><div className="task-metric"><h4>主要指标</h4><strong>{metrics[t.id]}</strong><p>{t.direction==='lower'?'↓ 越低越好':'↑ 越高越好'}</p></div></article>)}</div></main>}

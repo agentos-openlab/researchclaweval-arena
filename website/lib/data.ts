@@ -1,0 +1,10 @@
+import tasksData from '@/data/tasks.json';
+import frameworksData from '@/data/frameworks.json';
+import runsData from '@/data/runs.json';
+import leaderboardData from '@/data/leaderboard.json';
+export const tasks=tasksData.items;
+export const frameworks=frameworksData.items;
+export const runs=runsData.items;
+export const leaderboard=leaderboardData.items;
+export const models=['GPT-6-Luna','GPT-5.6-Luna','DeepSeek-V4','Kimi-K2.6'];
+export const dimensions=['Plan quality','Plan–execution alignment','Execution robustness','Observation use','Evidence–conclusion closure','State consistency'];

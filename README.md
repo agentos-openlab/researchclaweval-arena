@@ -10,6 +10,8 @@ final rankings.**
 
 Registration open · 1-month competition
 
+[Benchmark website](https://betterrrrr.github.io/researchclaweval-arena/) · [中文排行榜](https://betterrrrr.github.io/researchclaweval-arena/zh/)
+
 [中文说明](README.zh-CN.md) · [比赛公告](docs/announcement.md) · [Rules](docs/rules.md)
 
 ---
