@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "schemaVersion": "1.0.0",
+    "snapshot": "2026-10-15",
+    "status": "historical validation snapshot",
+    "paperDataVersion": "2026-10-30",
+    "sourceFiles": [
+      {
+        "path": "generated/english/tables.json",
+        "sha256": "1ed521107ec18f1b0db1df5351f319d19694d8ef6acb9e368130a461fc8b1c2c"
+      },
+      {
+        "path": "results/snapshots/server-paper-20261025T105508Z/paper/experiments_20261019/source_provenance.json",
+        "sha256": "6837e2c4ffd3afaf5019cf62e8fc6774f564d4fbe8a31fc165b04a52b777aafe"
+      }
+    ],
+    "note": "The four JSON files are derived from frozen local evidence. Source roles can refer to different records; identity and final-artifact bindings are not established by this export."
+  },
+  "items": [
+    {
+      "id": "arc",
+      "name": "ARC-WBE-2026",
+      "area": "Scientific computing",
+      "metric": "Adjusted final-layer score",
+      "direction": "lower",
+      "input": "Multilayer perceptron weights",
+      "output": "Estimator and submission",
+      "boundary": "Predictions must match the required shape; labels remain host-side.",
+      "initialization": "Baseline-free"
+    },
+    {
+      "id": "mc",
+      "name": "MountainCar-Continuous",
+      "area": "Reinforcement learning",
+      "metric": "Mean reward",
+      "direction": "higher",
+      "input": "Environment and PPO starter code",
+      "output": "Runnable trained policy",
+      "boundary": "Evaluator and policy identity must be recorded.",
+      "initialization": "Frozen MLGym PPO starter"
+    },
+    {
+      "id": "babylm",
+      "name": "BabyLM-10M",
+      "area": "Language modeling",
+      "metric": "Validation perplexity",
+      "direction": "lower",
+      "input": "Strict-Small training text",
+      "output": "Trained language model and experiment trace",
+      "boundary": "Comparisons require matching validation text, NLL units, denominator and unknown-word treatment.",
+      "initialization": "Baseline-free"
+    },
+    {
+      "id": "psydef",
+      "name": "PsyDefDetect",
+      "area": "Classification",
+      "metric": "Macro-F1 (labels 1–8)",
+      "direction": "higher",
+      "input": "Labeled dialogue inputs",
+      "output": "Predictions on the evaluation split",
+      "boundary": "Use the intended split and exclude label 0.",
+      "initialization": "Baseline-free"
+    },
+    {
+      "id": "tdc",
+      "name": "TDC-ADMET-Tox",
+      "area": "Molecular prediction",
+      "metric": "Mean AUROC (AMES, hERG, DILI)",
+      "direction": "higher",
+      "input": "Public molecular features",
+      "output": "Prediction probabilities for three endpoints",
+      "boundary": "Hidden labels remain host-only; public and test roots are separated.",
+      "initialization": "Baseline-free"
+    }
+  ]
+}

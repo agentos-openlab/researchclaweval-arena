@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "schemaVersion": "1.0.0",
+    "snapshot": "2026-10-15",
+    "status": "historical validation snapshot",
+    "paperDataVersion": "2026-10-30",
+    "sourceFiles": [
+      {
+        "path": "generated/english/tables.json",
+        "sha256": "1ed521107ec18f1b0db1df5351f319d19694d8ef6acb9e368130a461fc8b1c2c"
+      },
+      {
+        "path": "results/snapshots/server-paper-20261025T105508Z/paper/experiments_20261019/source_provenance.json",
+        "sha256": "6837e2c4ffd3afaf5019cf62e8fc6774f564d4fbe8a31fc165b04a52b777aafe"
+      }
+    ],
+    "note": "The four JSON files are derived from frozen local evidence. Source roles can refer to different records; identity and final-artifact bindings are not established by this export."
+  },
+  "items": [
+    {
+      "id": "01",
+      "name": "AI-Researcher",
+      "description": "Specialized agents for literature, methods and writing."
+    },
+    {
+      "id": "02",
+      "name": "AI-Scientist-v2",
+      "description": "Experiment manager with agentic tree search."
+    },
+    {
+      "id": "03",
+      "name": "ARIS",
+      "description": "Reusable research skills, cross-model review and a research wiki."
+    },
+    {
+      "id": "04",
+      "name": "AutoResearchClaw",
+      "description": "A staged idea-to-paper pipeline with screening and refine-or-pivot decisions."
+    },
+    {
+      "id": "05",
+      "name": "DeepScientist",
+      "description": "Multi-agent hypothesis testing with cumulative findings memory."
+    },
+    {
+      "id": "06",
+      "name": "DrClaw",
+      "description": "A human-steerable research workspace wrapping coding-agent executors."
+    },
+    {
+      "id": "07",
+      "name": "EvoScientist",
+      "description": "Researcher, Engineer and Evolution Manager roles with persistent research memory."
+    }
+  ]
+}

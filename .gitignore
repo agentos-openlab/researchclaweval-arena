@@ -55,3 +55,6 @@ recovery/
 .vscode/
 *.swp
 .DS_Store
+# The versioned static snapshot is the public site's display dataset.
+!website/data/
+!website/data/*.json
