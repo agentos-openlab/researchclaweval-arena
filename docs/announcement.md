@@ -1,95 +1,37 @@
-# ResearchClawEval 科研 Agent 框架竞赛
+# ResearchClawEval Arena 基准说明
 
-ResearchClawEval Arena 面向科研 Agent 框架，评估其在统一任务和运行条件下完成研究规划、代码实现、实验执行、结果分析与报告撰写的能力。参赛者提交开源框架，由主办方统一运行和评分。
+ResearchClawEval Arena 提供科研 Agent 框架的公开运行与结果比较材料。当前版本包含五项任务、七个内置框架适配器、自定义框架接入方式和按任务、模型及评测协议整理的历史榜单。
 
-报名开放，赛期一个月。比赛设总分冠军，同时公布各任务的单项排名。
+## 任务
 
-**本仓库公开的三个任务仅用于开发与自测。正式测评采用其他任务，自测成绩不计入最终排名。**
+| 任务 | 主要指标 | 说明 |
+|---|---|---|
+| [BabyLM-10M](../contracts/babylm_contract.md) | 验证集困惑度，越低越好 | 当前为框架自报分，独立复核前不排名 |
+| [MountainCar-Continuous](../contracts/mountaincar_continuous_contract.md) | 平均奖励，越高越好 | 使用固定版本评估器复现五个检查点 |
+| [ARC-WBE-2026](../contracts/arc_wbe_2026_contract.md) | 调整后的末层得分，越低越好 | 输入数据与评分数据分离 |
+| [PsyDefDetect](../contracts/psydefdetect_contract.md) | Macro-F1，越高越好 | 评测标签不提供给框架 |
+| [TDC-ADMET-Tox](../contracts/tdc_admet_tox_contract.md) | Macro-AUROC，越高越好 | 测试标签仅供本地评分器使用 |
 
-## 一、竞赛目标
-
-不同框架的演示通常采用不同任务、模型和运行预算，结果难以直接比较。本竞赛统一评测条件，比较各框架的科研任务执行能力。研究方法与实验方案由框架自主确定。
-
-## 二、比赛阶段
-
-| 阶段 | 任务 | 模型 | 目的 |
-|---|---|---|---|
-| 开发与自测 | 仓库提供的三个公开任务 | 参赛者提供 | 验证框架接入、实验流程与输出格式，可重复调试 |
-| 正式测评 | 其他任务 | 主办方统一提供 | 统一运行与评分，确定最终排名 |
-
-正式测评统一任务要求、数据划分、模型和运行预算。详细要求见[比赛规则](rules.md)。
-
-## 三、公开自测任务
-
-| 自测任务 | 任务目标 | 评分指标 | 数据大小 |
-|---|---|---|---|
-| [TDC-ADMET-Tox](../contracts/tdc_admet_tox_contract.md) | 根据分子结构预测三种毒性终点（AMES / hERG / DILI） | macro-AUROC ↑ | 1.4 MB |
-| [PsyDefDetect](../contracts/psydefdetect_contract.md) | 识别支持性对话中的心理防御机制 | macro-F1 ↑ | 5.4 MB |
-| [ARC-WBE-2026](../contracts/arc_wbe_2026_contract.md) | 根据 Transformer 权重矩阵估计各层激活 | 调整后的末层得分 ↓ | 907 MB |
-
-数据从原始发布处下载，由脚本执行校验；主办方不重新分发数据集。
+使用脚本准备单项数据。脚本只下载所选任务并验证固定文件：
 
 ```bash
-bash scripts/setup_datasets.sh --dataset tdc_admet_tox
 bash scripts/setup_datasets.sh --dataset psydefdetect
-bash scripts/setup_datasets.sh --dataset arc_wbe_2026
 ```
 
-数据可见性与自评方式见各任务说明。上述任务用于接入与自测，不作为最终评分题目。
+数据来源、版本、切分、输出格式及运行预算见各任务契约。
 
-## 四、参赛要求
+## 框架与 API
 
-参赛者需提供开源框架，并基于 `templates/example-adapter/` 配置适配器，声明框架入口、容器镜像与任务输入方式。适配器负责启动框架和传递任务，研究规划、实验设计、执行、比较及报告撰写均由框架完成。
-
-按文档配置 runner 后执行自测：
+内置适配器涵盖 AI-Researcher、AI-Scientist-v2、ARIS、AutoResearchClaw、DeepScientist、Dr. Claw 和 EvoScientist。不同框架支持的任务组合不同，可用以下命令查看：
 
 ```bash
-export RUN_ROOT=/tmp/my-run
-bash scripts/runner/<your-id>_<your-framework>_<topic>_fullrun.sh
+python3 scripts/arena.py list
 ```
 
-完整流程见[中文快速上手](participant_quickstart.zh-CN.md) / [English](participant_quickstart.md)。
+需要模型 API 时，使用者自行选择与框架兼容的服务，并在本机配置服务地址、API Key 和模型名。公开仓库不指定服务商，也不保存凭据。自定义框架可通过 `adapter.json` 接入；相关要求见[快速开始](participant_quickstart.zh-CN.md)。
 
-## 五、提交内容
+## 排名
 
-提交内容包括开源框架仓库与运行产物。每次运行需保留以下文件：
+[历史榜单](../results/leaderboard.md)复核已发布论文中的评分记录。结果按任务、模型和评测协议分组；只有来源和评分证据通过核验的记录才参与排序。未核验、缺失和自报记录保留状态，不获得名次。不同任务的原始分不合并为总分。
 
-```text
-workspace/
-  research_idea.json       首次实验前确定的研究计划
-  experiment_trace.json    实验配置、过程与结果
-  environment.json         运行环境与复现信息
-  final_report.md          最终报告
-  <topic 载荷>             任务要求的预测文件或程序
-logs/e2e.log               完整执行日志
-prompt.txt                 任务输入原文
-PROVENANCE.json            框架版本、模型与数据校验信息
-```
-
-字段定义与逐任务要求见[规则 §5](rules.md#5-提交物)。自测产物用于验证运行流程，最终成绩依据主办方在正式任务上的运行结果。
-
-## 六、评分与排名
-
-### 6.1 评分依据
-
-主办方按正式测评任务的评分标准计算客观分。不接受参赛者自报分数，三个公开自测任务的成绩不计入最终排名。社区榜的 LLM 评审维度不参与比赛排名。
-
-### 6.2 总分计算
-
-比赛设总分冠军，同时公布单项排名。各正式任务的原始成绩按测评前固定的参考值归一化至 0–100 分，再等权平均计算总分。总分最高者获得总分冠军。失败或缺少有效结果的任务对总分贡献为 0 分，仍计入平均分的任务总数。具体公式见[规则 §6.3](rules.md#63-排名)。
-
-### 6.3 并列规则
-
-总分统一四舍五入至小数点后六位进行比较。总分相同时，单项第一数量较多者优先；仍相同则并列。单项第一依据有效原始成绩判定，单项并列第一时各计一个第一。
-
-## 七、运行规范
-
-提交后固定框架版本。正式测评的模型通过环境变量注入，代码不得硬编码模型或 API 地址。任务输入仅描述研究问题与约束，不预先指定研究方法。
-
-运行须使用官方 runner 并保留完整日志。框架需在自身执行过程中输出原生执行标记；缺少标记、日志或规定产物的运行不予受理。详细要求见[比赛规则](rules.md)。
-
-## 八、时间安排
-
-赛期一个月：第 1 周报名与环境接入，第 2–3 周开发与自测，第 4 周提交。主办方完成正式测评后公布结果。
-
-具体规则与时间安排以官方发布为准。
+当前本地运行结果不会自动发布。发布新记录前须经过证据复核，标准和榜单生成命令见 [`results/README.md`](../results/README.md)。

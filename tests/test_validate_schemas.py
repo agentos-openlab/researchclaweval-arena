@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 VALIDATOR = ROOT / "scripts" / "validate_schemas.py"
-MANIFEST = ROOT / "templates" / "example-adapter" / "manifest.json"
+MANIFEST = ROOT / "templates" / "example-adapter" / "adapter.json"
 PROVENANCE = ROOT / "templates" / "submission" / "golden_tdc_admet_tox" / "PROVENANCE.json"
 TRACE = ROOT / "templates" / "submission" / "golden_tdc_admet_tox" / "workspace" / "experiment_trace.json"
 ENVIRONMENT = ROOT / "templates" / "submission" / "golden_tdc_admet_tox" / "workspace" / "environment.json"
@@ -36,13 +36,13 @@ def test_manifest_passes() -> None:
 
 def test_broken_manifest_fails() -> None:
     with tempfile.TemporaryDirectory() as td:
-        path = Path(td) / "manifest.json"
+        path = Path(td) / "adapter.json"
         payload = json.loads(MANIFEST.read_text(encoding="utf-8"))
-        payload["framework_id"] = "0"  # violates ^[0-9]{2}$|^NN$
+        payload["id"] = "all"  # reserved CLI selector
         path.write_text(json.dumps(payload), encoding="utf-8")
         r = run_validator("--manifest", str(path))
-        assert r.returncode != 0, "a one-digit framework_id must fail"
-        assert "framework_id" in r.stdout, r.stdout
+        assert r.returncode != 0, "the reserved adapter id must fail"
+        assert "id" in r.stdout, r.stdout
 
 
 def test_provenance_golden_passes() -> None:

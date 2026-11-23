@@ -1,123 +1,70 @@
 # ResearchClawEval Arena
 
-Submit your research-agent framework for the organizer to run and score.
-The framework should plan the research, write code, run and compare experiments,
-and produce a final report.
+ResearchClawEval Arena is a public benchmark for research-agent frameworks. It contains five runnable topics, adapters for seven frameworks, a local runner, and reviewed historical results. Bring your own model API configuration; runs use the framework's native workflow in an isolated Docker container.
 
-**The three topics in this repository are for participant self-testing.
-Final scoring will use other topics. Self-test scores do not count toward
-final rankings.**
+[中文说明](README.zh-CN.md) · [Rules](docs/rules.md) · [Quickstart](docs/participant_quickstart.md) · [Leaderboard](results/README.md) · [Historical website source](website/README.md)
 
-Registration open · 1-month competition
+## Topics
 
-[Benchmark website](https://betterrrrr.github.io/researchclaweval-arena/) · [中文排行榜](https://betterrrrr.github.io/researchclaweval-arena/zh/)
+| Topic | Main metric | Scoring notes |
+|---|---|---|
+| [BabyLM-10M](contracts/babylm_contract.md) | Validation perplexity ↓ | Reported by the framework; shown separately and not ranked until independently reproduced |
+| [MountainCar-Continuous](contracts/mountaincar_continuous_contract.md) | Mean reward ↑ | Runs the pinned MLGym evaluator in an offline container |
+| [ARC-WBE-2026](contracts/arc_wbe_2026_contract.md) | Adjusted final-layer score ↓ | Scoring data is isolated from the framework |
+| [PsyDefDetect](contracts/psydefdetect_contract.md) | Macro-F1 ↑ | Evaluation labels are removed from framework-visible input |
+| [TDC-ADMET-Tox](contracts/tdc_admet_tox_contract.md) | Macro-AUROC ↑ | Test labels are available only to the local scorer |
 
-[中文说明](README.zh-CN.md) · [比赛公告](docs/announcement.md) · [Rules](docs/rules.md)
-
----
-
-## What this is
-
-ResearchClawEval Arena is a competition for research-agent frameworks.
-Use the public self-test topics to develop your adapter and check the full
-workflow. After submission, the organizer runs your framework on other topics
-and calculates the final scores. All participants in official evaluation use
-the same task requirements, model, data splits, and budgets:
-
-| Fixed | How |
-|---|---|
-| Task contracts | one per topic: question, metric, data visibility, compute budget |
-| Data splits | frozen, sha256 published in advance; a wrong split is rejected |
-| Official scorer | the same frozen code and data for every submission |
-| Model | self-testing: yours (see rules §4 for a recommended model); official evaluation: injected by the organizer via env vars — this is a *framework* contest |
-| Experiment count | 2–4 (strategy lines — rules §5.8), written into each contract |
-| Runtime | a unified runner template with container isolation |
-
-The self-test contracts, dataset download scripts, scoring tools, and
-submission formats are public. You can repeat self-tests as often as needed
-before submitting. Official evaluation uses other topics.
-
----
-
-## Three self-test tasks
-
-These topics help you test your integration. They are not the topics used
-for final scoring.
-
-| Task | Goal | Official metric | Data |
-|---|---|---|---|
-| [TDC-ADMET-Tox](contracts/tdc_admet_tox_contract.md) | Predict three toxicity endpoints (AMES / hERG / DILI) from molecular structure | macro-AUROC ↑ | 1.4 MB |
-| [PsyDefDetect](contracts/psydefdetect_contract.md) | Detect psychological defense mechanisms in supportive conversations | macro-F1 ↑ | 5.4 MB |
-| [ARC-WBE-2026](contracts/arc_wbe_2026_contract.md) | Estimate per-layer activations from a Transformer's weight matrices | adjusted final-layer score ↓ | 907 MB |
-
-Final rankings use the organizer's scores on other topics. The competition
-awards an **overall champion** and also publishes per-topic rankings:
-
-- Normalize each official topic score to 0–100 using reference values fixed
-  and published before official evaluation, then take the equal-weight mean.
-- The highest total wins. Tied totals are resolved by the number of topic
-  first places; if that also ties, the overall rank is shared.
-- Failed or missing valid results contribute 0 and remain in the fixed topic
-  count. Reference values do not depend on competitors' scores.
-
-See [rules §6.3](docs/rules.md#63-排名) for the formula and tie rules.
-
----
-
-## Quick start
+Dataset setup downloads only the selected topic and verifies its published files:
 
 ```bash
-# 1. Get the self-test datasets (verified against published sha256)
-bash scripts/setup_datasets.sh --dataset tdc_admet_tox
 bash scripts/setup_datasets.sh --dataset psydefdetect
-bash scripts/setup_datasets.sh --dataset arc_wbe_2026
-
-# 2. Read the three contracts (contracts/) and the rules (docs/rules.md)
-
-# 3. Copy the example adapter and fill in the TODOs
-cp -r templates/example-adapter/ <your-framework>/
-
-# 4. Run through the runner template
-export RUN_ROOT=/tmp/my-run
-bash scripts/runner/<your-id>_<your-framework>_<topic>_fullrun.sh
 ```
 
-Full walkthrough: [`docs/participant_quickstart.md`](docs/participant_quickstart.md)
+## Frameworks and results
 
----
+The built-in adapters cover AI-Researcher, AI-Scientist-v2, ARIS, AutoResearchClaw, DeepScientist, Dr. Claw, and EvoScientist. Run `python3 scripts/arena.py list` to see the supported and experimental topic routes for each adapter. Routes marked unsupported are reported and skipped; the runner does not claim that every framework supports every task. See [adapter notes](adapters/README.md) for route-specific requirements.
+
+The historical leaderboard groups results by topic, model, and evaluation protocol. A rank is shown only for reviewed results that meet the published evidence criteria. Unverified, missing, and BabyLM self-reported values are not ranked. These records preserve the archived paper results and are distinct from new runs made with the current runner.
+
+See the [rankings and review method](results/README.md), or download the [CSV](results/leaderboard.csv).
+
+## Run a batch
+
+Install Docker and Python 3.10 or later. Configure a model API in a local `.env` file using [`.env.example`](.env.example), then inspect available routes:
+
+```bash
+python3 scripts/arena.py list
+```
+
+Run one topic with all built-in adapters, or one framework across its available topics:
+
+```bash
+python3 scripts/arena.py run --topic psydefdetect --framework all
+python3 scripts/arena.py run --topic all --framework autoresearchclaw
+```
+
+To use your own adapter, provide a directory containing `adapter.json`:
+
+```bash
+python3 scripts/arena.py run --topic psydefdetect --adapter ./my-framework
+```
+
+Use `--dry-run` to inspect the selected routes without Docker, dataset downloads, or API configuration. The runner creates a fresh batch directory under `runs/`; it records successes and failures in `summary.json`. Each framework run must produce its own native execution marker and required artifacts before local scoring is attempted.
+
+## Add a framework
+
+Start from [`templates/example-adapter/`](templates/example-adapter/). Pin the upstream source to a commit, declare the Docker image and native command in `adapter.json`, and add routes only for topics the framework can actually launch. Keep API credentials in the local environment; do not commit them. See the [adapter guide](docs/participant_quickstart.md#add-an-adapter).
 
 ## Repository layout
 
+```text
+adapters/     Built-in framework launch configurations
+contracts/    Task inputs, output formats, and execution limits
+data/         Locally downloaded datasets and build caches (not committed)
+docs/         Rules, guides, metric definitions, and FAQ
+results/      Reviewed historical ranking data and exports
+scoring/      Dataset preparation and local scorers
+scripts/      Topic setup, batch runner, and release checks
 ```
-contracts/          Self-test task contracts + execution budgets + submission specs
-scoring/            Official-scorer glue and data preparation scripts
-scripts/            setup_datasets.sh · runner templates · release self-check
-judge/              (long-term community leaderboard, see docs/metric-system.md)
-schemas/            JSON schemas for adapter manifests and run records
-templates/          Anonymized example adapter · submission templates
-docs/               Rules · announcement · quickstart · metric system · FAQ
-results/            Result tables (published after the submission window)
-```
 
-## Why no result tables yet
-
-This repository provides materials for self-testing and integration.
-Final score tables will be posted after the submission window and official
-evaluation on other topics.
-We do not redistribute any dataset; competitors download and verify the data
-themselves.
-
-## Long-term community leaderboard
-
-After the competition, this harness stays open as a long-running community
-leaderboard with an extended 12-dimension metric system (objective scores +
-trajectory metrics + LLM-judge dimensions). See
-[`docs/metric-system.md`](docs/metric-system.md) and Appendix A of
-[`docs/rules.md`](docs/rules.md). The judge pipeline in `judge/` reads all
-credentials from environment variables (`JUDGE_API_KEY` / `JUDGE_MODEL` /
-`JUDGE_BASE_URL`) — the source holds no secrets.
-
-## License
-
-Code: MIT. Documentation: CC-BY-4.0. Third-party notices:
-[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+Code is MIT licensed. Documentation is CC BY 4.0. See [third-party notices](THIRD_PARTY_NOTICES.md).

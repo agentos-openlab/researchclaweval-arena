@@ -30,7 +30,8 @@ def _read_text(path: Path) -> str:
 def _detect_estimator_form(text: str) -> tuple[str, str, str] | None:
     """探测 estimator 代码形态 → (source_symbol, adapter_kind, predict_input)。
 
-    只按代码结构分派，不依赖任何框架 id：参赛者用注册号作 hint（仅记录用）。
+    按代码结构识别 estimator 接口。可选 framework_hint 仅写入溯源信息，
+    不改变代码加载方式。
     """
     predict_input = None
     if re.search(r"def\s+predict\s*\(\s*self\s*,\s*mlp\b", text):

@@ -1,0 +1,29 @@
+{
+  "id": "deepscientist",
+  "name": "DeepScientist",
+  "upstream_url": "https://github.com/ResearAI/DeepScientist.git",
+  "upstream_commit": "b36624417f0c6b8238ec02db37b94d6db2faa5b0",
+  "license_spdx": "Apache-2.0",
+  "native_docs": "https://github.com/ResearAI/DeepScientist/blob/b36624417f0c6b8238ec02db37b94d6db2faa5b0/docs/en/25_OPENCODE_PROVIDER_SETUP.md",
+  "topics": {
+    "babylm": {
+      "reason": "The pinned native workflow needs a portable runtime and a validated benchmark artifact handoff."
+    },
+    "mountaincar_continuous": {
+      "reason": "The pinned native workflow needs a portable runtime and a validated benchmark artifact handoff."
+    },
+    "arc_wbe_2026": {
+      "reason": "The pinned native workflow needs a portable runtime and a validated benchmark artifact handoff."
+    },
+    "psydefdetect": {
+      "image": "researchclaweval/deepscientist:b36624417f0c",
+      "dockerfile": "Dockerfile",
+      "command": ["python", "/arena-adapter/launch.py"],
+      "native_marker": "\"runner\": \"opencode\"",
+      "status": "experimental"
+    },
+    "tdc_admet_tox": {
+      "reason": "The pinned native workflow needs a portable runtime and a validated benchmark artifact handoff."
+    }
+  }
+}

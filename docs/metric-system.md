@@ -1,14 +1,14 @@
-# Community Leaderboard Metric System
+# Supplementary Metric Definitions
 
-This document defines the 12-dimension metric system for the community
-leaderboard maintained after the competition. Community topics and splits
-are specified separately. The three public self-test topics are not the
-final competition evaluation topics.
+This document describes an optional set of trajectory and report-analysis
+metrics. It does not define the primary task scores or the published
+historical rankings. The current leaderboard groups records by task, model,
+and evaluation protocol; see [`results/leaderboard.md`](../results/leaderboard.md).
 
-Competition rankings use official objective scores normalized to 0–100 and
-averaged with equal weights. Tied totals are resolved by topic first-place
-count, then a shared rank. Competition reference values are specified
-separately from the community anchors below. See `docs/rules.md` §6.3.
+The metrics below are currently defined only for the tasks with anchors in
+`scoring/metric_anchors.json`. They are not automatically available for all
+five topics. Do not infer missing values or use them to combine scores across
+tasks.
 
 The community dimensions are `b0 / bT / AUP / UR / ED` and
 `PQ / PEA / ER / OU / ECC / SC / CC`.
@@ -25,10 +25,9 @@ LLM scoring:
 | `AUP` | Area under experimental progress | Has a `1/N` lower bound; report N and do not average across topics |
 | `UR` | Utilization of the permitted experiment budget | Use the task's declared budget |
 
-Missing community metric values are recorded as `null`. An anchor score of
-0 represents random-level performance and must not substitute for missing
-evidence. This differs from the competition rule assigning a failed topic
-0 contribution to the total while retaining a `null` raw score.
+Missing metric values are recorded as `null`. An anchor score of 0
+represents random-level performance and must not substitute for missing
+evidence.
 
 ## 2. Experiment-design diversity
 
@@ -47,9 +46,9 @@ cannot be evaluated for this dimension; record `null`.
 | `psydefdetect` | 0.125, uniform random over 8 positive classes | 1.0, perfect macro-F1 | Linear |
 | `arc_wbe_2026` | 0.075, random-level estimator | 1e-06, near-perfect estimator | Logarithmic |
 
-These are organizer-defined calibration references, not authoritative
-benchmark baselines. Publications citing them must state this limitation.
-They do not define the reference values for formal competition topics.
+These are calibration references for this supplementary metric set, not
+authoritative benchmark baselines. Any report citing them must state this
+limitation.
 
 ## 4. LLM-judge dimensions
 
@@ -74,21 +73,18 @@ When execution logs conflict with reports or plans, logs take precedence.
 
 - LLM scoring has additional execution cost and variability. Differences
   below the calibrated tie threshold are reported as ties. Judge dimensions
-  do not affect competition rankings.
+  do not affect the published task rankings.
 - `CC` is relative to obligations inferred from a framework's own run.
   Cross-framework comparison requires a common stage contract; otherwise,
   report `CC` as a descriptive column only.
-- For participant-run submissions, the participant controls the submitted
-  logs even when the runner records stdout/stderr in real time. `ER`, `SC`,
-  and `CC` therefore reflect the submitted evidence and do not establish
-  independently observed execution. Distinguish these submissions from
-  organizer-run evaluations with host-captured logs.
+- For externally supplied runs, the framework operator controls the
+  submitted logs. `ER`, `SC`, and `CC` therefore describe the submitted
+  evidence and do not establish independently observed execution.
 
 ## 5. Comparability and missing values
 
-- Compare official raw scores within the same topic and fixed data split.
-  Competition totals combine scores only through the normalization defined
-  in the competition rules.
+- Compare raw scores only within the same topic, model, and fixed evaluation
+  protocol.
 - Do not combine judge scores arithmetically with official task scores.
 - Do not average `AUP` across topics; its lower bound depends on N.
 - Record missing community metric values as `null`, not 0.

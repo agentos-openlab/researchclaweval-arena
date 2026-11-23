@@ -9,10 +9,14 @@ import re
 import shutil
 import subprocess
 import sys
+import uuid
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scoring"))
+
+SCORING_DIR = ROOT / "scoring"
+DOCKERFILE = SCORING_DIR / "arc_wbe_2026_scorer.Dockerfile"
 
 from arc_wbe_2026_official_adapter import (  # noqa: E402
     materialize_official_adapter,
@@ -372,6 +376,115 @@ def write_normalized_score(output_score: Path, artifact_path: Path, payload: dic
     )
 
 
+def scorer_image() -> str:
+    signature = hashlib.sha256(
+        DOCKERFILE.read_bytes() + (SCORING_DIR / "requirements.txt").read_bytes()
+    ).hexdigest()[:12]
+    image = f"rceval/arc-wbe-scorer:{signature}"
+    inspect = subprocess.run(
+        ["docker", "image", "inspect", image],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        check=False,
+    )
+    if inspect.returncode:
+        subprocess.run(
+            ["docker", "build", "--file", str(DOCKERFILE), "--tag", image, str(SCORING_DIR)],
+            check=True,
+            timeout=1800,
+        )
+    return image
+
+
+def isolated_scorer_command(
+    *, workspace: Path, dataset_root: Path, output_root: Path, image: str, name: str
+) -> list[str]:
+    paths = (SCORING_DIR.resolve(), workspace.resolve(), dataset_root.resolve(), output_root.resolve())
+    if any(any(char in str(path) for char in ',"\n\r') for path in paths):
+        raise ValueError("Docker input and output paths cannot contain commas, quotes or newlines")
+    scoring, workspace_path, dataset, output = map(str, paths)
+    uid, gid = os.getuid(), os.getgid()
+    return [
+        "docker", "run", "--pull=never", "--rm", "--name", name,
+        "--network", "none", "--read-only", "--cap-drop", "ALL",
+        "--security-opt", "no-new-privileges", "--pids-limit", "256",
+        "--memory", "8g", "--cpus", "2", "--user", f"{uid}:{gid}",
+        "--tmpfs", "/tmp:rw,nosuid,nodev,size=1g", "--workdir", "/arena",
+        "--mount", f"type=bind,source={scoring},target=/arena/scoring,readonly",
+        "--mount", f"type=bind,source={workspace_path},target=/workspace,readonly",
+        "--mount", f"type=bind,source={dataset},target=/dataset,readonly",
+        "--mount", f"type=bind,source={output},target=/output",
+        "--env", "HOME=/tmp", "--env", "HF_HOME=/output/.hf_home",
+        "--env", "ARENA_ARC_SCORER_CONTAINER=1", "--env", "PYTHONDONTWRITEBYTECODE=1",
+        "--entrypoint", "python", image, "-B",
+        "/arena/scoring/run_arc_wbe_2026_local_score.py",
+        "--workspace", "/workspace", "--dataset-root", "/dataset",
+        "--output-score", "/output/score.json",
+        "--whest-output-root", "/output/whest_official_eval",
+    ]
+
+
+def run_isolated(args: argparse.Namespace, parser: argparse.ArgumentParser) -> int:
+    if args.dataset_root is None:
+        parser.error("--dataset-root is required for isolated ARC scoring")
+    for name, path in (("workspace", args.workspace), ("dataset root", args.dataset_root)):
+        if path.is_symlink() or not path.is_dir():
+            parser.error(f"{name} must be a real directory: {path}")
+    if args.output_score.exists() or args.output_score.is_symlink():
+        parser.error(f"refusing to overwrite score output: {args.output_score}")
+    output_root = args.output_score.parent / "arc_wbe_scoring"
+    if output_root.exists() or output_root.is_symlink():
+        parser.error(f"refusing to overwrite scorer output directory: {output_root}")
+    output_root.mkdir(parents=True, mode=0o777)
+    output_root.chmod(0o777)
+    name = f"arena-arc-score-{uuid.uuid4().hex}"
+    try:
+        command = isolated_scorer_command(
+            workspace=args.workspace,
+            dataset_root=args.dataset_root,
+            output_root=output_root,
+            image=scorer_image(),
+            name=name,
+        )
+        completed = subprocess.run(command, text=True, capture_output=True, timeout=3600, check=False)
+    except (OSError, subprocess.SubprocessError) as exc:
+        subprocess.run(
+            ["docker", "rm", "-f", name],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            check=False,
+        )
+        parser.exit(1, f"isolated ARC scorer could not run: {exc}\n")
+    (output_root / "container.log").write_text(
+        completed.stdout + completed.stderr, encoding="utf-8"
+    )
+    if completed.returncode:
+        parser.exit(1, f"isolated ARC scorer exited {completed.returncode}; see {output_root / 'container.log'}\n")
+    inner_score = output_root / "score.json"
+    if inner_score.is_symlink() or not inner_score.is_file():
+        parser.exit(1, "isolated ARC scorer did not produce a regular score.json\n")
+    payload = read_json(inner_score)
+    if not isinstance(payload, dict) or not is_number(payload.get("score")):
+        parser.exit(1, "isolated ARC scorer produced an invalid score.json\n")
+    score_artifact = payload.get("score_artifact")
+    if not isinstance(score_artifact, str):
+        parser.exit(1, "isolated ARC scorer omitted score provenance\n")
+    artifact_path = Path(score_artifact)
+    try:
+        relative = artifact_path.relative_to("/output")
+    except ValueError:
+        parser.exit(1, "isolated ARC scorer returned an unexpected score artifact path\n")
+    local_artifact = output_root / relative
+    if local_artifact.is_symlink() or not local_artifact.is_file():
+        parser.exit(1, "isolated ARC scorer referenced a missing or unsafe artifact\n")
+    payload["score_artifact"] = str(local_artifact)
+    args.output_score.parent.mkdir(parents=True, exist_ok=True)
+    with args.output_score.open("x", encoding="utf-8") as handle:
+        handle.write(json.dumps(payload, ensure_ascii=False, allow_nan=False, indent=2) + "\n")
+    print(json.dumps(payload, ensure_ascii=False, allow_nan=False))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--workspace", type=Path, required=True)
@@ -382,6 +495,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--runner", default="local")
     parser.add_argument("--whest-output-root", type=Path)
     args = parser.parse_args(argv)
+
+    if os.environ.get("ARENA_ARC_SCORER_CONTAINER") != "1":
+        return run_isolated(args, parser)
 
     if args.output_score.exists():
         raise RuntimeError(

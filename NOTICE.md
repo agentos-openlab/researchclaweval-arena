@@ -21,13 +21,13 @@ to share and adapt them with attribution.
   The source contains no secrets and no default credential values, and the
   release gate (`scripts/check-release.sh`) scans for credential patterns on
   every change.
-- The competition model endpoint is injected at run time via
-  `OPENAI_BASE_URL` / `OPENAI_API_KEY` / `OPENAI_MODEL`; no real values are
-  stored anywhere in this repository.
+- Model API configuration is read at run time from `OPENAI_BASE_URL`,
+  `OPENAI_API_KEY`, and `OPENAI_MODEL`. The repository does not select a provider;
+  users configure their endpoint, API key, and model name locally. No credentials
+  are stored in this repository.
 
 ## Data
 
-This repository does not redistribute any dataset. Competitors download and
-verify the public datasets themselves (`scripts/setup_datasets.sh`); see
-`docs/rules.md` §3 for licenses and sha256 values. Third-party data and
-tooling notices: `THIRD_PARTY_NOTICES.md`.
+This repository does not redistribute any dataset. Users download and verify
+the public datasets with `scripts/setup_datasets.sh`; see `docs/rules.md` §3
+and `THIRD_PARTY_NOTICES.md` for source and license information.

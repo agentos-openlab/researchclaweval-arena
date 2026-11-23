@@ -1,0 +1,24 @@
+{
+  "id": "my-framework",
+  "name": "My research framework",
+  "topics": {
+    "babylm": {
+      "reason": "Connect the native training and evaluation workflow before enabling this route."
+    },
+    "mountaincar_continuous": {
+      "reason": "Connect the native training and evaluation workflow before enabling this route."
+    },
+    "arc_wbe_2026": {
+      "reason": "Connect the native estimator workflow before enabling this route."
+    },
+    "psydefdetect": {
+      "image": "my-framework:latest",
+      "command": ["python", "/app/run.py", "--prompt", "/input/prompt.txt"],
+      "native_marker": "REPLACE_WITH_A_MARKER_EMITTED_BY_THE_FRAMEWORK",
+      "status": "experimental"
+    },
+    "tdc_admet_tox": {
+      "reason": "Connect the native training and evaluation workflow before enabling this route."
+    }
+  }
+}

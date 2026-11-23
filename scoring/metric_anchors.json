@@ -3,7 +3,7 @@
   "updated": "2026-10-20",
   "note": [
     "Anchors used to normalize b0/bT for the long-term community leaderboard.",
-    "These are conventions calibrated by the organizer, NOT authoritative baselines.",
+    "These are Arena calibration references, not authoritative baselines.",
     "Any citation must carry that caveat (docs/metric-system.md §3)."
   ],
   "topics": {
