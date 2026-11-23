@@ -44,6 +44,10 @@ Not by the current diagnostic scorer. It reads the framework's reported validati
 
 Verified results are ranked within the same topic, model, and evaluation protocol. Raw scores from different tasks or protocols are not combined into an overall total. Ties share a rank.
 
+**Are the published historical rankings the official competition standings?**
+
+No. They reproduce reviewed records from an archived paper snapshot. The three public competition self-test topics are ARC-WBE-2026, PsyDefDetect, and TDC-ADMET-Tox; their self-test scores do not determine the official result. The organizer evaluates the submitted frameworks on other topics. Browse all five historical tables in the [English leaderboard](../results/leaderboard.md) or [Chinese leaderboard](../results/leaderboard.zh-CN.md).
+
 **What does a blank rank mean?**
 
 The result is unverified, missing, or self-reported. Such a record can be displayed with its status, but does not enter ranking. See the [review method](../results/README.md).

@@ -1,70 +1,82 @@
 # ResearchClawEval Arena
 
-ResearchClawEval Arena 是科研 Agent 框架的公开评测基准，提供 5 个任务、7 个框架适配器、本地运行入口和经核验的历史结果。运行者自行配置模型 API；框架在隔离的 Docker 容器中按原生流程执行。
+ResearchClawEval Arena 为科研 Agent 框架提供统一的任务运行与结果比较方式。仓库包含五项任务、七个框架适配器、任务契约与评分器、本地批量运行器，以及经复核的历史结果。框架在隔离的 Docker 容器中按原生流程运行。运行者自行选择并在本地配置兼容的模型 API。
 
-[English](README.md) · [规则](docs/rules.md) · [快速开始](docs/participant_quickstart.zh-CN.md) · [历史榜单](results/README.md) · [历史结果网站](website/README.md)
+[English](README.md) · [比赛规则](docs/rules.md) · [快速开始](docs/participant_quickstart.zh-CN.md) · [全部历史榜单](results/leaderboard.zh-CN.md) · [结果复核方法](results/README.md) · [历史结果网站](website/README.md)
+
+## 适用范围
+
+比赛自测任务为 ARC-WBE-2026、PsyDefDetect 和 TDC-ADMET-Tox。参赛者可用这三项任务检查接入与运行流程，并在本地迭代；自测成绩不计入比赛排名。正式比赛由主办方在其他任务上统一运行和评分。本仓库发布的历史榜单来自论文数据快照，经证据复核后整理，不代表比赛正式排名。
+
+公开版 Arena 当前提供五项可运行任务。每项任务的数据边界、主要指标和运行限制以对应契约为准。
 
 ## 任务
 
-| 任务 | 主要指标 | 评分说明 |
-|---|---|---|
-| [BabyLM-10M](contracts/babylm_contract.md) | 验证集困惑度 ↓ | 当前为框架自报分；单独展示，独立复核前不参与排名 |
-| [MountainCar-Continuous](contracts/mountaincar_continuous_contract.md) | 平均奖励 ↑ | 使用固定版本的 MLGym 评估器，在离线容器中评分 |
-| [ARC-WBE-2026](contracts/arc_wbe_2026_contract.md) | 调整后的末层得分 ↓ | 评分数据与框架输入隔离 |
-| [PsyDefDetect](contracts/psydefdetect_contract.md) | Macro-F1 ↑ | 提供给框架的数据不含评测标签 |
-| [TDC-ADMET-Tox](contracts/tdc_admet_tox_contract.md) | Macro-AUROC ↑ | 测试标签仅供本地评分器使用 |
+| 任务 | 主要指标 | 方向 | 契约 |
+|---|---|---:|---|
+| ARC-WBE-2026 | 调整后的末层得分 | 越低越好 | [任务契约](contracts/arc_wbe_2026_contract.md) |
+| BabyLM-10M | 验证集困惑度 | 越低越好 | [任务契约](contracts/babylm_contract.md) |
+| MountainCar-Continuous | 平均奖励 | 越高越好 | [任务契约](contracts/mountaincar_continuous_contract.md) |
+| PsyDefDetect | Macro-F1 | 越高越好 | [任务契约](contracts/psydefdetect_contract.md) |
+| TDC-ADMET-Tox | Macro-AUROC | 越高越好 | [任务契约](contracts/tdc_admet_tox_contract.md) |
 
-下载脚本只准备指定任务，并校验已公布的数据文件：
+只准备需要使用的数据。下载脚本会按公开哈希校验文件：
 
 ```bash
 bash scripts/setup_datasets.sh --dataset psydefdetect
 ```
 
-## 框架与排名
+## 历史榜单
 
-仓库包含 AI-Researcher、AI-Scientist-v2、ARIS、AutoResearchClaw、DeepScientist、Dr. Claw 和 EvoScientist 的适配器。运行 `python3 scripts/arena.py list` 可查看每个适配器支持或仍处于实验状态的任务。标记为不支持的组合会明确显示，不会被记作成功运行。
+五项任务的历史榜单均已公开。结果按任务、模型和评测协议分组，不将不同分组的成绩合并为总排名。只有符合复核标准的记录才有名次；缺失、未核验和自报成绩会保留状态。BabyLM 当前记录为框架自报分，不参与排名。
 
-历史榜按任务、模型和评测协议分组。只有通过证据核验的结果才有名次；未核验、缺失以及 BabyLM 自报分均不排名。榜单保留自带论文中的历史记录，和当前运行器产生的新结果分开处理。
+| 任务 | 榜单 |
+|---|---|
+| ARC-WBE-2026 | [查看结果](results/leaderboard.zh-CN.md#arc-wbe-2026) |
+| BabyLM-10M | [查看结果](results/leaderboard.zh-CN.md#babylm-10m) |
+| MountainCar-Continuous | [查看结果](results/leaderboard.zh-CN.md#mountaincar-continuous) |
+| PsyDefDetect | [查看结果](results/leaderboard.zh-CN.md#psydefdetect) |
+| TDC-ADMET-Tox | [查看结果](results/leaderboard.zh-CN.md#tdc-admet-tox) |
 
-查看[榜单和核验方法](results/README.md)，或下载 [CSV](results/leaderboard.csv)。
+可下载包含缺失和未核验记录的[完整 CSV](results/leaderboard.csv)，查看[复核证据数据](results/historical-evidence.json)，或阅读[英文完整榜单](results/leaderboard.md)。[结果说明](results/README.md)介绍数据来源、核验标准和历史记录的适用范围。本地运行不会自动进入公开榜单。
 
-## 批量运行
+## 框架
 
-安装 Docker 和 Python 3.10 或更新版本。在本地 `.env` 中按 [`.env.example`](.env.example) 配置模型 API，然后查看可用任务：
+仓库包含 AI-Researcher、AI-Scientist-v2、ARIS、AutoResearchClaw、DeepScientist、Dr. Claw 和 EvoScientist 的适配器。运行以下命令可查看各适配器已声明的任务路由：
 
 ```bash
 python3 scripts/arena.py list
 ```
 
-选择一个任务运行全部内置适配器，或选择一个框架运行它支持的任务：
+`experimental` 表示尚未完成公开端到端验证；不支持的路由会明确显示并跳过。各框架要求见[适配器说明](adapters/README.md)。
+
+## 批量运行
+
+安装 Docker 和 Python 3.10 或更新版本。如果框架需要模型 API，请将 [`.env.example`](.env.example) 复制为 `.env`，并在本地配置兼容的服务。仓库不指定服务商，也不包含 API 凭据。
+
+可选择一个任务运行全部内置适配器，也可选择一个框架运行其已声明的任务：
 
 ```bash
 python3 scripts/arena.py run --topic psydefdetect --framework all
 python3 scripts/arena.py run --topic all --framework autoresearchclaw
 ```
 
-也可指定包含 `adapter.json` 的自定义适配器目录：
+使用 `--dry-run` 可在启动 Docker、下载数据或配置 API 前检查所选路由。每批运行会在 `runs/` 下创建独立目录，并在 `summary.json` 中记录各路由状态。框架生成原生执行标记和必需产物后，运行器才会启动本地评分。
 
-```bash
-python3 scripts/arena.py run --topic psydefdetect --adapter ./my-framework
-```
+## 接入框架
 
-需要模型 API 时，请在本机 `.env` 中填写你选择的 OpenAI 兼容服务地址、API Key 和模型名。仓库不指定服务商，也不保存密钥。无需 Docker、数据下载和 API 配置即可用 `--dry-run` 检查所选组合。每批运行会在 `runs/` 下创建独立目录，并在 `summary.json` 中记录成功和失败。只有框架自身输出原生运行标记并生成所需产物后，才会调用本地评分器。
-
-## 添加框架
-
-从 [`templates/example-adapter/`](templates/example-adapter/) 开始。在 `adapter.json` 中固定上游提交，填写镜像和原生启动命令；只声明确实可以启动的任务。API 凭据留在本地环境中，不要提交到仓库。详见[适配器指南](docs/participant_quickstart.zh-CN.md#添加适配器)。
+从 [`templates/example-adapter/`](templates/example-adapter/) 开始。在 `adapter.json` 中固定上游代码版本，声明容器镜像和框架原生启动命令，并且只列出能够实际启动的任务。通过 `--adapter ./适配器目录` 运行。适配器格式和检查要求见[快速开始](docs/participant_quickstart.zh-CN.md#添加适配器)。
 
 ## 仓库结构
 
 ```text
 adapters/     内置框架启动配置
-contracts/    任务输入、输出格式和运行限制
-data/         本地数据集和构建缓存（不提交）
-docs/         规则、指南、指标定义和常见问题
-results/      经核验的历史榜单数据和导出文件
-scoring/      数据准备与本地评分器
-scripts/      数据准备、批量运行与发布检查
+contracts/    任务输入、输出、数据边界和运行限制
+docs/         规则、参与者指南、指标说明和常见问题
+results/      经复核的历史榜单、CSV 和证据数据
+scoring/      数据准备和本地评分器
+scripts/      数据准备、批量运行和发布检查
+website/      历史论文快照的中英文网站
 ```
 
-代码采用 MIT 许可，文档采用 CC BY 4.0。第三方内容见 [第三方声明](THIRD_PARTY_NOTICES.md)。
+代码采用 MIT 许可，文档采用 CC BY 4.0。第三方许可见[第三方声明](THIRD_PARTY_NOTICES.md)。

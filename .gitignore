@@ -27,6 +27,7 @@ results/*
 !results/historical-evidence.json
 !results/leaderboard.csv
 !results/leaderboard.md
+!results/leaderboard.zh-CN.md
 logs/
 !templates/submission/golden_tdc_admet_tox/logs/
 !templates/submission/golden_tdc_admet_tox/logs/e2e.log

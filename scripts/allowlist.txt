@@ -83,6 +83,7 @@ results/README.md
 results/historical-evidence.json
 results/leaderboard.csv
 results/leaderboard.md
+results/leaderboard.zh-CN.md
 schemas/adapter.schema.json
 schemas/runs.schema.json
 schemas/topics.schema.json

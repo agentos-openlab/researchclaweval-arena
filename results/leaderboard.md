@@ -2,7 +2,9 @@
 
 Paper snapshot: 2026-10-30. Reviewed score cells: 35 ranked and 13 self-reported.
 
-Rankings compare frameworks within a task, model and evaluation protocol. Ties share a rank. The review covers selected paper observations, so the reviewed run count is a lower bound. A blank score denotes a missing or unverified observation. The [review method](README.md) describes the acceptance criteria.
+Rankings compare frameworks within a task, model and evaluation protocol. Ties share a rank. The review covers selected paper observations, so the reviewed run count is a lower bound. A blank score denotes a missing or unverified observation. These are historical records, not official competition standings. The [review method](README.md) describes the acceptance criteria.
+
+[ARC-WBE-2026](#arc-wbe-2026) · [BabyLM-10M](#babylm-10m) · [MountainCar-Continuous](#mountaincar-continuous) · [PsyDefDetect](#psydefdetect) · [TDC-ADMET-Tox](#tdc-admet-tox)
 
 [Download CSV](leaderboard.csv) · [Paper snapshot data](../website/data/runs.json)
 
