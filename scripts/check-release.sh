@@ -139,7 +139,7 @@ is_public_catalog_file() {
 
 is_historical_model_file() {
   case "$1" in
-    results/historical-evidence.json|results/leaderboard.csv|results/leaderboard.md|\
+    results/historical-evidence.json|results/leaderboard.csv|results/leaderboard.md|results/leaderboard.zh-CN.md|\
     website/data/*.json|website/components/leaderboard*.tsx|website/lib/data.ts|\
     website/scripts/*.mjs) return 0 ;;
   esac
