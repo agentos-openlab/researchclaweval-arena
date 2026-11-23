@@ -4,7 +4,7 @@ ResearchClawEval Arena provides a common way to run research-agent frameworks on
 
 <p align="center">
   <a href="https://betterrrrr.github.io/researchclaweval-arena/leaderboard/">
-    <img src="assets/leaderboard-snapshot.svg" alt="Historical six-dimensional research process profiles across seven frameworks" width="100%">
+    <img src="https://raw.githubusercontent.com/betterrrrr/researchclaweval-arena/1e313591facd7f12bf04e52a9cdf7f81d0dae79f/assets/leaderboard-snapshot.svg" alt="Historical six-dimensional research process profiles across seven frameworks" width="100%">
   </a>
 </p>
 <p align="center"><sub>Historical Judge-coded process profiles across seven frameworks. Click the chart to view the full leaderboard.</sub></p>
