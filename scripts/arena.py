@@ -241,7 +241,7 @@ def project_visible_dataset(topic: Topic, dataset: Path, run: Path) -> Path:
     data = source.read_bytes()
     if hashlib.sha256(data).hexdigest() != PSYDEF_SHA256:
         raise ArenaError("PsyDefDetect corpus does not match the published checksum")
-    split_file = ROOT / "psydefdetect_split.canonical.json"
+    split_file = ROOT / "splits" / "psydefdetect_split.canonical.json"
     split = read_json(split_file)
     eval_ids = set(split["eval_record_ids"])
     train_ids = set(split["train_record_ids"])
@@ -373,12 +373,9 @@ def run_pair(topic: Topic, adapter: dict, route: dict, batch: Path,
         dataset = prepare_dataset(topic, data_dir)
         visible = project_visible_dataset(topic, dataset, run)
         contract = topic.contract.read_text(encoding="utf-8")
-        budget_path = ROOT / "contracts" / f"{topic.id}_execution_budget.md"
-        if budget_path.is_file():
-            contract = f"{contract.rstrip()}\n\n{budget_path.read_text(encoding='utf-8')}"
         (inputs / "prompt.txt").write_text(contract, encoding="utf-8")
         if topic.id == "psydefdetect":
-            shutil.copyfile(ROOT / "psydefdetect_split.canonical.json", inputs / "psydefdetect_split.canonical.json")
+            shutil.copyfile(ROOT / "splits" / "psydefdetect_split.canonical.json", inputs / "psydefdetect_split.canonical.json")
         image = prepare_image(adapter, route, cache)
         name = "rceval-" + uuid.uuid4().hex[:16]
         args = docker_command(name, route, image, adapter["directory"], workspace, inputs, visible)

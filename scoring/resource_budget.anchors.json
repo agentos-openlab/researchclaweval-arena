@@ -5,7 +5,7 @@
     "The resource_budget dict a framework must record in experiment_trace.json.",
     "Validators and the reference baseline load their expectations from here;",
     "framework authors can rely on this file as the",
-    "documented source (contracts/tdc_admet_tox_compute_budget.md)."
+    "documented source (contracts/tdc_admet_tox_contract.md#compute-budget)."
   ],
   "topics": {
     "tdc_admet_tox": {

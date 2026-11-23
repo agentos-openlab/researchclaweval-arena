@@ -79,11 +79,18 @@ Start with [`templates/example-adapter/`](templates/example-adapter/). Add an `a
 
 ```text
 adapters/     Built-in framework launch configurations
+configs/      Provider configuration template
 contracts/    Task inputs, outputs, data boundaries, and execution limits
+data/         Local datasets and caches (ignored by Git)
 docs/         Rules, participant guides, metric definitions, and FAQ
+judge/        Process-evaluation code and rubrics
 results/      Reviewed historical tables, CSV, and evidence data
+schemas/      JSON formats for adapters and run records
 scoring/      Dataset preparation and local scorers
 scripts/      Dataset setup, batch runner, and release checks
+splits/       Immutable task split manifests and checksums
+templates/    Adapter examples and submission artifacts
+tests/        Runner, scoring, and release checks
 website/      Bilingual site for the archived paper snapshot
 ```
 

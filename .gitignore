@@ -12,7 +12,7 @@ build/
 .env.*
 !.env.example
 provider.*.toml
-!provider.example.toml
+!configs/provider.example.toml
 *.local.toml
 opencode.json*
 api/

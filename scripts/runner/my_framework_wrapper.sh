@@ -5,7 +5,7 @@
 # This standalone template is retained for manual local runs. New integrations should use
 # scripts/arena.py and an adapter.json file. Fill the TODO blocks below. The wrapper:
 #   • creates a fresh physical run workspace (never reuses or mutates templates)
-#   • mounts contract + execution budget read-only and composes input/prompt.txt
+#   • mounts the task contract, including its execution budget, read-only
 #   • reads model API settings configured by the local user (OPENAI_*) and sets
 #     the FRAMEWORK_* wrapper-contract variables
 #   • exports WORKSPACE so the framework never hardcodes the workspace path
@@ -28,9 +28,8 @@ DATASET_ENV_NAME="${DATASET_ENV_NAME:-REPLACE_ME_DATASET_ROOT}"     # env var wi
 ENTRYPOINT="${FRAMEWORK_ENTRYPOINT:-}"                               # may also be injected
 RUN_ROOT="${RUN_ROOT:-$PWD/runs}"
 
-# prompt.txt composition (rules §5.7): contract + execution budget + task summary.
+# prompt.txt composition (rules §5.7): task contract + optional task summary.
 # Set PROMPT_TASK_SUMMARY here or export it in your local environment.
-PROMPT_BUDGET_FILE="${PROMPT_BUDGET_FILE:-contracts/${TOPIC}_execution_budget.md}"
 PROMPT_TASK_SUMMARY="${PROMPT_TASK_SUMMARY:-}"
 
 # --- wrapper-contract interface (public contract) ---
@@ -70,16 +69,9 @@ cp "$CONTRACT_FILE" "$WS/input/contract.md"
     echo "# (or export PROMPT_TASK_SUMMARY in your local environment)"
   fi
   echo
-  echo "## Contract (read-only, authoritative)"
+  echo "## Task Contract (read-only, authoritative; includes execution budget)"
   cat "$CONTRACT_FILE"
   echo
-  if [ -f "$PROMPT_BUDGET_FILE" ]; then
-    echo "## Execution Budget (read-only)"
-    cat "$PROMPT_BUDGET_FILE"
-    echo
-  else
-    echo "## Execution Budget (missing: $PROMPT_BUDGET_FILE)"
-  fi
 } > "$WS/input/prompt.txt"
 chmod -R a-w "$WS/input"
 echo "[runner] composed $WS/input/prompt.txt from $CONTRACT_FILE"

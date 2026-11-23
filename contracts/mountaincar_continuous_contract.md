@@ -25,3 +25,10 @@ python3 scoring/run_mountaincar_continuous_score.py \
 ```
 
 The evaluator tests seeds 0 through 4, with 256 environments per batch and a 200-frame cap. The scoring command stages only `src/`, `config.yaml` and the five checkpoints. It executes the evaluator and submitted model code in a separate Docker container with no network, a read-only root filesystem and no credentials. It reports a local reproduction result. Public ranking admission still requires a review of the run and artifacts.
+
+## Execution Budget
+
+1. Write and lock `research_idea.json` before training. The framework owns the hypothesis, method, experiment design and candidate selection.
+2. Run at least one completed experiment. A single training command may run for at most 1,800 seconds. Document the experimental comparisons and selection in `experiment_trace.json`.
+3. Advance to artifact finalization once the experiments are complete. Deliver one config, reconstruction code and exactly five trained checkpoints for the selected result. Preserve the original evaluator and evaluation policy.
+4. Use the injected provider settings for agent reasoning and record the actual model, endpoint and native execution evidence. Report failures without replacing missing metrics with placeholder values.

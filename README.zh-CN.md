@@ -79,11 +79,18 @@ python3 scripts/arena.py run --topic all --framework all
 
 ```text
 adapters/     内置框架启动配置
+configs/      模型服务商配置模板
 contracts/    任务输入、输出、数据边界和运行限制
+data/         本地下载的数据与缓存（Git 忽略）
 docs/         规则、参与者指南、指标说明和常见问题
+judge/        过程评测代码和评分标准
 results/      经复核的历史榜单、CSV 和证据数据
+schemas/      适配器和运行记录的 JSON 格式
 scoring/      数据准备和本地评分器
 scripts/      数据准备、批量运行和发布检查
+splits/       固定任务划分及校验值
+templates/    适配器示例和提交产物模板
+tests/        运行器、评分器和发布检查
 website/      历史论文快照的中英文网站
 ```
 

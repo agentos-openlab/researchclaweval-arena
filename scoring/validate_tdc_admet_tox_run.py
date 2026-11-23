@@ -36,7 +36,7 @@ def load_resource_budget() -> dict:
 
     Single source of truth is scoring/resource_budget.anchors.json — the
     same file the reference baseline reads, so participants never need to
-    copy values out of this source (contracts/tdc_admet_tox_compute_budget.md).
+    copy values out of this source (contracts/tdc_admet_tox_contract.md#compute-budget).
     """
     anchors_path = Path(__file__).resolve().parent / "resource_budget.anchors.json"
     require(anchors_path.is_file(), f"resource budget anchors file is missing: {anchors_path}")

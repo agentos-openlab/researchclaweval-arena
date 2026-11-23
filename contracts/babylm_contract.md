@@ -20,3 +20,11 @@ Perplexities from different validation splits or tokenization protocols are not 
 Under `/workspace`, write `research_idea.json` before the first experiment. Also produce `experiment_trace.json`, `final_report.md`, and the code, configuration and trained artifacts required to reproduce the selected experiment. Identify those artifacts in the trace. Each experiment needs `experiment_id` and a positive finite `validation_perplexity`. `selected_experiment_id` identifies the selected row.
 
 `python3 scoring/run_babylm_local_score.py --workspace <workspace> --output-score <path>` reads the selected trace value. The output is labeled `framework_self_reported` and `rank_eligible: false`. It does not independently evaluate a trained model. Preserve the training artifacts for future independent evaluation.
+
+## Execution Budget
+
+1. Write and lock `research_idea.json` before any experiment. Include the hypothesis, expected failure modes and planned comparison.
+2. Complete 2–4 materially distinct experiments. The framework selects the method and its final result. Finish after recording the selected experiment and its artifacts.
+3. Use only input files from the current run. Keep the original dataset read-only and record an unchanged validation policy across experiments.
+4. Record an experiment identifier and word-level validation perplexity for each complete experiment. Record the selected identifier, the actual model and endpoint, native execution evidence and the final report.
+5. Use the injected provider configuration for agent reasoning. Keep credentials and corpus contents out of the report and traces. If an experiment fails or times out, record its actual outcome.

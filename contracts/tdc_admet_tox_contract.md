@@ -1,5 +1,14 @@
 # TDC-ADMET-Tox Runtime Contract
 
+## Contents
+
+- [Task overview](#topic)
+- [Compute budget](#compute-budget)
+- [Execution budget](#execution-budget)
+- [Feature generation](#feature-generation)
+- [Metric specification](#metric-specification)
+- [Submission specification](#submission-specification)
+
 ## Topic
 
 - Topic id: `tdc_admet_tox`
@@ -20,11 +29,11 @@ The framework may receive only:
 
 - `train.csv` and `validation.csv`, including labels
 - `test.csv`, without labels
-- `contracts/tdc_admet_tox_feature_generation_contract.md`
-- `contracts/tdc_admet_tox_submission_spec.md`
+- the [Feature Generation](#feature-generation) section
+- the [Submission Specification](#submission-specification) section
 - the scorer interface and output schema, but not scorer secrets or test labels
 - this contract and the execution budget
-- the fixed compute budget in `contracts/tdc_admet_tox_compute_budget.md`
+- the fixed compute budget in the [Compute Budget](#compute-budget) section
 
 The public data is materialized from the official archive by `scripts/setup_datasets.sh --dataset tdc_admet_tox`; source exports and their caches remain host-only and are not framework inputs.
 
@@ -100,7 +109,7 @@ Markdown references use `<!-- claim:table1_ames_auroc_model_b -->` in the same t
 
 ## Audit And Reproduction
 
-- Follow `contracts/tdc_admet_tox_execution_budget.md`. The framework owns the order and rationale of its experiments; the host does not prescribe a baseline, method sequence, or promotion workflow.
+- Follow the [Execution Budget](#execution-budget) section. The framework owns the order and rationale of its experiments; the host does not prescribe a baseline, method sequence, or promotion workflow.
 - Validate framework artifacts with `scoring/validate_tdc_admet_tox_run.py --stage framework --public-dataset-root "$TDC_ADMET_TOX_DATASET_ROOT"` before scoring.
 - Generate the official result with `scoring/run_tdc_admet_tox_host_score.py` on the host.
 - Validate the completed package with `scoring/validate_tdc_admet_tox_run.py --stage final`.
@@ -114,3 +123,251 @@ Markdown references use `<!-- claim:table1_ames_auroc_model_b -->` in the same t
 - Fixed framework workspaces are template sources only.
 - Every evaluation uses a fresh physical workspace under `<RUN_ROOT>/<run_id>/<framework_slug>/workspace`. The runner injects this path to the framework as the `WORKSPACE` env var — never hardcode it.
 - Framework outputs may be written only under the current `RUN_ROOT`.
+
+## Compute Budget
+
+This budget applies independently to every framework and evaluation-model variant.
+
+### Host Limits
+
+- CPU: at most 4 vCPU
+- Memory: at most 16 GiB
+- GPU: unavailable (`0` GPUs)
+- Writable workspace: at most 10 GiB
+- Cumulative scientific experiment runtime: at most 3,600 seconds
+- Total native framework wall time, including planning and paper generation: at most 7,200 seconds
+- Network: only the evaluator-injected LLM relay is allowed; public internet, package indexes, model hubs, chemistry services, and remote data stores are blocked
+
+The wrapper must enforce host limits. The trace must record the observed runtime and declared budget; self-reported values alone are not sufficient runtime evidence.
+
+### The resource_budget Record
+
+Every `experiment_trace.json` must record the declared budget verbatim as the
+`resource_budget` object; the audit compares it **byte for byte** against the
+canonical value, so copy it exactly (it is also machine-readable in
+`scoring/resource_budget.anchors.json`, which the validator and the reference
+baseline load from):
+
+```json
+{
+  "cpu_cores": 4,
+  "memory_gib": 16,
+  "gpu_count": 0,
+  "workspace_disk_gib": 10,
+  "max_experiment_runtime_seconds": 3600,
+  "max_total_wall_seconds": 7200,
+  "network_policy": "injected_llm_relay_only"
+}
+```
+
+| field | value | source |
+|---|---|---|
+| `cpu_cores` | 4 | Host Limits above |
+| `memory_gib` | 16 | Host Limits above |
+| `gpu_count` | 0 | Host Limits above |
+| `workspace_disk_gib` | 10 | Host Limits above |
+| `max_experiment_runtime_seconds` | 3600 | Host Limits above |
+| `max_total_wall_seconds` | 7200 | Host Limits above |
+| `network_policy` | `injected_llm_relay_only` | Host Limits, network rule |
+
+### Configuration Accounting
+
+A complete configuration contains exactly one candidate model/feature/training strategy evaluated on validation data. Grid search, random search, Bayesian optimization, AutoML, repeated model selection, and any other procedure that evaluates multiple candidates count once per candidate, even when launched from one command.
+
+- Minimum complete configurations: 2
+- Maximum complete configurations: 4
+- `candidate_count` in every experiment record must equal `1`
+- Cross-validation may estimate a single fixed candidate, but changing a hyperparameter or selecting among fitted candidates creates additional configurations
+- Seed-only repeats of an otherwise unchanged configuration do not count as materially different experiments
+
+If a framework cannot stay inside these limits, its result is invalid rather than degraded or normalized after the fact.
+
+## Execution Budget
+
+This budget applies independently to every framework evaluation.
+
+### Complete Configuration
+
+A complete configuration is one distinct model, training, or feature strategy evaluated on the fixed validation split. It must produce all of the following before another configuration begins:
+
+- a stated molecular-ML hypothesis
+- an immutable configuration file
+- validation probabilities for all three endpoints
+- per-endpoint AUROC and AUPRC plus macro AUROC
+- a complete training/evaluation log
+- runtime, seed, feature strategy, and model strategy metadata
+
+Failed setup attempts that do not train or evaluate a configuration are logged but do not count as experiments. Re-running the same configuration with no material change is not a new experiment. A configuration that was trained and evaluated and then crashed or timed out counts for its line; the crash or timeout itself does not open a new line.
+
+### Experiment Counting
+
+Experiments are counted as strategy lines (docs/rules.md §5.8): a strategy line is a cluster of materially different configurations (differing in at least one of algorithm family, feature representation, architecture, or overall hyperparameter-search design). Retries, seed-only repeats, and small tuning inside one line are not new experiments. A line is established only once at least one of its configurations is complete (all bullets above).
+
+### Hard Limits
+
+- Complete 2 to 4 configurations across at least two distinct strategy lines (see Experiment Counting). Never begin a fifth configuration or a fifth strategy line.
+- Each configuration may evaluate exactly one candidate (`candidate_count: 1`). Every hidden sweep candidate counts as a separate configuration.
+- At least two configurations must differ in config content and declared model or feature strategy.
+- Use experiments 1 and 2 to establish and test the initial hypotheses.
+- Run experiment 3 or 4 only when its trace records the prior run and a specific evidence-based change.
+- Use the fixed train/validation split. Do not resample validation data to search for a favorable split.
+- Keep cumulative experiment runtime at or below 3,600 seconds and total native framework wall time at or below 7,200 seconds. Use no more than 4 vCPU, 16 GiB memory, 10 GiB writable disk, and no GPU.
+- Select the final configuration by validation macro AUROC only. Hidden test labels and hidden test scores are unavailable.
+- Keep a compact experiment ledger; do not paste datasets, prediction files, or complete source files into the agent context.
+
+### Mandatory Finalization
+
+Immediately after the last allowed configuration:
+
+1. Stop exploration.
+2. Select the best valid configuration using validation macro AUROC.
+3. Run the selected code once to create root-level `predictions.csv` for public `test.csv`.
+4. Write `experiment_trace.json`, `environment.json`, runnable code, logs, and the paper.
+5. Do not create `score.json`; exit and hand control to the host scorer.
+
+If the framework cannot produce the required handoff inside its native workflow, it must stop with a concrete blocker rather than fabricate or promote partial results.
+
+## Feature Generation
+
+### Allowed Inputs
+
+Features may be generated only from the provided SMILES string, endpoint identity, and labeled training data. The validation labels may be used for comparing the 2 to 4 declared configurations but not as training labels for those comparisons. Final refitting on train plus validation is allowed only after configuration selection and must be recorded.
+
+### Offline Boundary
+
+- No network access, remote chemistry service, database lookup, literature lookup, or runtime asset download.
+- No lookup keyed by `sample_id` or SMILES against external labels or benchmark answers.
+- Preinstalled chemistry and ML libraries are allowed when their versions are recorded in `environment.json`.
+- Preexisting model artifacts are allowed only when the evaluator explicitly includes and hashes them as visible task inputs.
+
+### Reproducibility
+
+Every experiment records:
+
+- feature generator name and version
+- molecular standardization assumptions
+- descriptor or fingerprint parameters
+- model and training parameters
+- random seed
+- input file SHA-256 hashes
+- generated feature-cache SHA-256 hashes when caches are used
+
+The materialized SMILES and `sample_id` values are immutable. Invalid SMILES handling must be deterministic, logged, and identical across splits. Endpoint-specific models and a shared multi-endpoint model are both allowed, but the chosen strategy must generate all three endpoint probabilities in a single reproducible final command.
+
+### Budget Semantics
+
+Changing a fingerprint radius, descriptor family, molecule standardization rule, model family, loss, calibration strategy, or training procedure and evaluating it on validation data constitutes a new complete configuration. Sweeps count once per evaluated configuration, not once per launcher command.
+
+## Metric Specification
+
+### Main Leaderboard Score
+
+For endpoints `E = {AMES, hERG, DILI}`:
+
+```text
+Main Score = (1 / 3) * sum(AUROC_e for e in E)
+```
+
+All three endpoints have equal weight. The main score is undefined if an endpoint is missing predictions or its hidden test split does not contain both classes. Such a submission fails validation instead of receiving an imputed value.
+
+### AUROC
+
+AUROC is computed from probability scores using the Mann-Whitney rank statistic with average ranks for tied probabilities. Probabilities must be finite values in `[0, 1]`. Hard class labels are syntactically valid probabilities but are discouraged because they discard ranking information.
+
+### Secondary Metrics
+
+The host scorer reports, but does not rank by:
+
+- per-endpoint average precision (`AUPRC`)
+- per-endpoint Brier score
+- per-endpoint expected calibration error with 10 equal-width probability bins
+- macro averages of those endpoint metrics
+- scorer runtime and record counts
+
+Training runtime and reproduction evidence come from `experiment_trace.json` and `environment.json`, not from the hidden-label scorer.
+
+### Failure Conditions
+
+Scoring fails when:
+
+- a required `(sample_id, endpoint)` pair is missing or duplicated
+- an extra prediction is present
+- an endpoint name differs from exactly `AMES`, `hERG`, or `DILI`
+- a probability is non-finite or outside `[0, 1]`
+- `predictions.csv` contains a label column or any field outside the submission schema
+- public `test.csv`, predictions, and hidden labels do not have identical keys
+- hidden labels are located below the public dataset root
+
+### Score Provenance
+
+The official local `score.json` must contain `score_source: "host_hidden_test_labels"`, SHA-256 hashes of public test features, predictions, and hidden labels, and the exact scorer version. A framework-authored metric file cannot substitute for this artifact.
+
+## Submission Specification
+
+### Public Data Files
+
+`train.csv` and `validation.csv` use exactly these columns:
+
+```text
+sample_id,endpoint,smiles,label
+```
+
+`test.csv` uses exactly these columns and contains no label:
+
+```text
+sample_id,endpoint,smiles
+```
+
+Endpoint values are case-sensitive: `AMES`, `hERG`, and `DILI`. Labels are binary integers `0` or `1`.
+
+### Trusted Source Projection
+
+The offline projector accepts a host-only normalized source tree:
+
+```text
+source-root/
+  AMES/{train,validation,test}.csv
+  hERG/{train,validation,test}.csv
+  DILI/{train,validation,test}.csv
+```
+
+Each normalized source file has exactly `sample_id,smiles,label`. The source revision and split-generation procedure must be fixed before projection. The projector rejects cross-split sample IDs, non-binary labels, single-class endpoint splits, nested public/private roots, and non-empty output roots. It strips labels from public test data and writes them to a separate host-only root.
+
+### Prediction Artifact
+
+Root-level `predictions.csv` uses exactly:
+
+```text
+sample_id,endpoint,probability
+```
+
+Requirements:
+
+- one row for every public test row and no other rows
+- the same `sample_id` and `endpoint` pair as public `test.csv`
+- a finite positive-class probability in `[0, 1]`
+- no `label`, `prediction_label`, SMILES, fold, or metric columns
+- deterministic row generation from the selected runnable configuration
+
+Example:
+
+```csv
+sample_id,endpoint,probability
+AMES_000001,AMES,0.7312
+HERG_000001,hERG,0.1184
+DILI_000001,DILI,0.5570
+```
+
+### Host Scoring Interface
+
+The scorer is invoked outside the framework container:
+
+```bash
+python3 scoring/run_tdc_admet_tox_host_score.py \
+  --public-dataset-root /path/to/public \
+  --hidden-labels /host-private/test_labels.csv \
+  --predictions /run/workspace/predictions.csv \
+  --output-score /run/workspace/score.json
+```
+
+The hidden-label CSV uses `sample_id,endpoint,label`. Its path is never projected into framework inputs, logs, prompts, manifests visible during execution, or container environment variables.
