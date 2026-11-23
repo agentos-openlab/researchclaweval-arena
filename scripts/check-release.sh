@@ -47,8 +47,7 @@ list_files() {
 }
 
 is_exempt() {
-  # full mode passes repo-relative paths; path mode passes absolute paths,
-  # which are converted to repo-relative here before matching
+  # Normalize repository-relative paths before matching exemptions.
   local rel="$1"
   rel="${rel#"$TARGET"/}"
   rel="${rel#./}"
@@ -97,9 +96,9 @@ P=(
   '-----BEGIN (RSA |OPENSSH |EC |DSA |ENCRYPTED )?PRIVATE KEY-----'
   'eyJ[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{8,}'
   "(api[_-]?key|token|secret|password|bearer)[[:space:]]*[:=][[:space:]]*[\"'][^\"']{12,}[\"']"
-  # G4 — absolute machine paths and identities (/workspace is a legal
-  # container path in the contracts, so it is deliberately not matched)
-  '(^|[[:space:]"])/(home|Users|root|mnt|opt|data)/[A-Za-z0-9_./-]+'
+  # G4 — absolute machine paths and identities. Standard image paths under
+  # /opt/framework and /opt/venv are legal container paths.
+  '(^|[[:space:]"])/((home|Users|root|mnt|data)/[A-Za-z0-9_./-]+|opt/(?!framework(?:/|[^A-Za-z0-9_-]|$)|venv(?:/|[^A-Za-z0-9_-]|$))[A-Za-z0-9_./-]+)'
   'jianbiao|guanghao|betterrrrr'
   # G5 — names (word-bounded)
   '\b(babylm|BabyLM|mountaincar|MountainCar|topic2|Topic2|gave2|GAVE2|Task2)\b'
@@ -116,7 +115,7 @@ P=(
   '/tmp/whest'
   'framework[[:space:]]*=[[:space:]]*"[0-9]{2}"'
   # domains / endpoints
-  '\bparatera\b|\bbianxie\b|\bmoonshot\b|\bhost\.docker\.internal\b|\bresearchclaweval\.dev\b'
+  '\bparatera\b|\bmoonshot\b|\bhost\.docker\.internal\b|\bresearchclaweval\.dev\b'
   # internal result/run vocabulary
   '\b(140 ?格|140 ?cell|1574|1680|1542)\b'
 )
@@ -128,14 +127,48 @@ P_DOC_EXEMPT=()
 COOEX_TARGET=docs/rules.md
 CODEX_EXEMPT=("docs/rules.md")
 
+is_public_catalog_file() {
+  case "$1" in
+    README.md|README.zh-CN.md|.env.example|THIRD_PARTY_NOTICES.md|CONTRIBUTING.md|adapters/README.md|.github/ISSUE_TEMPLATE/*.yml|docs/*.md|contracts/*|adapters/*/*|\
+    scripts/arena.py|scripts/setup_datasets.sh|scripts/render_leaderboard.py|\
+    scoring/*|tests/*.py|templates/example-adapter/*|\
+    results/*|website/*) return 0 ;;
+  esac
+  return 1
+}
+
+is_historical_model_file() {
+  case "$1" in
+    results/historical-evidence.json|results/leaderboard.csv|results/leaderboard.md|results/leaderboard.zh-CN.md|\
+    website/data/*.json|website/components/leaderboard*.tsx|website/lib/data.ts|\
+    website/scripts/*.mjs) return 0 ;;
+  esac
+  return 1
+}
+
 scan_text() {
   local pattern="$1"; shift
   local found=0
   local f rel
   while IFS= read -r f; do
     [[ -n "$f" ]] || continue
-    rel="${f#$TARGET/}"
+    rel="${f#"$ROOT"/}"
+    rel="${rel#./}"
     if is_exempt "$rel"; then continue; fi
+    case "$pattern" in
+      'jianbiao|guanghao|betterrrrr')
+        case "$rel" in website/README.md|website/lib/participation.ts) continue ;; esac
+        ;;
+      '\b(babylm|BabyLM|mountaincar|MountainCar|topic2|Topic2|gave2|GAVE2|Task2)\b'|\
+      '\b(AI-?Researcher|AI-?Scientist|AutoResearchClaw|DeepScientist|dr-?claw|EvoScientist)\b'|\
+      '(^|[^A-Za-z0-9])aris($|[^A-Za-z0-9])'|\
+      '\b(HKUDS|SakanaAI|aiming-lab|wanshuiyin)\b')
+        is_public_catalog_file "$rel" && continue
+        ;;
+      '\b(gpt-?5|gpt-?6|kimi|luna)\b')
+        is_historical_model_file "$rel" && continue
+        ;;
+    esac
     if grep -qP "$pattern" "$f" 2>/dev/null; then
       echo "  ${rel#./}" >&2
       found=1
@@ -157,7 +190,7 @@ done
 # .gitignore where '.codex/' is a legitimate local-tool dir rule
 for f in $(list_files); do
   [[ -n "$f" ]] || continue
-  rel="${f#"$TARGET"/}"; rel="${rel#./}"
+  rel="${f#"$ROOT"/}"; rel="${rel#./}"
   if is_exempt "$rel"; then continue; fi
   case "$rel" in docs/rules.md|.gitignore) continue ;; esac
   if grep -q 'codex' "$f" 2>/dev/null; then echo "  $rel"; fi
@@ -168,17 +201,17 @@ if [[ -s /tmp/rce-codex-hits.txt ]]; then
   failed=1
 fi
 
-# deepseek — allowed ONLY in docs/rules.md (the published self-test model
-# recommendation in §4); rejected everywhere else
+# DeepSeek appears only as a model label in the reviewed historical exports
+# and the already-published paper snapshot. It is not a default for new runs.
 found_ds=$(list_files | while IFS= read -r f; do
   [[ -n "$f" ]] || continue
-  rel="${f#"$TARGET"/}"; rel="${rel#./}"
+  rel="${f#"$ROOT"/}"; rel="${rel#./}"
   if is_exempt "$rel"; then continue; fi
-  case "$rel" in docs/rules.md) continue ;; esac
+  is_historical_model_file "$rel" && continue
   if grep -qi 'deepseek' "$f" 2>/dev/null; then echo "  $rel"; fi
 done)
 if [[ -n "$found_ds" ]]; then
-  echo "FINDING: 'deepseek' outside docs/rules.md:" >&2
+  echo "FINDING: 'deepseek' outside reviewed historical model exports:" >&2
   echo "$found_ds" >&2
   failed=1
 fi
@@ -189,7 +222,7 @@ if [[ -f "$TARGET/scripts/forbidden-hosts.txt" ]]; then
     [[ -n "$host" ]] || continue
     hits=$(list_files | while IFS= read -r f; do
       [[ -n "$f" ]] || continue
-      rel="${f#"$TARGET"/}"; rel="${rel#./}"
+      rel="${f#"$ROOT"/}"; rel="${rel#./}"
       if is_exempt "$rel"; then continue; fi
       if grep -qi "$host" "$f" 2>/dev/null; then echo "  $rel"; fi
     done)

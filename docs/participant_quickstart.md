@@ -1,191 +1,80 @@
-# Participant Quickstart
+# Quickstart
 
-[中文](participant_quickstart.zh-CN.md). This guide covers framework integration
-and self-testing. `docs/rules.md` defines competition rules; `contracts/*.md`
-defines task-specific requirements.
+This guide runs the public tasks with a built-in or custom framework adapter. Task-specific inputs, limits, outputs, and scoring details are defined in [`contracts/`](../contracts/). General requirements are in [`rules.md`](rules.md).
 
-The three public topics are for development and self-testing. Official
-evaluation uses other topics, run and scored by the organizer. Self-test
-scores do not count toward final rankings.
+## Requirements
 
-## 0. Workflow
+- Python 3.10 or later
+- Docker Engine with permission to run containers
+- Network access for the first download of a selected dataset and framework source
+- A model API account for frameworks that make API calls
 
-1. Register and obtain a two-digit framework ID.
-2. Download the three self-test datasets and verify SHA-256.
-3. Read the task contracts.
-4. Configure an adapter declaring the framework launch procedure.
-5. Complete self-testing with the official runner template.
-6. Submit the open-source framework repository and run artifacts for official
-   evaluation as specified by the rules.
+The runner builds framework images from pinned upstream commits where a Dockerfile is provided. Downloads are cached under `data/.arena-cache/`.
 
-The framework owns research planning, experiment design, execution,
-comparison, selection, and report preparation. The adapter handles
-integration and launch without prescribing research methods.
+## Configure the model API
 
-## 1. Datasets
+Copy `.env.example` to `.env`. Choose a provider that supports the OpenAI-compatible API used by your framework, then enter its endpoint, API key, and an available model name:
+
+```dotenv
+OPENAI_BASE_URL=https://your-provider.example/v1
+OPENAI_API_KEY=
+OPENAI_MODEL=
+```
+
+Keep `.env` local. Do not put credentials in adapter files, command-line arguments, reports, or commits. The runner redacts the configured API Key from its saved container log. Some frameworks or topics may not use a model API; check the adapter route and framework requirements first.
+
+## Inspect the catalogue
 
 ```bash
-bash scripts/setup_datasets.sh --dataset tdc_admet_tox   # ~1.4 MB
-bash scripts/setup_datasets.sh --dataset psydefdetect    # ~5.4 MB
-bash scripts/setup_datasets.sh --dataset arc_wbe_2026    # ~907 MB
+python3 scripts/arena.py list
 ```
 
-The script downloads from the original sources and checks the frozen
-SHA-256 values. Configure dataset paths after download:
+The catalogue shows all five topics and seven built-in adapters, including the status of each route. Check [adapter notes](../adapters/README.md) for model and platform requirements. `unsupported` means that adapter has no declared launch command for the topic. `experimental` means a launch configuration exists but has not completed full public verification. A dry run prints the selected routes without requiring Docker, data downloads, or API settings:
 
 ```bash
-export TDC_ADMET_TOX_DATASET_ROOT=$PWD/data/tdc_admet_tox/public
-export PSYDEFDETECT_DATASET_ROOT=$PWD/data/psydefdetect
-export ARC_WBE_2026_DATASET_ROOT=$PWD/data/arc_white_box_estimation_2026
+python3 scripts/arena.py run --topic psydefdetect --framework all --dry-run
+python3 scripts/arena.py run --topic all --framework autoresearchclaw --dry-run
 ```
 
-If direct access to `huggingface.co` fails, set
-`HF_ENDPOINT=https://hf-mirror.com`. Mirror fallback is used only after
-direct access fails.
+## Run a batch
 
-PsyDefDetect uses `cc-by-nc-4.0`. The competition is non-commercial, and data
-use must comply with that license.
-
-## 2. Task contracts
-
-The three self-test contracts specify data visibility, metrics, experiment
-budgets, and required outputs:
-
-- `contracts/arc_wbe_2026_contract.md`: 10 of 100 MLPs form the visible
-  validation set and include ground truth. The remaining 90 are scored by
-  the organizer and are not mounted into framework containers. See rules §3.4.
-- `contracts/psydefdetect_contract.md`: macro-F1 over positive classes 1–8,
-  using the dialogue-level split in `psydefdetect_split.canonical.json`.
-  The checksum is in rules §3.3. Local self-evaluation:
-
-  ```bash
-  python3 scoring/run_psydefdetect_local_score.py \
-    --dataset-root "$PSYDEFDETECT_DATASET_ROOT" \
-    --predictions predictions.jsonl \
-    --output-score score.json
-  ```
-
-- `contracts/tdc_admet_tox_contract.md`: equal-weight mean AUROC for AMES,
-  hERG, and DILI. Use sample IDs from the data files; `hERG` uses the `HERG_`
-  prefix (rules §5.6). `bash scripts/selfcheck_tdc.sh` validates the golden
-  run and, when `TDC_ADMET_TOX_DATASET_ROOT` is set, evaluates and validates
-  the reference baseline.
-
-Local self-evaluation files are for debugging and are not submitted as
-official scores. Shared requirements:
-
-- Write and lock `research_idea.json` before the first experiment.
-- Complete 2–4 materially different strategy lines. Retries, seed-only
-  repeats, and minor tuning within a line do not add a line. A line requires
-  at least one complete experiment. Compare results and submit the selected
-  result without starting a fifth line. See rules §5.8.
-- Record every experiment in `experiment_trace.json`.
-
-## 3. Adapter and runner
-
-Copy the adapter example:
+Run one topic with all declared built-in adapters:
 
 ```bash
-cp -r templates/example-adapter/ myframework/
+python3 scripts/arena.py run --topic psydefdetect --framework all
 ```
 
-`manifest.json` declares the framework ID, name, upstream repository,
-license, native entrypoint, required environment variables, images, and
-patches. Replace placeholders and validate against `schemas/adapter.schema.json`
-with `python3 scripts/validate_schemas.py --manifest myframework/manifest.json`.
+Run one framework on all topics for which it has a route:
 
-The fullrun wrapper must follow `scripts/runner/` templates. The runner
-mounts contracts and data read-only, supplies `OPENAI_BASE_URL`,
-`OPENAI_API_KEY`, and `OPENAI_MODEL`, exports `WORKSPACE` and `DATASET_ROOT`,
-composes `input/prompt.txt`, launches the framework in a fresh workspace,
-and collects artifacts. Read the workspace path from `WORKSPACE`; do not
-hardcode it.
-
-Participants provide the self-test model. The organizer provides the
-official model through the same environment variables. Neither stage
-permits hardcoded model IDs or endpoints. See rules §4 for the optional
-self-test model recommendation.
-
-`FRAMEWORK_NATIVE_LOG_MARKER` must be emitted early by the framework itself.
-Exit code 0 without the marker in `logs/e2e.log` is still non-native.
-Check with `bash scripts/check_native_marker.sh logs/e2e.log`; a run root is
-also accepted, and the second argument can specify a custom marker.
-
-## 4. Task input
-
-The runner composes `prompt.txt` from the contract, execution budget, and
-task summary and mounts it at `input/prompt.txt`. For self-testing, set
-`PROMPT_TASK_SUMMARY` or the template field. The organizer supplies the
-summary during official evaluation.
-
-The adapter converts the input into the framework's supported format. The
-input must not prescribe an algorithm family, feature representation,
-architecture, hyperparameters, experiment order, or selected method.
-
-Submit the exact mounted `prompt.txt` and calculate `PROVENANCE.json`
-`prompt_sha256` from that file.
-
-## 5. Submission and run records
-
-Retain one artifact set per topic. Task-specific payloads follow the
-corresponding contract:
-
-```
-<framework>-<topic>-<YYYYMMDDTHHMMSS>/
-├── PROVENANCE.json          # framework_commit / model / dataset_sha256 / split_sha256
-├── workspace/
-│   ├── research_idea.json
-│   ├── experiment_trace.json
-│   ├── environment.json     # run env — six required fields, see below
-│   ├── final_report.md
-│   └── <topic payload>      # predictions.csv | predictions.jsonl | estimator.py
-├── logs/e2e.log             # raw stdout/stderr of the run
-├── prompt.txt               # the exact mounted task input (runner writes it at workspace/input/prompt.txt, §4)
-└── source/                  # optional: research code produced by the framework
+```bash
+python3 scripts/arena.py run --topic all --framework autoresearchclaw
 ```
 
-The three public self-test payload formats are:
+The runner prepares only the selected topics, then executes each declared route in a separate container. Unsupported routes appear in the batch summary. The command returns a nonzero status if any route is unsupported, fails, or cannot be scored; completed runs and their local metrics remain in the batch directory. Select a single topic and framework to rerun a specific combination.
 
-| Topic | Payload | Format |
-|---|---|---|
-| `tdc_admet_tox` | `predictions.csv` | `sample_id,endpoint,probability` |
-| `psydefdetect` | `predictions.jsonl` | one `{"id":…,"predicted_label":…}` per line |
-| `arc_wbe_2026` | `estimator.py` | `predict(mlp)` returning a `(32,256)` array |
+Each batch writes a timestamp-independent unique directory under `runs/arena-*`. Record the printed path and inspect its `summary.json`, `logs/e2e.log`, and framework workspace. Do not use a failed run's artifacts as a successful score.
 
-`environment.json` requires `python_version`, `platform`, `device`, `seeds`,
-`packages`, and `created_at`. The trace's `reproduction` block declares the
-entrypoint, command, and seed needed to reproduce the selected experiment.
-Use `templates/submission/environment.json.template` as a reference.
+## Add an adapter
 
-`dataset_sha256` and `split_sha256` must match the published values. Store
-logs at `logs/e2e.log`. The community judge searches `logs/e2e.log`,
-`logs/native.log`, and `logs/native_stdout.log` in that order; it does not
-read a root-level `run.log`.
+Create a directory with an `adapter.json`. Begin with [`templates/example-adapter/`](../templates/example-adapter/) and its README. A custom adapter manifest declares an ID, display name, topic routes, an existing Docker image, an argument-array command, and a native marker emitted by the framework itself. Custom adapters use an existing image; the runner does not build a custom Dockerfile.
 
-`PROVENANCE.json` records submission and run information. Validate its
-format with `python3 scripts/validate_schemas.py --provenance <provenance-path>`.
-Populate `model` with the actual model ID, not an environment variable name.
-Schema validation does not establish factual accuracy. The official model
-must also match trace `framework_internal_model` and organizer configuration.
+Example route:
 
-## 6. Common validation issues
+```json
+{
+  "image": "my-framework:latest",
+  "command": ["python", "/app/run.py", "--input", "/input/prompt.txt"],
+  "native_marker": "Framework run started",
+  "status": "experimental"
+}
+```
 
-| Issue | Checks |
-|---|---|
-| Placeholder or constant outputs rejected | Confirm that real predictions and experiment artifacts were produced; a valid low raw score is not itself a placeholder |
-| TDC sample-ID mismatch | Use `sample_id` from `test.csv` and preserve the `hERG` / `HERG_` distinction |
-| ARC estimator rejected | Check the `mlp` parameter, output shape, and finite values |
-| ARC `b0` or `bT` missing | Check numeric `framework_visible_validation` records; see rules §3.4 |
-| Run classified as non-native | Check that the framework itself emitted the marker |
-| Network interruption | Wall-clock limits continue; check connectivity, checkpoints, recovery, and client retries |
-| Split validation failed | Use the frozen canonical split and checksum in rules §3.3 |
+The container receives read-only mounts at `/input`, `/dataset`, `/arena-adapter`, and `/arena-scoring`; `/workspace` is writable and starts empty. It also receives `WORKSPACE`, `DATASET_ROOT`, `ARENA_PROMPT`, `ARENA_TOPIC`, and, when configured, the three model API variables. Do not assume access to the host repository or host data paths.
 
-## 7. Schedule
+Use `python3 scripts/arena.py run --topic <topic-id> --adapter ./path/to/adapter` to test it. Add only topic routes that the native workflow can launch and whose required artifacts meet the linked task contract.
 
-Week 1 covers registration and environment setup, weeks 2–3 development and
-self-testing, and week 4 submission. Results are published after official
-evaluation. Contracts, dataset download, scorers, and documentation must be
-validated before the competition opens.
+## Results and limitations
 
-Report issues through the repository issue tracker. See [FAQ](FAQ.md) for
-common questions.
+The runner checks the framework's native marker and required files before scoring. MountainCar and ARC-WBE evaluation run in isolated containers with no network access; ARC uses only the visible-validation split. PsyDefDetect labels remain on the host while predictions are scored. TDC validation scoring runs when the framework provides validation predictions. BabyLM's diagnostic score is framework-reported and is not independently reproduced.
+
+The [historical leaderboard](../results/leaderboard.md) is grouped by topic, model, and protocol. Only reviewed evidence receives a rank. Local runs do not change the published table automatically.

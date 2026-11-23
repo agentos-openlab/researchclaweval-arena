@@ -1,0 +1,1405 @@
+{
+  "paper_version": "2026-10-30",
+  "entries": [
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "AI-Researcher",
+      "model": "GPT-6-Luna",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "AI-Researcher",
+      "model": "GPT-5.6-Luna",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "AI-Researcher",
+      "model": "DeepSeek-V4",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "AI-Researcher",
+      "model": "Kimi-K2.6",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": null,
+      "status": "missing",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "AI-Scientist-v2",
+      "model": "GPT-6-Luna",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "AI-Scientist-v2",
+      "model": "GPT-5.6-Luna",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "AI-Scientist-v2",
+      "model": "DeepSeek-V4",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "AI-Scientist-v2",
+      "model": "Kimi-K2.6",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": null,
+      "status": "missing",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "ARIS",
+      "model": "GPT-6-Luna",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": 9.48e-05,
+      "status": "verified",
+      "source_sha256": "0b94b7cfdb5828d184a39d75dd93bee272d1de600203bc8146dad416d75ca2e8",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "ARIS",
+      "model": "GPT-5.6-Luna",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "ARIS",
+      "model": "DeepSeek-V4",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "ARIS",
+      "model": "Kimi-K2.6",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": 0.0665,
+      "status": "verified",
+      "source_sha256": "e3e156eee94f4ab4bcbb0d0dc56be025cf601433f2f141294faa057b4006e940",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "AutoResearchClaw",
+      "model": "GPT-6-Luna",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": 0.0882,
+      "status": "verified",
+      "source_sha256": "ec6b42e89273889ad8a00867b1d4973cb40c5c8b5187cc65330846750a3d6882",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "AutoResearchClaw",
+      "model": "GPT-5.6-Luna",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "AutoResearchClaw",
+      "model": "DeepSeek-V4",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": 0.27,
+      "status": "verified",
+      "source_sha256": "d7fa69a7f1f9b33a598df1333d4b3f33b53e2793233e2a91fc2ea1a4abd42215",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "AutoResearchClaw",
+      "model": "Kimi-K2.6",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "DeepScientist",
+      "model": "GPT-6-Luna",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": 0.0761,
+      "status": "verified",
+      "source_sha256": "a81a9c52bc944a29ada89091d992db99b230ce4f25d9b67f66621740284de500",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "DeepScientist",
+      "model": "GPT-5.6-Luna",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "DeepScientist",
+      "model": "DeepSeek-V4",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": 0.000214,
+      "status": "verified",
+      "source_sha256": "4bd6f5f6c0b3a29df4cd230883cbb8c0d869191a0820f9d26871862a87722e76",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "DeepScientist",
+      "model": "Kimi-K2.6",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": 0.0661,
+      "status": "verified",
+      "source_sha256": "b9a44bf38dba7eaa03b3cb7e9e0ed218a6bff3604200df81471804f7a5d8c24a",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "Dr. Claw",
+      "model": "GPT-6-Luna",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": 0.0852,
+      "status": "verified",
+      "source_sha256": "b5ca74112a4d0a69b46289eea388f87a735ce3a281de7e19b73c733c1d153a96",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "Dr. Claw",
+      "model": "GPT-5.6-Luna",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": 0.0909,
+      "status": "verified",
+      "source_sha256": "00e6dc2d5db6fe937e1ff9a7761899791f827a8ebab5b97c0d106d51b1cf9c4c",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "Dr. Claw",
+      "model": "DeepSeek-V4",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "Dr. Claw",
+      "model": "Kimi-K2.6",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": 0.0662,
+      "status": "verified",
+      "source_sha256": "5179f4a6ba7baef4f76dbd4a17225aaffeebd69f573a8d34e17bcd468255a3e6",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "EvoScientist",
+      "model": "GPT-6-Luna",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": 0.0661,
+      "status": "verified",
+      "source_sha256": "1387a05f6af0cf3ecdf17fc0b5a094593938196265670cfe0dcd0f64169bd44d",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "EvoScientist",
+      "model": "GPT-5.6-Luna",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "EvoScientist",
+      "model": "DeepSeek-V4",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": 0.0661,
+      "status": "verified",
+      "source_sha256": "a96940884461ac6b3beda3d674db4c7591e7453cb7f8d90289cc255054b4e10d",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "arc_wbe_2026",
+      "framework": "EvoScientist",
+      "model": "Kimi-K2.6",
+      "protocol": "WHEST historical mini-100 / cff832e85bf1",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "AI-Researcher",
+      "model": "GPT-6-Luna",
+      "protocol": "MLGym frozen evaluator",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "AI-Researcher",
+      "model": "GPT-5.6-Luna",
+      "protocol": "MLGym frozen evaluator / 57ae36653ea7",
+      "value": null,
+      "status": "missing",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "AI-Researcher",
+      "model": "DeepSeek-V4",
+      "protocol": "MLGym frozen evaluator",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "AI-Researcher",
+      "model": "Kimi-K2.6",
+      "protocol": "MLGym frozen evaluator",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "AI-Scientist-v2",
+      "model": "GPT-6-Luna",
+      "protocol": "MLGym frozen evaluator",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "AI-Scientist-v2",
+      "model": "GPT-5.6-Luna",
+      "protocol": "MLGym frozen evaluator / 57ae36653ea7",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "AI-Scientist-v2",
+      "model": "DeepSeek-V4",
+      "protocol": "MLGym frozen evaluator",
+      "value": null,
+      "status": "missing",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "AI-Scientist-v2",
+      "model": "Kimi-K2.6",
+      "protocol": "MLGym frozen evaluator",
+      "value": null,
+      "status": "missing",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "ARIS",
+      "model": "GPT-6-Luna",
+      "protocol": "MLGym frozen evaluator",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "ARIS",
+      "model": "GPT-5.6-Luna",
+      "protocol": "MLGym frozen evaluator / 57ae36653ea7",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "ARIS",
+      "model": "DeepSeek-V4",
+      "protocol": "MLGym frozen evaluator / 57ae36653ea7",
+      "value": 93.67655944824219,
+      "status": "verified",
+      "source_sha256": "bccc62046e8f922d2a833ab7ffc0a17637e674070ee30d00777040c14f09a82d",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "ARIS",
+      "model": "Kimi-K2.6",
+      "protocol": "MLGym frozen evaluator",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "AutoResearchClaw",
+      "model": "GPT-6-Luna",
+      "protocol": "MLGym frozen evaluator",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "AutoResearchClaw",
+      "model": "GPT-5.6-Luna",
+      "protocol": "MLGym frozen evaluator / 57ae36653ea7",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "AutoResearchClaw",
+      "model": "DeepSeek-V4",
+      "protocol": "MLGym frozen evaluator",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "AutoResearchClaw",
+      "model": "Kimi-K2.6",
+      "protocol": "MLGym frozen evaluator",
+      "value": null,
+      "status": "missing",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "DeepScientist",
+      "model": "GPT-6-Luna",
+      "protocol": "MLGym frozen evaluator",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "DeepScientist",
+      "model": "GPT-5.6-Luna",
+      "protocol": "MLGym frozen evaluator / 57ae36653ea7",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "DeepScientist",
+      "model": "DeepSeek-V4",
+      "protocol": "MLGym frozen evaluator / cbd09e27273b",
+      "value": -0.010527188889682293,
+      "status": "verified",
+      "source_sha256": "20ead14a325b71368a33af08ff6a02362f8a75b6d0ddedf0a90015dc0b8a7a40",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "DeepScientist",
+      "model": "Kimi-K2.6",
+      "protocol": "MLGym frozen evaluator / 57ae36653ea7",
+      "value": -10.605130195617676,
+      "status": "verified",
+      "source_sha256": "89377a505bdc7d5075152a2164ce8e78128a91661aa899b9c5b6af10561d3ca6",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "Dr. Claw",
+      "model": "GPT-6-Luna",
+      "protocol": "MLGym frozen evaluator",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "Dr. Claw",
+      "model": "GPT-5.6-Luna",
+      "protocol": "MLGym frozen evaluator / 57ae36653ea7",
+      "value": -13.969474792480469,
+      "status": "verified",
+      "source_sha256": "fd56be3f6f87673a54b8f6a4f2faa9bc9d775a7084a1e4f4d7aac430d7a3c116",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "Dr. Claw",
+      "model": "DeepSeek-V4",
+      "protocol": "MLGym frozen evaluator / cbd09e27273b",
+      "value": 56.47181701660156,
+      "status": "verified",
+      "source_sha256": "7fd36fc6a0b05fbb8154929d57e19dc43b38104fff40484017e401dce2a7e5c7",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "Dr. Claw",
+      "model": "Kimi-K2.6",
+      "protocol": "MLGym frozen evaluator / 57ae36653ea7",
+      "value": 74.6320571899414,
+      "status": "verified",
+      "source_sha256": "cdf4150c1cdebd105d588edd653f133d43d3c4af9c7940bf89ab18667e6f343f",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "EvoScientist",
+      "model": "GPT-6-Luna",
+      "protocol": "MLGym frozen evaluator",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "EvoScientist",
+      "model": "GPT-5.6-Luna",
+      "protocol": "MLGym frozen evaluator / 57ae36653ea7",
+      "value": 72.51118469238281,
+      "status": "verified",
+      "source_sha256": "cd62d248ee826af12ebf073b671a9dcebc3aab3fd3a88494b6942002a911ef00",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "EvoScientist",
+      "model": "DeepSeek-V4",
+      "protocol": "MLGym frozen evaluator / cbd09e27273b",
+      "value": 52.438758850097656,
+      "status": "verified",
+      "source_sha256": "157fd3f3ce9bdb7157d169af0947c9103af45ddc02c4620f0dcbfad3fcd75439",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "mountaincar_continuous",
+      "framework": "EvoScientist",
+      "model": "Kimi-K2.6",
+      "protocol": "MLGym frozen evaluator / cbd09e27273b",
+      "value": 62.6725959777832,
+      "status": "verified",
+      "source_sha256": "c9ee66290041fe89cddd5b32e741d8cacbdce19c4bb93ec810a313422b4b4236",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "babylm",
+      "framework": "AI-Researcher",
+      "model": "GPT-6-Luna",
+      "protocol": "Framework-specific validation",
+      "value": 577.2414134696867,
+      "status": "self_reported",
+      "source_sha256": "fe0078e1184ffd34bac2afbfb9464e7787ea779a4822dd215821496b98a8cc1e",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "babylm",
+      "framework": "AI-Researcher",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Framework-specific validation",
+      "value": 742.9706871824764,
+      "status": "self_reported",
+      "source_sha256": "10000b97c8e2bc148cc07ba467c9be1c3e491aa51b03bd045569acda1845278d",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "babylm",
+      "framework": "AI-Researcher",
+      "model": "DeepSeek-V4",
+      "protocol": "Framework-specific validation",
+      "value": 106.57618186635331,
+      "status": "self_reported",
+      "source_sha256": "a11e426c5c9439122f5b87fb51cb2b77fec092b33c9151f702c69029f2590b89",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "babylm",
+      "framework": "AI-Researcher",
+      "model": "Kimi-K2.6",
+      "protocol": "Protocol not recorded",
+      "value": null,
+      "status": "missing",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "babylm",
+      "framework": "AI-Scientist-v2",
+      "model": "GPT-6-Luna",
+      "protocol": "Shared-reference validation",
+      "value": 185.75492216669167,
+      "status": "self_reported",
+      "source_sha256": "c325c23d43b9e2446dc44c4e2e60e3903780b7e76fdc0be665143f72b12fe247",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "babylm",
+      "framework": "AI-Scientist-v2",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Shared-reference validation",
+      "value": 108.10571361041116,
+      "status": "self_reported",
+      "source_sha256": "2b40580ea91ddbf3804a137a0ef1f24a6bc6f7d15819e1a9c411d7c31893a1fd",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "babylm",
+      "framework": "AI-Scientist-v2",
+      "model": "DeepSeek-V4",
+      "protocol": "Shared-reference validation",
+      "value": 85.2782377186871,
+      "status": "self_reported",
+      "source_sha256": "fbb2bf05851d4e0390292fc511e4992352fee8d62791f433a64b181312f4b7d8",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "babylm",
+      "framework": "AI-Scientist-v2",
+      "model": "Kimi-K2.6",
+      "protocol": "Protocol not recorded",
+      "value": null,
+      "status": "missing",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "babylm",
+      "framework": "ARIS",
+      "model": "GPT-6-Luna",
+      "protocol": "Framework-specific validation",
+      "value": 992.2312684364555,
+      "status": "self_reported",
+      "source_sha256": "76c5b2de195c3480ff4821e86dcd027d1362db710342008c52bb58017dc51518",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "babylm",
+      "framework": "ARIS",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Framework-specific validation",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "babylm",
+      "framework": "ARIS",
+      "model": "DeepSeek-V4",
+      "protocol": "Framework-specific validation",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "babylm",
+      "framework": "ARIS",
+      "model": "Kimi-K2.6",
+      "protocol": "Framework-specific validation",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "babylm",
+      "framework": "AutoResearchClaw",
+      "model": "GPT-6-Luna",
+      "protocol": "Framework-specific validation",
+      "value": 418.734285402003,
+      "status": "self_reported",
+      "source_sha256": "66a003d97786d6c5e4c0e220e17fe04a277a400845e2a8f8a09fc8a39d35c90c",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "babylm",
+      "framework": "AutoResearchClaw",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Framework-specific validation",
+      "value": 21.579719639362395,
+      "status": "self_reported",
+      "source_sha256": "f47be0523600bde22c108728d8ba6a53209d579c884e0897a8028ebb7511c426",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "babylm",
+      "framework": "AutoResearchClaw",
+      "model": "DeepSeek-V4",
+      "protocol": "Framework-specific validation",
+      "value": 597.4640994670493,
+      "status": "self_reported",
+      "source_sha256": "322b61f9ca53b85c323ad02f588e9633513177c9560ef006ed0993d04b5859d2",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "babylm",
+      "framework": "AutoResearchClaw",
+      "model": "Kimi-K2.6",
+      "protocol": "Framework-specific validation",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "babylm",
+      "framework": "DeepScientist",
+      "model": "GPT-6-Luna",
+      "protocol": "Framework-specific validation",
+      "value": 236.11229910913724,
+      "status": "self_reported",
+      "source_sha256": "273d0bc5d77481bdf16617d45b3c9e43d33d93d412e3439518310e92a97b7960",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "babylm",
+      "framework": "DeepScientist",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Framework-specific validation",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "babylm",
+      "framework": "DeepScientist",
+      "model": "DeepSeek-V4",
+      "protocol": "Framework-specific validation",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "babylm",
+      "framework": "DeepScientist",
+      "model": "Kimi-K2.6",
+      "protocol": "Protocol not recorded",
+      "value": null,
+      "status": "missing",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "babylm",
+      "framework": "Dr. Claw",
+      "model": "GPT-6-Luna",
+      "protocol": "Framework-specific validation",
+      "value": 219.19663306523273,
+      "status": "self_reported",
+      "source_sha256": "a52f1bbf2ec69be3eb69646421467f695bd0660f0cd9c1dde76d2e4b5d61b6f3",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "babylm",
+      "framework": "Dr. Claw",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Protocol not recorded",
+      "value": null,
+      "status": "missing",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "babylm",
+      "framework": "Dr. Claw",
+      "model": "DeepSeek-V4",
+      "protocol": "Framework-specific validation",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "babylm",
+      "framework": "Dr. Claw",
+      "model": "Kimi-K2.6",
+      "protocol": "Framework-specific validation",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "babylm",
+      "framework": "EvoScientist",
+      "model": "GPT-6-Luna",
+      "protocol": "Framework-specific validation",
+      "value": 3021.987278194702,
+      "status": "self_reported",
+      "source_sha256": "c4b98cc1cdd29431b2b730bde399cc57ce825fe8d0b91ed0ea8e691840ecd0e0",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "babylm",
+      "framework": "EvoScientist",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Protocol not recorded",
+      "value": null,
+      "status": "missing",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "babylm",
+      "framework": "EvoScientist",
+      "model": "DeepSeek-V4",
+      "protocol": "Protocol not recorded",
+      "value": null,
+      "status": "missing",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "babylm",
+      "framework": "EvoScientist",
+      "model": "Kimi-K2.6",
+      "protocol": "Framework-specific validation",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "AI-Researcher",
+      "model": "GPT-6-Luna",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": 0.1293855062520251,
+      "status": "verified",
+      "source_sha256": "1e62905e1e34fcde1b9c4006f9285ecdd39b73620ec615caee7251e0e46e9968",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "AI-Researcher",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": 0.13932971957883322,
+      "status": "verified",
+      "source_sha256": "3826535c1cafcc08a25bbdaa6d1275db2a5e432f76b1d043c4034e8845bb1c1c",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "AI-Researcher",
+      "model": "DeepSeek-V4",
+      "protocol": "Canonical dialogue split",
+      "value": null,
+      "status": "missing",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "AI-Researcher",
+      "model": "Kimi-K2.6",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "AI-Scientist-v2",
+      "model": "GPT-6-Luna",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "AI-Scientist-v2",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "AI-Scientist-v2",
+      "model": "DeepSeek-V4",
+      "protocol": "Canonical dialogue split",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "AI-Scientist-v2",
+      "model": "Kimi-K2.6",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "ARIS",
+      "model": "GPT-6-Luna",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": 0.20000299395120366,
+      "status": "verified",
+      "source_sha256": "143ecb1a110c5af07f9cf475823c970d19ba1511b08b5c19bf38b9609fd8e540",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "ARIS",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": 0.19041278186114408,
+      "status": "verified",
+      "source_sha256": "227da2de0dc25c3c59590b9b040433763a95a8b23a921d3c56e2ca4052188105",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "ARIS",
+      "model": "DeepSeek-V4",
+      "protocol": "Canonical dialogue split",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "ARIS",
+      "model": "Kimi-K2.6",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": 0.18736871737061453,
+      "status": "verified",
+      "source_sha256": "430b67bf360ddc2292e3a4b4afbb775aedd6730315aca4ed8f5265fc3236fe9e",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "AutoResearchClaw",
+      "model": "GPT-6-Luna",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "AutoResearchClaw",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": null,
+      "status": "missing",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "AutoResearchClaw",
+      "model": "DeepSeek-V4",
+      "protocol": "Canonical dialogue split",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "AutoResearchClaw",
+      "model": "Kimi-K2.6",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "DeepScientist",
+      "model": "GPT-6-Luna",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "DeepScientist",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": 0.12605264989386505,
+      "status": "verified",
+      "source_sha256": "ca09008e29933d8a834d1e773feadcedecf60df9ee7a0926a25f23a21efbdde0",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "DeepScientist",
+      "model": "DeepSeek-V4",
+      "protocol": "Canonical dialogue split",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "DeepScientist",
+      "model": "Kimi-K2.6",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "Dr. Claw",
+      "model": "GPT-6-Luna",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": 0.13680555555555554,
+      "status": "verified",
+      "source_sha256": "6d48885bb735f5c4b4e38a63971e479566d5f4aa7b34b2b20f70a2ee21eb9ce8",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "Dr. Claw",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": 0.13675435881151377,
+      "status": "verified",
+      "source_sha256": "e2ce01abd1902aae6bc5133a4b8fb602d4ffa0c64dd995c0282918309a5d51b7",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "Dr. Claw",
+      "model": "DeepSeek-V4",
+      "protocol": "Canonical dialogue split",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "Dr. Claw",
+      "model": "Kimi-K2.6",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "EvoScientist",
+      "model": "GPT-6-Luna",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": 0.1066673683102668,
+      "status": "verified",
+      "source_sha256": "88713e3bc5f8d56209b59e8386663f864ad5192f78ef3082d05173915de1a865",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "EvoScientist",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "EvoScientist",
+      "model": "DeepSeek-V4",
+      "protocol": "Canonical dialogue split",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "psydefdetect",
+      "framework": "EvoScientist",
+      "model": "Kimi-K2.6",
+      "protocol": "Canonical dialogue split / fa0d1b4e0521",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "AI-Researcher",
+      "model": "GPT-6-Luna",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": 0.8212521416112334,
+      "status": "verified",
+      "source_sha256": "02460f69f587cc04069ecfdf254e2166e02b93d59216db7b99a15cf077f55829",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "AI-Researcher",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "AI-Researcher",
+      "model": "DeepSeek-V4",
+      "protocol": "Frozen held-out test",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "AI-Researcher",
+      "model": "Kimi-K2.6",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": null,
+      "status": "missing",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "AI-Scientist-v2",
+      "model": "GPT-6-Luna",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "AI-Scientist-v2",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "AI-Scientist-v2",
+      "model": "DeepSeek-V4",
+      "protocol": "Frozen held-out test",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "AI-Scientist-v2",
+      "model": "Kimi-K2.6",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "ARIS",
+      "model": "GPT-6-Luna",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": 0.7849937976862559,
+      "status": "verified",
+      "source_sha256": "42969ec703e39eab8a938c755d09df2c33cd04ebea6de710f9a852128bfb83ca",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "ARIS",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": 0.822022242699155,
+      "status": "verified",
+      "source_sha256": "e85f7bea66f2e9d904afc43b3760f45d4a2eeca26406c1b5a5104316ab04c6c3",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "ARIS",
+      "model": "DeepSeek-V4",
+      "protocol": "Frozen held-out test",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "ARIS",
+      "model": "Kimi-K2.6",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "AutoResearchClaw",
+      "model": "GPT-6-Luna",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "AutoResearchClaw",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "AutoResearchClaw",
+      "model": "DeepSeek-V4",
+      "protocol": "Frozen held-out test",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "AutoResearchClaw",
+      "model": "Kimi-K2.6",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "DeepScientist",
+      "model": "GPT-6-Luna",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "DeepScientist",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "DeepScientist",
+      "model": "DeepSeek-V4",
+      "protocol": "Frozen held-out test",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "DeepScientist",
+      "model": "Kimi-K2.6",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "Dr. Claw",
+      "model": "GPT-6-Luna",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "Dr. Claw",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": 0.8038893754802926,
+      "status": "verified",
+      "source_sha256": "35e641fca6a8d5e178ed18573ec769c7801257ee0504e73a56e2e01dea1c0702",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "Dr. Claw",
+      "model": "DeepSeek-V4",
+      "protocol": "Frozen held-out test",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "Dr. Claw",
+      "model": "Kimi-K2.6",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": 0.7765472892092098,
+      "status": "verified",
+      "source_sha256": "d1be29c9efb90f956fc8a2932a92577a6a7fc727b1672d541f8d3ac7f1228c2f",
+      "reviewed_runs": 1
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "EvoScientist",
+      "model": "GPT-6-Luna",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "EvoScientist",
+      "model": "GPT-5.6-Luna",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "EvoScientist",
+      "model": "DeepSeek-V4",
+      "protocol": "Frozen held-out test",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    },
+    {
+      "topic": "tdc_admet_tox",
+      "framework": "EvoScientist",
+      "model": "Kimi-K2.6",
+      "protocol": "Frozen held-out test / 7c8830e94d6c",
+      "value": null,
+      "status": "unverified",
+      "source_sha256": null,
+      "reviewed_runs": 0
+    }
+  ]
+}

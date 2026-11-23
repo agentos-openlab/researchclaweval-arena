@@ -1,5 +1,9 @@
 # TDC-ADMET-Tox Validation Semantics
 
+This document describes validation for the archived TDC artifact format. The
+current batch runner follows the task contract directly; it does not submit
+packages to a central evaluation service.
+
 `scoring/validate_tdc_admet_tox_run.py` implements the checks described here.
 If the document differs from the validator, use the implementation and report
 the discrepancy. A complete example is provided in
@@ -34,7 +38,7 @@ in the validator. Runtime claims are compared with the experiment's declared
 runtime. The tolerance is an absolute difference of 1e-12, not a rule for
 rounding claim values to twelve decimal places.
 
-## 3. Official score and experiment selection
+## 3. Host score and experiment selection
 
 The validator also checks:
 
@@ -64,7 +68,7 @@ For example, `0.752` matches source values `0.7520` and `0.7521`, but not
 `0.7526`. `75.20%` matches `0.7520`. Rounding is permitted for display; trace
 claims retain the source metric values.
 
-## 5. Reference submission
+## 5. Reference artifact package
 
 `templates/submission/golden_tdc_admet_tox/` contains two experiments,
 three claims, a marked paper, and environment and reproduction records.
@@ -76,5 +80,5 @@ python3 scoring/validate_tdc_admet_tox_run.py \
   --stage framework
 ```
 
-`tests/test_validate_golden.py` checks that the reference submission remains
+`tests/test_validate_golden.py` checks that the reference package remains
 accepted by the validator.

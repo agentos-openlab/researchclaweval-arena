@@ -1,50 +1,38 @@
-# Example adapter (anonymized skeleton)
+# Custom adapter template
 
-This is a **placeholder skeleton** — every value is a `replace-me` placeholder
-or a plain example. It shows the integration surface a participant fills in;
-it is not a real framework and contains no framework code.
+The [`adapter.json`](adapter.json) file is a starter configuration for connecting a research framework to the Arena runner. Replace its ID, name, image, native command, marker, and supported topic routes before running it.
 
-## What an adapter is
+## Configure a route
 
-One directory in your team's repository that declares **how to launch your
-framework**. It contains no evaluation logic: topic selection, hypothesis,
-experiment design, execution, comparison, selection, and final report are all
-owned by your framework during the run (rules §7.2).
+Each task route contains either:
 
-## TODO list (5 places)
+- `reason`: why this framework does not support the task; or
+- `image`, `command`, and `native_marker`: the existing Docker image, its argument-array command, and a distinctive line emitted by the framework's own native workflow.
 
-1. `manifest.json` — `framework_id` (`NN`), `name`, `upstream_url`,
-   `upstream_commit`, `license_spdx`, `native_entrypoint` (+ source file),
-   `required_images` (or remove if none), `patches` (or `[]`).
-   Validate locally against `schemas/adapter.schema.json`:
-   ```
-   python3 scripts/validate_schemas.py --manifest manifest.json
-   ```
-2. `entrypoint.example.py` — replace with a pointer to (or a thin launcher
-   of) your framework's real native entrypoint. The launched process, not the
-   wrapper, must own the whole research flow.
-3. Print the native marker **from inside your framework's execution**:
-   ```
-   FRAMEWORK_NATIVE_LOG_MARKER
-   ```
-   as early as possible in the run; without it in `logs/e2e.log` the run is
-   non-native and does not score (rules §5.5).
-4. Respect the injected model env (`OPENAI_BASE_URL` / `OPENAI_API_KEY` /
-   `OPENAI_MODEL`). Never hardcode an endpoint or a model id — that is a
-   rejection (rules §4).
-5. Deliver the per-topic payload into the workspace root of the run
-   (`templates/submission/` shows the artifact layout):
-   - tdc: `predictions.csv` (`sample_id,endpoint,probability`)
-   - psydef: `predictions.jsonl` (one `{"id":…,"predicted_label":…}` per line)
-   - arc: `estimator.py` with `predict(self, mlp)` returning `(32, 256)`
+Set `status` to `experimental` until the route has completed a full end-to-end run and its outputs have been reviewed. Remove unsupported task entries if you do not want to publish a reason for them. The runner uses an existing image for custom adapters; it does not build a custom Dockerfile.
 
-## Runner
+Do not add code to synthesize the framework marker, task outputs, traces, or scores. The adapter starts the framework; the framework owns its research and artifact production.
 
-`scripts/runner/my_framework_wrapper.sh` is the generic runner template:
-it mounts contract + dataset read-only, injects the provider env, exports
-`WORKSPACE` / `DATASET_ROOT`, composes `input/prompt.txt`, runs your
-entrypoint in a fresh workspace, and collects `logs/e2e.log`. Copy it per
-topic as `<id>_<framework>_<topic>_fullrun.sh` and fill the topic parameters
-(contract path, dataset env, budget, payload expectations).
+## Runtime interface
 
-See `docs/participant_quickstart.md` for the end-to-end walkthrough.
+The runner mounts `/input`, `/dataset`, `/arena-adapter`, and `/arena-scoring` read-only. It mounts a fresh, writable run directory at `/workspace`. The container receives `WORKSPACE`, `DATASET_ROOT`, `ARENA_PROMPT`, `ARENA_TOPIC`, and the configured `OPENAI_BASE_URL`, `OPENAI_API_KEY`, and `OPENAI_MODEL` values.
+
+Choose a model API provider that works with your framework and configure it in the local `.env` file, not in this adapter. Never include API keys, private dataset paths, or user-specific endpoints in a manifest.
+
+## Check and run
+
+From the repository root, inspect a route without starting Docker or downloading data:
+
+```bash
+python3 scripts/arena.py run \
+  --topic psydefdetect --adapter ./my-framework --dry-run
+```
+
+Then run it:
+
+```bash
+python3 scripts/arena.py run \
+  --topic psydefdetect --adapter ./my-framework
+```
+
+The runner validates the adapter fields, runs the declared command, checks the native marker and required files, and invokes a local scorer where available. Each task's required outputs and data boundaries are defined in [`contracts/`](../../contracts/).

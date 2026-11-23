@@ -4,7 +4,7 @@
   "note": [
     "The resource_budget dict a framework must record in experiment_trace.json.",
     "Validators and the reference baseline load their expectations from here;",
-    "participants copying values for self-testing can rely on this file as the",
+    "framework authors can rely on this file as the",
     "documented source (contracts/tdc_admet_tox_compute_budget.md)."
   ],
   "topics": {

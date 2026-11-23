@@ -1,0 +1,39 @@
+{
+  "id": "dr-claw",
+  "name": "Dr. Claw",
+  "upstream_url": "https://github.com/OpenLAIR/dr-claw.git",
+  "upstream_commit": "0fab72c75368efa8f248b1d44634fe2354bee686",
+  "license_spdx": "LicenseRef-Combined-GPL-3.0-AGPL-3.0",
+  "native_docs": "https://github.com/OpenLAIR/dr-claw/blob/0fab72c75368efa8f248b1d44634fe2354bee686/README.md",
+  "topics": {
+    "babylm": {
+      "reason": "The pinned research workflow needs an unattended provider configuration and a validated benchmark artifact handoff."
+    },
+    "mountaincar_continuous": {
+      "reason": "The pinned research workflow needs an unattended provider configuration and a validated benchmark artifact handoff."
+    },
+    "arc_wbe_2026": {
+      "reason": "The pinned research workflow needs an unattended provider configuration and a validated benchmark artifact handoff."
+    },
+    "psydefdetect": {
+      "image": "arena-dr-claw:0fab72c75368",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python3",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "Dr. Claw Chat",
+      "status": "experimental"
+    },
+    "tdc_admet_tox": {
+      "image": "arena-dr-claw:0fab72c75368",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python3",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "Dr. Claw Chat",
+      "status": "experimental"
+    }
+  }
+}

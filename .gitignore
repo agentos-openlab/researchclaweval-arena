@@ -17,13 +17,17 @@ provider.*.toml
 opencode.json*
 api/
 
-# Runs and results (contract-only repo; keep results/README.md)
+# Local runs and score artifacts. Track only reviewed ranking exports.
 runs/
 runs_*/
 artifacts/
 out/
 results/*
 !results/README.md
+!results/historical-evidence.json
+!results/leaderboard.csv
+!results/leaderboard.md
+!results/leaderboard.zh-CN.md
 logs/
 !templates/submission/golden_tdc_admet_tox/logs/
 !templates/submission/golden_tdc_admet_tox/logs/e2e.log
