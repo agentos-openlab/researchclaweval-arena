@@ -3,9 +3,11 @@
 ResearchClawEval Arena provides a common way to run research-agent frameworks on five research tasks. The repository includes seven framework adapters, task-specific contracts and scorers, a local batch runner, and reviewed historical results. Frameworks run through their native workflows in isolated Docker containers. Users choose and configure a compatible model API locally.
 
 <p align="center">
-  <img src="assets/leaderboard-snapshot.svg" alt="Historical process-profile radar chart and verified PsyDefDetect Macro-F1 line chart" width="100%">
+  <a href="https://betterrrrr.github.io/researchclaweval-arena/leaderboard/">
+    <img src="assets/leaderboard-snapshot.svg" alt="Historical six-dimensional research process profiles across seven frameworks" width="100%">
+  </a>
 </p>
-<p align="center"><sub>The radar shows six Judge-coded process dimensions; the line shows verified PsyDefDetect Macro-F1 scores for GPT-5.6-Luna. They use separate scales and are not combined into a ranking.</sub></p>
+<p align="center"><sub>Historical Judge-coded process profiles across seven frameworks. Click the chart to view the full leaderboard.</sub></p>
 
 [中文说明](README.zh-CN.md) · [Competition rules](docs/rules.md) · [Quickstart](docs/participant_quickstart.md) · [All benchmark results](results/leaderboard.md) · [Result review method](results/README.md) · [Historical website](website/README.md)
 

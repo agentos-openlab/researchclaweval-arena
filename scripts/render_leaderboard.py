@@ -168,27 +168,22 @@ def markdown_text_zh(rows: list[dict], snapshot: dict) -> str:
     return "\n".join(lines)
 
 
-def readme_figure_svg(rows: list[dict], snapshot: dict) -> str:
-    """Render the existing process radar and a verified task-score line chart."""
-    width, height = 1800, 760
+def readme_figure_svg(snapshot: dict) -> str:
+    """Render the leaderboard's six-dimensional process-profile radar chart."""
+    width, height = 1440, 930
     profile_data = json.loads((ROOT / "website/data/leaderboard.json").read_text(encoding="utf-8"))["items"]
     framework_data = json.loads((ROOT / "website/data/frameworks.json").read_text(encoding="utf-8"))["items"]
     framework_names = {entry["id"]: entry["name"] for entry in framework_data}
     profiles = profile_data["profiles"]
-    dimensions = ["PQ", "PEA", "ER", "OU", "ECC", "SC"]
+    dimensions = [
+        "Plan quality",
+        "Plan–execution alignment",
+        "Execution robustness",
+        "Observation use",
+        "Evidence–conclusion closure",
+        "State consistency",
+    ]
     colors = ["#1a4b7c", "#a76931", "#457d71", "#854b68", "#687caa", "#9a763b", "#667682"]
-    line_rows = sorted(
-        (
-            row for row in rows
-            if row["topic"] == "psydefdetect"
-            and row["model"] == "GPT-5.6-Luna"
-            and row["protocol"] == "Canonical dialogue split / fa0d1b4e0521"
-            and row["status"] == "verified"
-        ),
-        key=lambda row: row["rank"],
-    )
-    if len(line_rows) < 2 or [row["rank"] for row in line_rows] != list(range(1, len(line_rows) + 1)):
-        raise ValueError("README line chart requires consecutive verified PsyDefDetect ranks")
 
     def text(
         x: float,
@@ -207,21 +202,17 @@ def readme_figure_svg(rows: list[dict], snapshot: dict) -> str:
 
     pieces = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">',
-        '<title id="title">ResearchClawEval radar and task-score line charts</title>',
-        '<desc id="desc">A radar chart of six historical process-profile dimensions for seven frameworks, and a line chart of verified PsyDefDetect Macro-F1 scores for GPT-5.6-Luna.</desc>',
+        '<title id="title">ResearchClawEval six-dimensional process profiles</title>',
+        '<desc id="desc">A radar chart showing six historical Judge-coded process-profile dimensions for seven frameworks. The dimensions are descriptive and do not form an overall ranking.</desc>',
         '<rect width="100%" height="100%" fill="#f4f7fa"/>',
-        text(60, 43, "RESEARCHCLAW EVAL ARENA · HISTORICAL RESULTS", size=12, color="#397e78", weight="700"),
-        text(60, 91, "Process profiles and task scores", size=36, color="#183149", weight="700"),
-        text(60, 122, f"Paper snapshot {snapshot['paper_version']} · separate views, with no cross-topic score", size=15, color="#61788a"),
-        '<rect x="60" y="152" width="820" height="514" rx="14" fill="#ffffff" stroke="#dce5ec"/>',
-        '<rect x="900" y="152" width="840" height="514" rx="14" fill="#ffffff" stroke="#dce5ec"/>',
-        text(84, 188, "Process profile by framework", size=20, color="#183149", weight="700"),
-        text(84, 211, "Six Judge-coded dimensions · common cohort of 10 conditions · scale 0–1", size=12, color="#61788a"),
-        text(924, 188, "PsyDefDetect · Macro-F1", size=20, color="#183149", weight="700"),
-        text(924, 211, "GPT-5.6-Luna · Canonical dialogue split / fa0d1b4e0521", size=12, color="#61788a"),
+        text(60, 48, "RESEARCHCLAW EVAL ARENA · HISTORICAL RESULTS", size=12, color="#397e78", weight="700"),
+        text(60, 96, "Research process profiles", size=36, color="#183149", weight="700"),
+        text(60, 128, f"Paper snapshot {snapshot['paper_version']} · seven frameworks · scale 0–1", size=15, color="#61788a"),
+        '<rect x="60" y="158" width="1320" height="744" rx="14" fill="#ffffff" stroke="#dce5ec"/>',
+        text(90, 202, "Six Judge-coded dimensions · common cohort of 10 conditions", size=14, color="#61788a"),
     ]
 
-    center_x, center_y, radius = 470.0, 420.0, 142.0
+    center_x, center_y, radius = 720.0, 505.0, 232.0
     angles = [-math.pi / 2 + index * math.tau / len(dimensions) for index in range(len(dimensions))]
     for step in range(5, 0, -1):
         scale = step / 5
@@ -238,11 +229,11 @@ def readme_figure_svg(rows: list[dict], snapshot: dict) -> str:
         pieces.append(
             f'<line x1="{center_x:.1f}" y1="{center_y:.1f}" x2="{x_end:.1f}" y2="{y_end:.1f}" stroke="#dce5ec"/>'
         )
-        label_radius = radius + 24
+        label_radius = radius + 34
         label_x = center_x + label_radius * math.cos(angle)
         label_y = center_y + label_radius * math.sin(angle) + 4
         anchor = "start" if math.cos(angle) > 0.2 else "end" if math.cos(angle) < -0.2 else "middle"
-        pieces.append(text(label_x, label_y, dimensions[index], size=11, color="#4f6576", weight="700", anchor=anchor))
+        pieces.append(text(label_x, label_y, dimensions[index], size=14, color="#4f6576", weight="700", anchor=anchor))
 
     for index, profile in enumerate(profiles):
         framework = framework_names[profile["frameworkId"]]
@@ -262,44 +253,13 @@ def readme_figure_svg(rows: list[dict], snapshot: dict) -> str:
             point_x = center_x + radius * value * math.cos(angle)
             point_y = center_y + radius * value * math.sin(angle)
             pieces.append(f'<circle cx="{point_x:.1f}" cy="{point_y:.1f}" r="2.8" fill="{color}"/>')
-        legend_x = 92 + (index % 4) * 188
-        legend_y = 612 + (index // 4) * 23
+        legend_x = (210 + index * 300) if index < 4 else (360 + (index - 4) * 300)
+        legend_y = 832 if index < 4 else 862
         pieces.append(f'<circle cx="{legend_x}" cy="{legend_y - 4}" r="4" fill="{color}"/>')
-        pieces.append(text(legend_x + 10, legend_y, framework, size=11, color="#40576a"))
-
-    chart_left, chart_right, chart_top, chart_bottom = 1002.0, 1688.0, 270.0, 526.0
-    y_max = 0.20
-    for tick in (0.0, 0.05, 0.10, 0.15, 0.20):
-        y = chart_bottom - tick / y_max * (chart_bottom - chart_top)
-        pieces.append(
-            f'<line x1="{chart_left:.1f}" y1="{y:.1f}" x2="{chart_right:.1f}" y2="{y:.1f}" stroke="#e3eaf0"/>'
-        )
-        pieces.append(text(chart_left - 14, y + 4, f"{tick:.2f}", size=11, color="#667d8d", anchor="end"))
-
-    x_positions = [
-        chart_left + index * (chart_right - chart_left) / (len(line_rows) - 1)
-        for index in range(len(line_rows))
-    ]
-    line_points = []
-    for row, x in zip(line_rows, x_positions, strict=True):
-        y = chart_bottom - float(row["value"]) / y_max * (chart_bottom - chart_top)
-        line_points.append(f"{x:.1f},{y:.1f}")
-    pieces.append(
-        f'<polyline points="{" ".join(line_points)}" fill="none" stroke="#247f75" '
-        'stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>'
-    )
-    for row, x in zip(line_rows, x_positions, strict=True):
-        y = chart_bottom - float(row["value"]) / y_max * (chart_bottom - chart_top)
-        pieces.extend([
-            f'<circle cx="{x:.1f}" cy="{y:.1f}" r="5.5" fill="#ffffff" stroke="#247f75" stroke-width="3"/>',
-            text(x, y - 14, f"{float(row['value']):.4f}", size=12, color="#1c756d", weight="700", anchor="middle"),
-            text(x, chart_bottom + 22, f"{row['rank']} · {row['framework']}", size=11, color="#40576a", anchor="middle"),
-        ])
+        pieces.append(text(legend_x + 10, legend_y, framework, size=12, color="#40576a"))
 
     pieces.extend([
-        text((chart_left + chart_right) / 2, 606, "Verified records · canonical dialogue split · higher score is better", size=11, color="#667d8d", anchor="middle"),
-        text(60, 714, "Radar: ordinal process means, not an overall rank · PQ plan quality · PEA plan–execution alignment · ER execution robustness · OU observation use · ECC evidence–conclusion closure · SC state consistency.", size=10, color="#61788a"),
-        text(60, 736, "Line: verified PsyDefDetect scores for one model and protocol · values rounded to four decimals; full records are linked below.", size=10, color="#61788a"),
+        text(90, 890, "Ordinal process means; descriptive profiles, not an overall ranking.", size=11, color="#667d8d"),
         '</svg>',
     ])
     return "\n".join(pieces) + "\n"
@@ -324,7 +284,7 @@ def main() -> int:
         else:
             path.write_text(content, encoding="utf-8")
     figure_path = ROOT / "assets" / "leaderboard-snapshot.svg"
-    figure_content = readme_figure_svg(rows, snapshot)
+    figure_content = readme_figure_svg(snapshot)
     if args.check:
         if not figure_path.is_file() or figure_path.read_text(encoding="utf-8") != figure_content:
             parser.exit(1, f"stale leaderboard output: {figure_path.relative_to(ROOT)}\n")
