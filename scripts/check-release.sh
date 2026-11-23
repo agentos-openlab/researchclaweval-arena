@@ -96,9 +96,9 @@ P=(
   '-----BEGIN (RSA |OPENSSH |EC |DSA |ENCRYPTED )?PRIVATE KEY-----'
   'eyJ[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{8,}'
   "(api[_-]?key|token|secret|password|bearer)[[:space:]]*[:=][[:space:]]*[\"'][^\"']{12,}[\"']"
-  # G4 — absolute machine paths and identities (/workspace is a legal
-  # container path in the contracts, so it is deliberately not matched)
-  '(^|[[:space:]"])/(home|Users|root|mnt|opt|data)/[A-Za-z0-9_./-]+'
+  # G4 — absolute machine paths and identities. Standard image paths under
+  # /opt/framework and /opt/venv are legal container paths.
+  '(^|[[:space:]"])/((home|Users|root|mnt|data)/[A-Za-z0-9_./-]+|opt/(?!framework(?:/|[^A-Za-z0-9_-]|$)|venv(?:/|[^A-Za-z0-9_-]|$))[A-Za-z0-9_./-]+)'
   'jianbiao|guanghao|betterrrrr'
   # G5 — names (word-bounded)
   '\b(babylm|BabyLM|mountaincar|MountainCar|topic2|Topic2|gave2|GAVE2|Task2)\b'
@@ -129,7 +129,7 @@ CODEX_EXEMPT=("docs/rules.md")
 
 is_public_catalog_file() {
   case "$1" in
-    README.md|README.zh-CN.md|.env.example|THIRD_PARTY_NOTICES.md|adapters/README.md|docs/*.md|contracts/*|adapters/*/*|\
+    README.md|README.zh-CN.md|.env.example|THIRD_PARTY_NOTICES.md|CONTRIBUTING.md|adapters/README.md|.github/ISSUE_TEMPLATE/*.yml|docs/*.md|contracts/*|adapters/*/*|\
     scripts/arena.py|scripts/setup_datasets.sh|scripts/render_leaderboard.py|\
     scoring/*|tests/*.py|templates/example-adapter/*|\
     results/*|website/*) return 0 ;;
