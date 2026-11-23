@@ -7,13 +7,34 @@
   "native_docs": "https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep/releases/tag/v0.4.28",
   "topics": {
     "babylm": {
-      "reason": "The upstream native research workflow is documented. A portable unattended configuration for the selected benchmark is not yet available."
+      "image": "arena-aris:299cd76633f6",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python3",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "\"message\":",
+      "status": "experimental"
     },
     "mountaincar_continuous": {
-      "reason": "The upstream native research workflow is documented. A portable unattended configuration for the selected benchmark is not yet available."
+      "image": "arena-aris:299cd76633f6",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python3",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "\"message\":",
+      "status": "experimental"
     },
     "arc_wbe_2026": {
-      "reason": "The upstream native research workflow is documented. A portable unattended configuration for the selected benchmark is not yet available."
+      "image": "arena-aris:299cd76633f6",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python3",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "\"message\":",
+      "status": "experimental"
     },
     "psydefdetect": {
       "image": "arena-aris:299cd76633f6",
@@ -26,7 +47,14 @@
       "status": "experimental"
     },
     "tdc_admet_tox": {
-      "reason": "The upstream native research workflow is documented. A portable unattended configuration for the selected benchmark is not yet available."
+      "image": "arena-aris:299cd76633f6",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python3",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "\"message\":",
+      "status": "experimental"
     }
   }
 }

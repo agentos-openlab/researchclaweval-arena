@@ -44,13 +44,19 @@ Run one topic with all declared built-in adapters:
 python3 scripts/arena.py run --topic psydefdetect --framework all
 ```
 
-Run one framework on all topics for which it has a route:
+Run one framework on all topics:
 
 ```bash
 python3 scripts/arena.py run --topic all --framework autoresearchclaw
 ```
 
-The runner prepares only the selected topics, then executes each declared route in a separate container. Unsupported routes appear in the batch summary. The command returns a nonzero status if any route is unsupported, fails, or cannot be scored; completed runs and their local metrics remain in the batch directory. Select a single topic and framework to rerun a specific combination.
+Run the complete 35-route matrix sequentially:
+
+```bash
+python3 scripts/arena.py run --topic all --framework all
+```
+
+The runner prepares only the selected topics, then executes each declared route in a separate container. Unsupported routes appear in the batch summary. The command returns a nonzero status if any route is unsupported, fails, or its local scorer reports an error; completed runs and their local metrics remain in the batch directory. Select a single topic and framework to rerun a specific combination.
 
 Each batch writes a timestamp-independent unique directory under `runs/arena-*`. Record the printed path and inspect its `summary.json`, `logs/e2e.log`, and framework workspace. Do not use a failed run's artifacts as a successful score.
 

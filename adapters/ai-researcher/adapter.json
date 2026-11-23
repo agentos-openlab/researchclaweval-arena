@@ -7,23 +7,54 @@
   "native_docs": "https://github.com/HKUDS/AI-Researcher/blob/f9a6f8480860c193afff600eeffe3defcee8a978/README.md",
   "topics": {
     "babylm": {
-      "reason": "The pinned native runner requires a separate execution environment and framework-specific task inputs that are not yet available in the public adapter."
+      "image": "researchclaweval/ai-researcher:f9a6f8480860",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "Code Survey Agent",
+      "status": "experimental"
     },
     "mountaincar_continuous": {
-      "reason": "The pinned native runner requires a separate execution environment and framework-specific task inputs that are not yet available in the public adapter."
+      "image": "researchclaweval/ai-researcher:f9a6f8480860",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "Code Survey Agent",
+      "status": "experimental"
     },
     "arc_wbe_2026": {
-      "reason": "The pinned native runner requires a separate execution environment and framework-specific task inputs that are not yet available in the public adapter."
+      "image": "researchclaweval/ai-researcher:f9a6f8480860",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "Code Survey Agent",
+      "status": "experimental"
     },
     "psydefdetect": {
       "image": "researchclaweval/ai-researcher:f9a6f8480860",
       "dockerfile": "Dockerfile",
-      "command": ["python", "/arena-adapter/launch.py"],
+      "command": [
+        "python",
+        "/arena-adapter/launch.py"
+      ],
       "native_marker": "Code Survey Agent",
       "status": "experimental"
     },
     "tdc_admet_tox": {
-      "reason": "The pinned native runner requires a separate execution environment and framework-specific task inputs that are not yet available in the public adapter."
+      "image": "researchclaweval/ai-researcher:f9a6f8480860",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "Code Survey Agent",
+      "status": "experimental"
     }
   }
 }

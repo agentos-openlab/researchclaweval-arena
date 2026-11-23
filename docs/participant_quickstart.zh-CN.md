@@ -44,13 +44,19 @@ python3 scripts/arena.py run --topic all --framework autoresearchclaw --dry-run
 python3 scripts/arena.py run --topic psydefdetect --framework all
 ```
 
-选择一个框架运行它支持的全部任务：
+选择一个框架运行全部任务：
 
 ```bash
 python3 scripts/arena.py run --topic all --framework autoresearchclaw
 ```
 
-运行器只准备所选任务，并在独立容器中逐项执行。未支持的组合会记入批次摘要；只要批次中有不支持、运行失败或评分失败的组合，命令就会以非零状态退出。已完成的运行及本地指标仍保存在批次目录中。需要重跑单项时，明确选择一个任务和一个框架。
+按顺序运行完整的 35 组组合：
+
+```bash
+python3 scripts/arena.py run --topic all --framework all
+```
+
+运行器只准备所选任务，并在独立容器中逐项执行。未支持的组合会记入批次摘要；只要有组合不支持、运行失败或评分器报错，命令就会以非零状态退出。已完成的运行及本地指标仍保存在批次目录中。需要重跑单项时，明确选择一个任务和一个框架。
 
 每个批次会在 `runs/` 下创建独立目录。记录命令输出的目录路径，并查看其中的 `summary.json`、`logs/e2e.log` 和框架工作区。失败运行的文件不能作为有效成绩。
 
