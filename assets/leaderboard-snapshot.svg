@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="980" viewBox="0 0 1800 980" role="img" aria-labelledby="title desc">
+<title id="title">ResearchClawEval historical leaderboard snapshot</title>
+<desc id="desc">Actual GPT-5.6-Luna leaderboard results from the archived paper snapshot. Each topic is ranked independently, and BabyLM scores are marked unranked.</desc>
+<rect width="100%" height="100%" fill="#091724"/>
+<text x="60" y="47" fill="#7ddfc4" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="2.2">RESEARCHCLAW EVAL ARENA · HISTORICAL RESULTS</text>
+<text x="60" y="100" fill="#f4f0e5" font-family="Arial,sans-serif" font-size="40" font-weight="700">Topic leaderboards</text>
+<text x="60" y="137" fill="#9eb2c2" font-family="Arial,sans-serif" font-size="16">Selected model: GPT-5.6-Luna · paper snapshot 2026-10-30 · scores are not compared across topics.</text>
+<rect x="60" y="180" width="544" height="344" rx="16" fill="#11283a" stroke="#29465a" stroke-width="1.4"/>
+<text x="82" y="215" fill="#f4f0e5" font-family="Arial,sans-serif" font-size="20" font-weight="700" text-anchor="start">ARC-WBE-2026</text>
+<text x="82" y="241" fill="#9eb2c2" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Adjusted final-layer score · lower is better</text>
+<text x="82" y="264" fill="#79cdb9" font-family="Arial,sans-serif" font-size="11" font-weight="400" text-anchor="start">WHEST historical mini-100 / cff832e85bf1</text>
+<line x1="80" y1="281" x2="584" y2="281" stroke="#2a4558"/>
+<text x="82" y="304" fill="#829aaa" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">RANK</text>
+<text x="138" y="304" fill="#829aaa" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">FRAMEWORK</text>
+<text x="500" y="304" fill="#829aaa" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">SCORE</text>
+<text x="582" y="304" fill="#829aaa" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">STATUS</text>
+<text x="82" y="333" fill="#f0c975" font-family="Arial,sans-serif" font-size="13" font-weight="700" text-anchor="start">1</text>
+<text x="138" y="333" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Dr. Claw</text>
+<text x="500" y="333" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="700" text-anchor="end">0.0909</text>
+<text x="582" y="333" fill="#79cdb9" font-family="Arial,sans-serif" font-size="10" font-weight="400" text-anchor="end">verified</text>
+<rect x="628" y="180" width="544" height="344" rx="16" fill="#11283a" stroke="#29465a" stroke-width="1.4"/>
+<text x="650" y="215" fill="#f4f0e5" font-family="Arial,sans-serif" font-size="20" font-weight="700" text-anchor="start">BabyLM-10M</text>
+<text x="650" y="241" fill="#9eb2c2" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Validation perplexity · lower is better</text>
+<text x="650" y="264" fill="#79cdb9" font-family="Arial,sans-serif" font-size="11" font-weight="400" text-anchor="start">Self-reported protocols shown separately</text>
+<line x1="648" y1="281" x2="1152" y2="281" stroke="#2a4558"/>
+<text x="650" y="304" fill="#829aaa" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">FRAMEWORK · PROTOCOL</text>
+<text x="1078" y="304" fill="#829aaa" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">SCORE</text>
+<text x="1150" y="304" fill="#829aaa" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">STATUS</text>
+<text x="650" y="333" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">AI-Researcher · framework-specific</text>
+<text x="1078" y="333" fill="#f0c975" font-family="Arial,sans-serif" font-size="12" font-weight="700" text-anchor="end">742.9707</text>
+<text x="1150" y="333" fill="#f0c975" font-family="Arial,sans-serif" font-size="10" font-weight="400" text-anchor="end">unranked</text>
+<text x="650" y="375" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">AI-Scientist-v2 · shared reference</text>
+<text x="1078" y="375" fill="#f0c975" font-family="Arial,sans-serif" font-size="12" font-weight="700" text-anchor="end">108.1057</text>
+<text x="1150" y="375" fill="#f0c975" font-family="Arial,sans-serif" font-size="10" font-weight="400" text-anchor="end">unranked</text>
+<text x="650" y="417" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">AutoResearchClaw · framework-specific</text>
+<text x="1078" y="417" fill="#f0c975" font-family="Arial,sans-serif" font-size="12" font-weight="700" text-anchor="end">21.5797</text>
+<text x="1150" y="417" fill="#f0c975" font-family="Arial,sans-serif" font-size="10" font-weight="400" text-anchor="end">unranked</text>
+<rect x="1196" y="180" width="544" height="344" rx="16" fill="#11283a" stroke="#29465a" stroke-width="1.4"/>
+<text x="1218" y="215" fill="#f4f0e5" font-family="Arial,sans-serif" font-size="20" font-weight="700" text-anchor="start">MountainCar-Continuous</text>
+<text x="1218" y="241" fill="#9eb2c2" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Mean reward · higher is better</text>
+<text x="1218" y="264" fill="#79cdb9" font-family="Arial,sans-serif" font-size="11" font-weight="400" text-anchor="start">MLGym frozen evaluator / 57ae36653ea7</text>
+<line x1="1216" y1="281" x2="1720" y2="281" stroke="#2a4558"/>
+<text x="1218" y="304" fill="#829aaa" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">RANK</text>
+<text x="1274" y="304" fill="#829aaa" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">FRAMEWORK</text>
+<text x="1636" y="304" fill="#829aaa" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">SCORE</text>
+<text x="1718" y="304" fill="#829aaa" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">STATUS</text>
+<text x="1218" y="333" fill="#f0c975" font-family="Arial,sans-serif" font-size="13" font-weight="700" text-anchor="start">1</text>
+<text x="1274" y="333" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">EvoScientist</text>
+<text x="1636" y="333" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="700" text-anchor="end">72.5112</text>
+<text x="1718" y="333" fill="#79cdb9" font-family="Arial,sans-serif" font-size="10" font-weight="400" text-anchor="end">verified</text>
+<text x="1218" y="369" fill="#8ed8c3" font-family="Arial,sans-serif" font-size="13" font-weight="700" text-anchor="start">2</text>
+<text x="1274" y="369" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Dr. Claw</text>
+<text x="1636" y="369" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="700" text-anchor="end">-13.9695</text>
+<text x="1718" y="369" fill="#79cdb9" font-family="Arial,sans-serif" font-size="10" font-weight="400" text-anchor="end">verified</text>
+<rect x="60" y="548" width="544" height="344" rx="16" fill="#11283a" stroke="#29465a" stroke-width="1.4"/>
+<text x="82" y="583" fill="#f4f0e5" font-family="Arial,sans-serif" font-size="20" font-weight="700" text-anchor="start">PsyDefDetect</text>
+<text x="82" y="609" fill="#9eb2c2" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Macro-F1 over classes 1–8 · higher is better</text>
+<text x="82" y="632" fill="#79cdb9" font-family="Arial,sans-serif" font-size="11" font-weight="400" text-anchor="start">Canonical dialogue split / fa0d1b4e0521</text>
+<line x1="80" y1="649" x2="584" y2="649" stroke="#2a4558"/>
+<text x="82" y="672" fill="#829aaa" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">RANK</text>
+<text x="138" y="672" fill="#829aaa" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">FRAMEWORK</text>
+<text x="500" y="672" fill="#829aaa" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">SCORE</text>
+<text x="582" y="672" fill="#829aaa" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">STATUS</text>
+<text x="82" y="701" fill="#f0c975" font-family="Arial,sans-serif" font-size="13" font-weight="700" text-anchor="start">1</text>
+<text x="138" y="701" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">ARIS</text>
+<text x="500" y="701" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="700" text-anchor="end">0.1904</text>
+<text x="582" y="701" fill="#79cdb9" font-family="Arial,sans-serif" font-size="10" font-weight="400" text-anchor="end">verified</text>
+<text x="82" y="737" fill="#8ed8c3" font-family="Arial,sans-serif" font-size="13" font-weight="700" text-anchor="start">2</text>
+<text x="138" y="737" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">AI-Researcher</text>
+<text x="500" y="737" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="700" text-anchor="end">0.1393</text>
+<text x="582" y="737" fill="#79cdb9" font-family="Arial,sans-serif" font-size="10" font-weight="400" text-anchor="end">verified</text>
+<text x="82" y="773" fill="#8ed8c3" font-family="Arial,sans-serif" font-size="13" font-weight="700" text-anchor="start">3</text>
+<text x="138" y="773" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Dr. Claw</text>
+<text x="500" y="773" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="700" text-anchor="end">0.1368</text>
+<text x="582" y="773" fill="#79cdb9" font-family="Arial,sans-serif" font-size="10" font-weight="400" text-anchor="end">verified</text>
+<text x="82" y="809" fill="#8ed8c3" font-family="Arial,sans-serif" font-size="13" font-weight="700" text-anchor="start">4</text>
+<text x="138" y="809" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">DeepScientist</text>
+<text x="500" y="809" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="700" text-anchor="end">0.1261</text>
+<text x="582" y="809" fill="#79cdb9" font-family="Arial,sans-serif" font-size="10" font-weight="400" text-anchor="end">verified</text>
+<rect x="628" y="548" width="544" height="344" rx="16" fill="#11283a" stroke="#29465a" stroke-width="1.4"/>
+<text x="650" y="583" fill="#f4f0e5" font-family="Arial,sans-serif" font-size="20" font-weight="700" text-anchor="start">TDC-ADMET-Tox</text>
+<text x="650" y="609" fill="#9eb2c2" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Macro-AUROC · higher is better</text>
+<text x="650" y="632" fill="#79cdb9" font-family="Arial,sans-serif" font-size="11" font-weight="400" text-anchor="start">Frozen held-out test / 7c8830e94d6c</text>
+<line x1="648" y1="649" x2="1152" y2="649" stroke="#2a4558"/>
+<text x="650" y="672" fill="#829aaa" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">RANK</text>
+<text x="706" y="672" fill="#829aaa" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">FRAMEWORK</text>
+<text x="1068" y="672" fill="#829aaa" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">SCORE</text>
+<text x="1150" y="672" fill="#829aaa" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">STATUS</text>
+<text x="650" y="701" fill="#f0c975" font-family="Arial,sans-serif" font-size="13" font-weight="700" text-anchor="start">1</text>
+<text x="706" y="701" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">ARIS</text>
+<text x="1068" y="701" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="700" text-anchor="end">0.8220</text>
+<text x="1150" y="701" fill="#79cdb9" font-family="Arial,sans-serif" font-size="10" font-weight="400" text-anchor="end">verified</text>
+<text x="650" y="737" fill="#8ed8c3" font-family="Arial,sans-serif" font-size="13" font-weight="700" text-anchor="start">2</text>
+<text x="706" y="737" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Dr. Claw</text>
+<text x="1068" y="737" fill="#edf3f5" font-family="Arial,sans-serif" font-size="12" font-weight="700" text-anchor="end">0.8039</text>
+<text x="1150" y="737" fill="#79cdb9" font-family="Arial,sans-serif" font-size="10" font-weight="400" text-anchor="end">verified</text>
+<rect x="1196" y="548" width="544" height="344" rx="16" fill="#11283a" stroke="#29465a" stroke-width="1.4"/>
+<text x="1218" y="583" fill="#f4f0e5" font-family="Arial,sans-serif" font-size="20" font-weight="700" text-anchor="start">Archive coverage</text>
+<text x="1218" y="609" fill="#9eb2c2" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Full leaderboard records</text>
+<line x1="1216" y1="631" x2="1720" y2="631" stroke="#2a4558"/>
+<text x="1220" y="699" fill="#7ddfc4" font-family="Arial,sans-serif" font-size="43" font-weight="700" text-anchor="start">35</text>
+<text x="1220" y="725" fill="#d7e2e7" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="start">verified ranked score cells</text>
+<text x="1220" y="778" fill="#f0c975" font-family="Arial,sans-serif" font-size="34" font-weight="700" text-anchor="start">13</text>
+<text x="1220" y="804" fill="#d7e2e7" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="start">self-reported scores · unranked</text>
+<text x="1220" y="848" fill="#9eb2c2" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Rank groups match topic, model and protocol.</text>
+<text x="60" y="948" fill="#829aaa" font-family="Arial,sans-serif" font-size="12">Historical scores · displayed to 4 decimal places · full tables and exact values are linked below.</text>
+</svg>

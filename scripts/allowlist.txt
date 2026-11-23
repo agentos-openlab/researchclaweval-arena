@@ -36,6 +36,7 @@ adapters/dr-claw/openai-terminal.patch
 adapters/evoscientist/Dockerfile
 adapters/evoscientist/adapter.json
 adapters/evoscientist/launch.py
+assets/leaderboard-snapshot.svg
 contracts/arc_wbe_2026_contract.md
 contracts/arc_wbe_2026_execution_budget.md
 contracts/babylm_contract.md

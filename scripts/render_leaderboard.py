@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import html
 import io
 import itertools
 import json
@@ -167,6 +168,111 @@ def markdown_text_zh(rows: list[dict], snapshot: dict) -> str:
     return "\n".join(lines)
 
 
+def readme_figure_svg(rows: list[dict], snapshot: dict) -> str:
+    """Render an actual-score snapshot for the README from reviewed leaderboard rows."""
+    featured_model = "GPT-5.6-Luna"
+    width, height = 1800, 980
+    margin, gap = 60, 24
+    card_width = (width - 2 * margin - 2 * gap) // 3
+    card_height = 344
+    positions = [
+        (margin + col * (card_width + gap), 180 + row * 368)
+        for row in range(2)
+        for col in range(3)
+    ]
+    verified_count = sum(row["status"] == "verified" for row in rows)
+    self_reported_count = sum(row["status"] == "self_reported" for row in rows)
+    pieces = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">',
+        '<title id="title">ResearchClawEval historical leaderboard snapshot</title>',
+        '<desc id="desc">Actual GPT-5.6-Luna leaderboard results from the archived paper snapshot. Each topic is ranked independently, and BabyLM scores are marked unranked.</desc>',
+        '<rect width="100%" height="100%" fill="#091724"/>',
+        '<text x="60" y="47" fill="#7ddfc4" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="2.2">RESEARCHCLAW EVAL ARENA · HISTORICAL RESULTS</text>',
+        '<text x="60" y="100" fill="#f4f0e5" font-family="Arial,sans-serif" font-size="40" font-weight="700">Topic leaderboards</text>',
+        f'<text x="60" y="137" fill="#9eb2c2" font-family="Arial,sans-serif" font-size="16">Selected model: {featured_model} · paper snapshot {html.escape(snapshot["paper_version"])} · scores are not compared across topics.</text>',
+    ]
+
+    def label(x: int, y: int, value: str, *, size: int = 13, color: str = "#edf3f5", weight: str = "400", anchor: str = "start") -> str:
+        return (f'<text x="{x}" y="{y}" fill="{color}" font-family="Arial,sans-serif" '
+                f'font-size="{size}" font-weight="{weight}" text-anchor="{anchor}">{html.escape(value)}</text>')
+
+    def score_text(value: float) -> str:
+        return f"{value:.4f}"
+
+    for topic_index, (topic, (name, metric, lower)) in enumerate(TOPICS.items()):
+        x, y = positions[topic_index]
+        topic_rows = [row for row in rows if row["topic"] == topic and row["model"] == featured_model]
+        verified = sorted((row for row in topic_rows if row["status"] == "verified"), key=lambda row: row["rank"])
+        shown = sorted((row for row in topic_rows if row["status"] == "self_reported"), key=lambda row: row["framework"])
+        protocols = {row["protocol"] for row in verified}
+        if topic != "babylm" and len(protocols) != 1:
+            raise ValueError(f"README figure expects one reviewed protocol for {topic}, got {protocols}")
+        protocol_label = ("Self-reported protocols shown separately" if topic == "babylm"
+                          else next(iter(protocols), "No verified result"))
+
+        pieces.extend([
+            f'<rect x="{x}" y="{y}" width="{card_width}" height="{card_height}" rx="16" fill="#11283a" stroke="#29465a" stroke-width="1.4"/>',
+            label(x + 22, y + 35, name, size=20, color="#f4f0e5", weight="700"),
+            label(x + 22, y + 61, f"{metric} · {'lower' if lower else 'higher'} is better", size=12, color="#9eb2c2"),
+            label(x + 22, y + 84, protocol_label, size=11, color="#79cdb9"),
+            f'<line x1="{x + 20}" y1="{y + 101}" x2="{x + card_width - 20}" y2="{y + 101}" stroke="#2a4558"/>',
+        ])
+
+        if topic == "babylm":
+            pieces.extend([
+                label(x + 22, y + 124, "FRAMEWORK · PROTOCOL", size=10, color="#829aaa", weight="700"),
+                label(x + card_width - 94, y + 124, "SCORE", size=10, color="#829aaa", weight="700", anchor="end"),
+                label(x + card_width - 22, y + 124, "STATUS", size=10, color="#829aaa", weight="700", anchor="end"),
+            ])
+            for index, row in enumerate(shown):
+                row_y = y + 153 + index * 42
+                proto = "shared reference" if "Shared-reference" in row["protocol"] else "framework-specific"
+                pieces.extend([
+                    label(x + 22, row_y, f"{row['framework']} · {proto}", size=12, color="#edf3f5"),
+                    label(x + card_width - 94, row_y, score_text(row["value"]), size=12, color="#f0c975", weight="700", anchor="end"),
+                    label(x + card_width - 22, row_y, "unranked", size=10, color="#f0c975", anchor="end"),
+                ])
+            if not shown:
+                pieces.append(label(x + 22, y + 158, "No framework-reported score for this model", size=12, color="#b0bdc6"))
+        else:
+            pieces.extend([
+                label(x + 22, y + 124, "RANK", size=10, color="#829aaa", weight="700"),
+                label(x + 78, y + 124, "FRAMEWORK", size=10, color="#829aaa", weight="700"),
+                label(x + card_width - 104, y + 124, "SCORE", size=10, color="#829aaa", weight="700", anchor="end"),
+                label(x + card_width - 22, y + 124, "STATUS", size=10, color="#829aaa", weight="700", anchor="end"),
+            ])
+            for index, row in enumerate(verified):
+                row_y = y + 153 + index * 36
+                rank_color = "#f0c975" if row["rank"] == 1 else "#8ed8c3"
+                pieces.extend([
+                    label(x + 22, row_y, str(row["rank"]), size=13, color=rank_color, weight="700"),
+                    label(x + 78, row_y, row["framework"], size=12, color="#edf3f5"),
+                    label(x + card_width - 104, row_y, score_text(row["value"]), size=12, color="#edf3f5", weight="700", anchor="end"),
+                    label(x + card_width - 22, row_y, "verified", size=10, color="#79cdb9", anchor="end"),
+                ])
+            if not verified:
+                pieces.append(label(x + 22, y + 158, "No independently verified rank", size=12, color="#b0bdc6"))
+
+    x, y = positions[-1]
+    pieces.extend([
+        f'<rect x="{x}" y="{y}" width="{card_width}" height="{card_height}" rx="16" fill="#11283a" stroke="#29465a" stroke-width="1.4"/>',
+        label(x + 22, y + 35, "Archive coverage", size=20, color="#f4f0e5", weight="700"),
+        label(x + 22, y + 61, "Full leaderboard records", size=12, color="#9eb2c2"),
+        f'<line x1="{x + 20}" y1="{y + 83}" x2="{x + card_width - 20}" y2="{y + 83}" stroke="#2a4558"/>',
+        label(x + 24, y + 151, str(verified_count), size=43, color="#7ddfc4", weight="700"),
+        label(x + 24, y + 177, "verified ranked score cells", size=13, color="#d7e2e7"),
+        label(x + 24, y + 230, str(self_reported_count), size=34, color="#f0c975", weight="700"),
+        label(x + 24, y + 256, "self-reported scores · unranked", size=13, color="#d7e2e7"),
+        label(x + 24, y + 300, "Rank groups match topic, model and protocol.", size=12, color="#9eb2c2"),
+    ])
+
+    pieces.extend([
+        '<text x="60" y="948" fill="#829aaa" font-family="Arial,sans-serif" font-size="12">Historical scores · displayed to 4 decimal places · full tables and exact values are linked below.</text>',
+        '</svg>',
+    ])
+    return "\n".join(pieces) + "\n"
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="fail if committed outputs are stale")
@@ -185,6 +291,14 @@ def main() -> int:
                 parser.exit(1, f"stale leaderboard output: {name}\n")
         else:
             path.write_text(content, encoding="utf-8")
+    figure_path = ROOT / "assets" / "leaderboard-snapshot.svg"
+    figure_content = readme_figure_svg(rows, snapshot)
+    if args.check:
+        if not figure_path.is_file() or figure_path.read_text(encoding="utf-8") != figure_content:
+            parser.exit(1, f"stale leaderboard output: {figure_path.relative_to(ROOT)}\n")
+    else:
+        figure_path.parent.mkdir(parents=True, exist_ok=True)
+        figure_path.write_text(figure_content, encoding="utf-8")
     return 0
 
 

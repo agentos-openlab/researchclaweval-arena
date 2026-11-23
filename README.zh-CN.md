@@ -2,6 +2,11 @@
 
 ResearchClawEval Arena 为科研 Agent 框架提供统一的任务运行与结果比较方式。仓库包含五项任务、七个框架适配器、任务契约与评分器、本地批量运行器，以及经复核的历史结果。框架在隔离的 Docker 容器中按原生流程运行。运行者自行选择并在本地配置兼容的模型 API。
 
+<p align="center">
+  <img src="assets/leaderboard-snapshot.svg" alt="GPT-5.6-Luna 在五项任务中的历史榜单成绩，BabyLM 数据标记为未排名" width="100%">
+</p>
+<p align="center"><sub>图中为 GPT-5.6-Luna 的部分历史成绩。各任务及协议分别排名；完整榜单链接见下文。</sub></p>
+
 [English](README.md) · [比赛规则](docs/rules.md) · [快速开始](docs/participant_quickstart.zh-CN.md) · [全部历史榜单](results/leaderboard.zh-CN.md) · [结果复核方法](results/README.md) · [历史结果网站](website/README.md)
 
 ## 适用范围

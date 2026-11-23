@@ -132,14 +132,14 @@ is_public_catalog_file() {
     README.md|README.zh-CN.md|.env.example|THIRD_PARTY_NOTICES.md|CONTRIBUTING.md|adapters/README.md|.github/ISSUE_TEMPLATE/*.yml|docs/*.md|contracts/*|adapters/*/*|\
     scripts/arena.py|scripts/setup_datasets.sh|scripts/render_leaderboard.py|\
     scoring/*|tests/*.py|templates/example-adapter/*|\
-    results/*|website/*) return 0 ;;
+    results/*|assets/leaderboard-snapshot.svg|website/*) return 0 ;;
   esac
   return 1
 }
 
 is_historical_model_file() {
   case "$1" in
-    results/historical-evidence.json|results/leaderboard.csv|results/leaderboard.md|results/leaderboard.zh-CN.md|\
+    results/historical-evidence.json|results/leaderboard.csv|results/leaderboard.md|results/leaderboard.zh-CN.md|assets/leaderboard-snapshot.svg|\
     website/data/*.json|website/components/leaderboard*.tsx|website/lib/data.ts|\
     website/scripts/*.mjs) return 0 ;;
   esac
