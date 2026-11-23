@@ -10,7 +10,13 @@ There are five topics: BabyLM-10M, MountainCar-Continuous, ARC-WBE-2026, PsyDefD
 
 **Can I run all topics and frameworks with one command?**
 
-Choose one topic with all built-in adapters, or one framework across its declared topics. The runner does not start the full topic-by-framework matrix. Unsupported routes are recorded and make the batch exit nonzero.
+Yes. All seven built-in adapters declare launch commands for all five topics. Run the complete 35-route matrix sequentially with:
+
+```bash
+python3 scripts/arena.py run --topic all --framework all
+```
+
+Use `--dry-run` to inspect the selected routes first. Routes remain `experimental` until public end-to-end verification. Unsupported routes in custom adapters are recorded and make the batch exit nonzero.
 
 **Can I connect my own framework?**
 

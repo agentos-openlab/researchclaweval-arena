@@ -47,7 +47,7 @@ bash scripts/setup_datasets.sh --dataset psydefdetect
 
 ## 框架
 
-仓库包含 AI-Researcher、AI-Scientist-v2、ARIS、AutoResearchClaw、DeepScientist、Dr. Claw 和 EvoScientist 的适配器。运行以下命令可查看各适配器已声明的任务路由：
+仓库包含 AI-Researcher、AI-Scientist-v2、ARIS、AutoResearchClaw、DeepScientist、Dr. Claw 和 EvoScientist 的适配器。每个适配器均有对应五项任务的启动命令，共 35 组路由；所有路由在公开端到端验证前均标记为 experimental。运行以下命令可查看状态：
 
 ```bash
 python3 scripts/arena.py list
@@ -59,14 +59,15 @@ python3 scripts/arena.py list
 
 安装 Docker 和 Python 3.10 或更新版本。如果框架需要模型 API，请将 [`.env.example`](.env.example) 复制为 `.env`，并在本地配置兼容的服务。仓库不指定服务商，也不包含 API 凭据。
 
-可选择一个任务运行全部内置适配器，也可选择一个框架运行其已声明的任务：
+可选择一个任务运行全部内置适配器、选择一个框架运行全部任务，或一次运行完整的 35 组组合：
 
 ```bash
 python3 scripts/arena.py run --topic psydefdetect --framework all
 python3 scripts/arena.py run --topic all --framework autoresearchclaw
+python3 scripts/arena.py run --topic all --framework all
 ```
 
-使用 `--dry-run` 可在启动 Docker、下载数据或配置 API 前检查所选路由。每批运行会在 `runs/` 下创建独立目录，并在 `summary.json` 中记录各路由状态。框架生成原生执行标记和必需产物后，运行器才会启动本地评分。
+完整矩阵会按顺序运行。使用 `--dry-run` 可在启动 Docker、下载数据或配置 API 前检查所选路由。每批运行会在 `runs/` 下创建独立目录，并在 `summary.json` 中记录各路由状态。框架生成原生执行标记和必需产物后，运行器才会启动本地评分。
 
 ## 接入框架
 

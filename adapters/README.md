@@ -1,6 +1,6 @@
 # Built-in adapter notes
 
-All built-in routes are marked `experimental` until they complete a fresh end-to-end run and artifact review. Check the route catalogue before starting a batch:
+The seven built-in adapters provide launch commands for all five topics (35 framework/topic routes). Every route remains `experimental` until it completes a fresh end-to-end run and artifact review. Check the route catalogue before starting a batch:
 
 ```bash
 python3 scripts/arena.py list

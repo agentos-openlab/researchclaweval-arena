@@ -28,6 +28,14 @@ class ArenaTests(unittest.TestCase):
             self.assertEqual(len(jobs), count)
             self.assertEqual(len({(j["topic"], j["framework"]) for j in jobs}), count)
 
+    def test_dry_run_expands_the_full_35_route_matrix(self):
+        run = subprocess.run([sys.executable, CLI, "run", "--topic", "all", "--framework", "all", "--dry-run"],
+                             cwd="/tmp", text=True, capture_output=True, check=True)
+        jobs = json.loads(run.stdout)
+        self.assertEqual(len(jobs), 35)
+        self.assertEqual(len({(job["topic"], job["framework"]) for job in jobs}), 35)
+        self.assertTrue(all(job["status"] in {"experimental", "verified"} for job in jobs))
+
     def test_custom_batch_continues_after_a_failure(self):
         with tempfile.TemporaryDirectory() as tmp:
             output = Path(tmp)

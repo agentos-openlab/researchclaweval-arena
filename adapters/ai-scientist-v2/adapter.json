@@ -7,23 +7,54 @@
   "native_docs": "https://github.com/SakanaAI/AI-Scientist-v2/blob/96bd51617cfdbb494a9fc283af00fe090edfae48/README.md",
   "topics": {
     "babylm": {
-      "reason": "The pinned native runner needs a provider and task-input adapter to run against a user-selected model consistently."
+      "image": "researchclaweval/ai-scientist-v2:96bd51617cfd",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "Results will be saved in",
+      "status": "experimental"
     },
     "mountaincar_continuous": {
-      "reason": "The pinned native runner needs a provider and task-input adapter to run against a user-selected model consistently."
+      "image": "researchclaweval/ai-scientist-v2:96bd51617cfd",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "Results will be saved in",
+      "status": "experimental"
     },
     "arc_wbe_2026": {
-      "reason": "The pinned native runner needs a provider and task-input adapter to run against a user-selected model consistently."
+      "image": "researchclaweval/ai-scientist-v2:96bd51617cfd",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "Results will be saved in",
+      "status": "experimental"
     },
     "psydefdetect": {
       "image": "researchclaweval/ai-scientist-v2:96bd51617cfd",
       "dockerfile": "Dockerfile",
-      "command": ["python", "/arena-adapter/launch.py"],
+      "command": [
+        "python",
+        "/arena-adapter/launch.py"
+      ],
       "native_marker": "Results will be saved in",
       "status": "experimental"
     },
     "tdc_admet_tox": {
-      "reason": "The pinned native runner needs a provider and task-input adapter to run against a user-selected model consistently."
+      "image": "researchclaweval/ai-scientist-v2:96bd51617cfd",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "Results will be saved in",
+      "status": "experimental"
     }
   }
 }

@@ -4,7 +4,7 @@
 
 ## §0 评测范围
 
-当前版本提供五个任务：BabyLM-10M、MountainCar-Continuous、ARC-WBE-2026、PsyDefDetect 和 TDC-ADMET-Tox。仓库包含七个框架适配器。各框架支持的任务不同，当前状态以 `python3 scripts/arena.py list` 显示的结果为准。
+当前版本提供五个任务：BabyLM-10M、MountainCar-Continuous、ARC-WBE-2026、PsyDefDetect 和 TDC-ADMET-Tox。仓库包含七个框架适配器，共 35 组任务路由；启动状态以 `python3 scripts/arena.py list` 显示的结果为准。
 
 比赛自测任务为 ARC-WBE-2026、PsyDefDetect 和 TDC-ADMET-Tox。正式比赛评测由主办方在其他任务上统一运行；自测成绩不计入最终排名。本仓库发布的历史榜单来自论文数据快照，不代表比赛正式成绩。
 
@@ -82,7 +82,13 @@ python3 scripts/arena.py run --topic psydefdetect --framework all
 python3 scripts/arena.py run --topic all --framework autoresearchclaw
 ```
 
-一个任务和全部框架，或全部任务和一个框架是两种批次选择方式；不支持一次启动全部 35 种组合。标为 unsupported 的组合会出现在结果摘要中，批次以非零状态退出。`--dry-run` 可在下载数据或配置 API 前查看所选路由。
+运行完整的 35 组组合：
+
+```bash
+python3 scripts/arena.py run --topic all --framework all
+```
+
+完整矩阵按顺序执行。`--dry-run` 可在下载数据或配置 API 前查看所选路由。自定义适配器中标为 unsupported 的组合会出现在结果摘要中，并使批次以非零状态退出。
 
 ### 5.2 隔离与文件
 

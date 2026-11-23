@@ -44,6 +44,17 @@ class BuiltinAdapters(unittest.TestCase):
                 with self.subTest(framework=framework, topic=topic):
                     self.assertIn("command", route)
 
+    def test_all_35_builtin_routes_have_launch_commands(self):
+        for framework, path in {
+            p.parent.name: p for p in ROOT.glob("adapters/*/adapter.json")
+        }.items():
+            manifest = json.loads(path.read_text())
+            for topic, route in manifest["topics"].items():
+                with self.subTest(framework=framework, topic=topic):
+                    self.assertIn("command", route)
+                    self.assertNotIn("reason", route)
+                    self.assertIn(route["status"], {"experimental", "verified"})
+
 
 if __name__ == "__main__":
     unittest.main()

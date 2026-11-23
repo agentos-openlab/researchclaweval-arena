@@ -47,7 +47,7 @@ Download the [complete CSV](results/leaderboard.csv), including missing and unve
 
 ## Frameworks
 
-Seven adapters are included: AI-Researcher, AI-Scientist-v2, ARIS, AutoResearchClaw, DeepScientist, Dr. Claw, and EvoScientist. Their available and experimental topic routes are listed by:
+Seven adapters are included: AI-Researcher, AI-Scientist-v2, ARIS, AutoResearchClaw, DeepScientist, Dr. Claw, and EvoScientist. Each has a launch command for all five topics, for 35 routes total. All routes remain experimental until public end-to-end verification. The catalogue lists their status:
 
 ```bash
 python3 scripts/arena.py list
@@ -59,14 +59,15 @@ An `experimental` route has not completed public end-to-end verification. An uns
 
 Install Docker and Python 3.10 or later. If a framework needs a model API, copy [`.env.example`](.env.example) to `.env` and configure a compatible provider locally. The repository does not prescribe a provider or include credentials.
 
-Run one topic with all built-in adapters, or one framework across its declared topic routes:
+Run one topic with all built-in adapters, one framework across all topics, or the complete 35-route matrix:
 
 ```bash
 python3 scripts/arena.py run --topic psydefdetect --framework all
 python3 scripts/arena.py run --topic all --framework autoresearchclaw
+python3 scripts/arena.py run --topic all --framework all
 ```
 
-Use `--dry-run` to inspect selected routes without Docker, dataset downloads, or API configuration. Each batch writes a separate directory under `runs/` and records route outcomes in `summary.json`. Local scoring starts only after the framework has produced its native execution marker and required artifacts.
+The complete matrix runs sequentially. Use `--dry-run` to inspect the selected routes without Docker, dataset downloads, or API configuration. Each batch writes a separate directory under `runs/` and records route outcomes in `summary.json`. Local scoring starts only after the framework has produced its native execution marker and required artifacts.
 
 ## Add a framework
 

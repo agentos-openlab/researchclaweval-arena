@@ -422,10 +422,11 @@ def parser() -> argparse.ArgumentParser:
     args = argparse.ArgumentParser(description=__doc__)
     commands = args.add_subparsers(dest="action", required=True)
     commands.add_parser("list", help="List tasks, frameworks and route status")
-    run = commands.add_parser("run", help="Run one framework across tasks, or one task across frameworks")
-    run.add_argument("--topic", choices=(*TOPICS, "all"), required=True)
+    run = commands.add_parser("run", help="Run selected task/framework pairs")
+    run.add_argument("--topic", choices=(*TOPICS, "all"), required=True,
+                     help="Task ID, or 'all' to select all five tasks")
     choice = run.add_mutually_exclusive_group(required=True)
-    choice.add_argument("--framework", help="Built-in framework ID or all")
+    choice.add_argument("--framework", help="Built-in framework ID, or 'all' to select all seven frameworks")
     choice.add_argument("--adapter", type=Path, help="Directory containing a local adapter.json")
     run.add_argument("--dry-run", action="store_true", help="Show selected routes without setup or credentials")
     run.add_argument("--env-file", type=Path, help="Plain API environment assignments, not a shell script")
@@ -446,8 +447,6 @@ def main(argv: list[str] | None = None) -> int:
                                   describe_pair(t, a, get_route(a, t)) for t in TOPICS.values()]}
                                   for a in builtins.values()]}, ensure_ascii=False, indent=2))
             return 0
-        if args.topic == args.framework == "all":
-            arg_parser.error("select a specific topic or a specific framework")
         if args.timeout <= 0:
             arg_parser.error("--timeout must be positive")
         topics = list(TOPICS.values()) if args.topic == "all" else [TOPICS[args.topic]]
