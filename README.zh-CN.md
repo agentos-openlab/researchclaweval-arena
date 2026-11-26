@@ -9,6 +9,14 @@ ResearchClawEval Arena 为科研 Agent 框架提供统一的任务运行与结�
 </p>
 <p align="center"><sub>图中展示七个框架的 Judge 历史过程评分。点击图表可查看完整排行榜。</sub></p>
 
+<h2 align="center">各框架六维过程评分</h2>
+<p align="center">
+  <a href="https://betterrrrr.github.io/researchclaweval-arena/leaderboard/">
+    <img src="https://raw.githubusercontent.com/betterrrrr/researchclaweval-arena/main/assets/framework-radar-cards.svg" alt="七个框架各自的六维评分雷达图" width="100%">
+  </a>
+</p>
+<p align="center"><sub>每张图展示一个框架在六个 Judge 维度上的评分，统一采用 0–1 刻度。图表用于描述过程特征，不构成综合排名。点击图表可查看完整排行榜。</sub></p>
+
 [English](README.md) · [比赛规则](docs/rules.md) · [快速开始](docs/participant_quickstart.zh-CN.md) · [全部历史榜单](results/leaderboard.zh-CN.md) · [结果复核方法](results/README.md) · [历史结果网站](website/README.md)
 
 ## 适用范围

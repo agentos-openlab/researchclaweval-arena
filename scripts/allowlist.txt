@@ -37,6 +37,7 @@ adapters/evoscientist/Dockerfile
 adapters/evoscientist/adapter.json
 adapters/evoscientist/launch.py
 assets/leaderboard-snapshot.svg
+assets/framework-radar-cards.svg
 configs/provider.example.toml
 contracts/arc_wbe_2026_contract.md
 contracts/babylm_contract.md

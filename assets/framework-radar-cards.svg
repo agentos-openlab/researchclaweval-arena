@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="1000" viewBox="0 0 1240 1000" role="img" aria-labelledby="cards-title cards-desc">
+<title id="cards-title">Seven framework process profiles</title>
+<desc id="cards-desc">Seven individual radar charts compare historical Judge-coded scores on the same six ordinal dimensions and 0 to 1 scale. They do not form an overall ranking.</desc>
+<rect width="100%" height="100%" fill="#f4f7fa"/>
+<text x="30.0" y="38.0" fill="#183149" font-family="Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start">Individual framework profiles</text>
+<text x="30.0" y="66.0" fill="#61788a" font-family="Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">Judge-coded · six ordinal dimensions · scale 0–1 · common cohort of 10 conditions</text>
+<rect x="28.0" y="100.0" width="388" height="230" rx="12" fill="#ffffff" stroke="#dce5ec"/>
+<text x="222.0" y="125.0" fill="#183149" font-family="Arial,sans-serif" font-size="15" font-weight="700" text-anchor="middle">AI-Researcher</text>
+<polygon points="222.0,173.0 274.8,203.5 274.8,264.5 222.0,295.0 169.2,264.5 169.2,203.5" fill="#ffffff" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="222.0,188.2 261.6,211.1 261.6,256.9 222.0,279.8 182.4,256.9 182.4,211.1" fill="#f4f8fb" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="222.0,203.5 248.4,218.8 248.4,249.2 222.0,264.5 195.6,249.2 195.6,218.8" fill="#ffffff" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="222.0,218.8 235.2,226.4 235.2,241.6 222.0,249.2 208.8,241.6 208.8,226.4" fill="#f4f8fb" stroke="#dce5ec" stroke-width="1"/>
+<line x1="222.0" y1="234.0" x2="222.0" y2="173.0" stroke="#dce5ec"/>
+<text x="222.0" y="157.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="middle">PQ</text>
+<line x1="222.0" y1="234.0" x2="274.8" y2="203.5" stroke="#dce5ec"/>
+<text x="292.1" y="197.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">PEA</text>
+<line x1="222.0" y1="234.0" x2="274.8" y2="264.5" stroke="#dce5ec"/>
+<text x="292.1" y="278.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">ER</text>
+<line x1="222.0" y1="234.0" x2="222.0" y2="295.0" stroke="#dce5ec"/>
+<text x="222.0" y="319.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="middle">OU</text>
+<line x1="222.0" y1="234.0" x2="169.2" y2="264.5" stroke="#dce5ec"/>
+<text x="151.9" y="278.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">ECC</text>
+<line x1="222.0" y1="234.0" x2="169.2" y2="203.5" stroke="#dce5ec"/>
+<text x="151.9" y="197.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">SC</text>
+<polygon points="222.0,212.3 264.3,209.6 256.3,253.8 222.0,278.2 191.6,251.5 198.2,220.3" fill="#1a4b7c" fill-opacity="0.16" stroke="#1a4b7c" stroke-width="2.4" stroke-opacity="0.9"/>
+<circle cx="222.0" cy="212.3" r="2.8" fill="#1a4b7c"/>
+<circle cx="264.3" cy="209.6" r="2.8" fill="#1a4b7c"/>
+<circle cx="256.3" cy="253.8" r="2.8" fill="#1a4b7c"/>
+<circle cx="222.0" cy="278.2" r="2.8" fill="#1a4b7c"/>
+<circle cx="191.6" cy="251.5" r="2.8" fill="#1a4b7c"/>
+<circle cx="198.2" cy="220.3" r="2.8" fill="#1a4b7c"/>
+<rect x="432.0" y="100.0" width="388" height="230" rx="12" fill="#ffffff" stroke="#dce5ec"/>
+<text x="626.0" y="125.0" fill="#183149" font-family="Arial,sans-serif" font-size="15" font-weight="700" text-anchor="middle">AI-Scientist-v2</text>
+<polygon points="626.0,173.0 678.8,203.5 678.8,264.5 626.0,295.0 573.2,264.5 573.2,203.5" fill="#ffffff" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="626.0,188.2 665.6,211.1 665.6,256.9 626.0,279.8 586.4,256.9 586.4,211.1" fill="#f4f8fb" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="626.0,203.5 652.4,218.8 652.4,249.2 626.0,264.5 599.6,249.2 599.6,218.8" fill="#ffffff" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="626.0,218.8 639.2,226.4 639.2,241.6 626.0,249.2 612.8,241.6 612.8,226.4" fill="#f4f8fb" stroke="#dce5ec" stroke-width="1"/>
+<line x1="626.0" y1="234.0" x2="626.0" y2="173.0" stroke="#dce5ec"/>
+<text x="626.0" y="157.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="middle">PQ</text>
+<line x1="626.0" y1="234.0" x2="678.8" y2="203.5" stroke="#dce5ec"/>
+<text x="696.1" y="197.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">PEA</text>
+<line x1="626.0" y1="234.0" x2="678.8" y2="264.5" stroke="#dce5ec"/>
+<text x="696.1" y="278.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">ER</text>
+<line x1="626.0" y1="234.0" x2="626.0" y2="295.0" stroke="#dce5ec"/>
+<text x="626.0" y="319.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="middle">OU</text>
+<line x1="626.0" y1="234.0" x2="573.2" y2="264.5" stroke="#dce5ec"/>
+<text x="555.9" y="278.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">ECC</text>
+<line x1="626.0" y1="234.0" x2="573.2" y2="203.5" stroke="#dce5ec"/>
+<text x="555.9" y="197.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">SC</text>
+<polygon points="626.0,198.6 644.5,223.3 645.8,245.4 626.0,275.2 598.3,250.0 606.2,222.6" fill="#a76931" fill-opacity="0.16" stroke="#a76931" stroke-width="2.4" stroke-opacity="0.9"/>
+<circle cx="626.0" cy="198.6" r="2.8" fill="#a76931"/>
+<circle cx="644.5" cy="223.3" r="2.8" fill="#a76931"/>
+<circle cx="645.8" cy="245.4" r="2.8" fill="#a76931"/>
+<circle cx="626.0" cy="275.2" r="2.8" fill="#a76931"/>
+<circle cx="598.3" cy="250.0" r="2.8" fill="#a76931"/>
+<circle cx="606.2" cy="222.6" r="2.8" fill="#a76931"/>
+<rect x="836.0" y="100.0" width="388" height="230" rx="12" fill="#ffffff" stroke="#dce5ec"/>
+<text x="1030.0" y="125.0" fill="#183149" font-family="Arial,sans-serif" font-size="15" font-weight="700" text-anchor="middle">ARIS</text>
+<polygon points="1030.0,173.0 1082.8,203.5 1082.8,264.5 1030.0,295.0 977.2,264.5 977.2,203.5" fill="#ffffff" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="1030.0,188.2 1069.6,211.1 1069.6,256.9 1030.0,279.8 990.4,256.9 990.4,211.1" fill="#f4f8fb" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="1030.0,203.5 1056.4,218.8 1056.4,249.2 1030.0,264.5 1003.6,249.2 1003.6,218.8" fill="#ffffff" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="1030.0,218.8 1043.2,226.4 1043.2,241.6 1030.0,249.2 1016.8,241.6 1016.8,226.4" fill="#f4f8fb" stroke="#dce5ec" stroke-width="1"/>
+<line x1="1030.0" y1="234.0" x2="1030.0" y2="173.0" stroke="#dce5ec"/>
+<text x="1030.0" y="157.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="middle">PQ</text>
+<line x1="1030.0" y1="234.0" x2="1082.8" y2="203.5" stroke="#dce5ec"/>
+<text x="1100.1" y="197.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">PEA</text>
+<line x1="1030.0" y1="234.0" x2="1082.8" y2="264.5" stroke="#dce5ec"/>
+<text x="1100.1" y="278.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">ER</text>
+<line x1="1030.0" y1="234.0" x2="1030.0" y2="295.0" stroke="#dce5ec"/>
+<text x="1030.0" y="319.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="middle">OU</text>
+<line x1="1030.0" y1="234.0" x2="977.2" y2="264.5" stroke="#dce5ec"/>
+<text x="959.9" y="278.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">ECC</text>
+<line x1="1030.0" y1="234.0" x2="977.2" y2="203.5" stroke="#dce5ec"/>
+<text x="959.9" y="197.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">SC</text>
+<polygon points="1030.0,201.4 1069.6,211.1 1064.3,253.8 1030.0,278.2 993.0,255.4 999.6,216.5" fill="#457d71" fill-opacity="0.16" stroke="#457d71" stroke-width="2.4" stroke-opacity="0.9"/>
+<circle cx="1030.0" cy="201.4" r="2.8" fill="#457d71"/>
+<circle cx="1069.6" cy="211.1" r="2.8" fill="#457d71"/>
+<circle cx="1064.3" cy="253.8" r="2.8" fill="#457d71"/>
+<circle cx="1030.0" cy="278.2" r="2.8" fill="#457d71"/>
+<circle cx="993.0" cy="255.4" r="2.8" fill="#457d71"/>
+<circle cx="999.6" cy="216.5" r="2.8" fill="#457d71"/>
+<rect x="28.0" y="344.0" width="388" height="230" rx="12" fill="#ffffff" stroke="#dce5ec"/>
+<text x="222.0" y="369.0" fill="#183149" font-family="Arial,sans-serif" font-size="15" font-weight="700" text-anchor="middle">AutoResearchClaw</text>
+<polygon points="222.0,417.0 274.8,447.5 274.8,508.5 222.0,539.0 169.2,508.5 169.2,447.5" fill="#ffffff" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="222.0,432.2 261.6,455.1 261.6,500.9 222.0,523.8 182.4,500.9 182.4,455.1" fill="#f4f8fb" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="222.0,447.5 248.4,462.8 248.4,493.2 222.0,508.5 195.6,493.2 195.6,462.8" fill="#ffffff" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="222.0,462.8 235.2,470.4 235.2,485.6 222.0,493.2 208.8,485.6 208.8,470.4" fill="#f4f8fb" stroke="#dce5ec" stroke-width="1"/>
+<line x1="222.0" y1="478.0" x2="222.0" y2="417.0" stroke="#dce5ec"/>
+<text x="222.0" y="401.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="middle">PQ</text>
+<line x1="222.0" y1="478.0" x2="274.8" y2="447.5" stroke="#dce5ec"/>
+<text x="292.1" y="441.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">PEA</text>
+<line x1="222.0" y1="478.0" x2="274.8" y2="508.5" stroke="#dce5ec"/>
+<text x="292.1" y="522.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">ER</text>
+<line x1="222.0" y1="478.0" x2="222.0" y2="539.0" stroke="#dce5ec"/>
+<text x="222.0" y="563.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="middle">OU</text>
+<line x1="222.0" y1="478.0" x2="169.2" y2="508.5" stroke="#dce5ec"/>
+<text x="151.9" y="522.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">ECC</text>
+<line x1="222.0" y1="478.0" x2="169.2" y2="447.5" stroke="#dce5ec"/>
+<text x="151.9" y="441.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">SC</text>
+<polygon points="222.0,456.0 244.5,465.0 231.2,483.3 222.0,507.0 195.6,493.2 215.4,474.2" fill="#854b68" fill-opacity="0.16" stroke="#854b68" stroke-width="2.4" stroke-opacity="0.9"/>
+<circle cx="222.0" cy="456.0" r="2.8" fill="#854b68"/>
+<circle cx="244.5" cy="465.0" r="2.8" fill="#854b68"/>
+<circle cx="231.2" cy="483.3" r="2.8" fill="#854b68"/>
+<circle cx="222.0" cy="507.0" r="2.8" fill="#854b68"/>
+<circle cx="195.6" cy="493.2" r="2.8" fill="#854b68"/>
+<circle cx="215.4" cy="474.2" r="2.8" fill="#854b68"/>
+<rect x="432.0" y="344.0" width="388" height="230" rx="12" fill="#ffffff" stroke="#dce5ec"/>
+<text x="626.0" y="369.0" fill="#183149" font-family="Arial,sans-serif" font-size="15" font-weight="700" text-anchor="middle">DeepScientist</text>
+<polygon points="626.0,417.0 678.8,447.5 678.8,508.5 626.0,539.0 573.2,508.5 573.2,447.5" fill="#ffffff" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="626.0,432.2 665.6,455.1 665.6,500.9 626.0,523.8 586.4,500.9 586.4,455.1" fill="#f4f8fb" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="626.0,447.5 652.4,462.8 652.4,493.2 626.0,508.5 599.6,493.2 599.6,462.8" fill="#ffffff" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="626.0,462.8 639.2,470.4 639.2,485.6 626.0,493.2 612.8,485.6 612.8,470.4" fill="#f4f8fb" stroke="#dce5ec" stroke-width="1"/>
+<line x1="626.0" y1="478.0" x2="626.0" y2="417.0" stroke="#dce5ec"/>
+<text x="626.0" y="401.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="middle">PQ</text>
+<line x1="626.0" y1="478.0" x2="678.8" y2="447.5" stroke="#dce5ec"/>
+<text x="696.1" y="441.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">PEA</text>
+<line x1="626.0" y1="478.0" x2="678.8" y2="508.5" stroke="#dce5ec"/>
+<text x="696.1" y="522.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">ER</text>
+<line x1="626.0" y1="478.0" x2="626.0" y2="539.0" stroke="#dce5ec"/>
+<text x="626.0" y="563.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="middle">OU</text>
+<line x1="626.0" y1="478.0" x2="573.2" y2="508.5" stroke="#dce5ec"/>
+<text x="555.9" y="522.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">ECC</text>
+<line x1="626.0" y1="478.0" x2="573.2" y2="447.5" stroke="#dce5ec"/>
+<text x="555.9" y="441.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">SC</text>
+<polygon points="626.0,449.0 659.0,458.9 660.3,497.8 626.0,523.8 593.0,497.1 599.6,462.8" fill="#687caa" fill-opacity="0.16" stroke="#687caa" stroke-width="2.4" stroke-opacity="0.9"/>
+<circle cx="626.0" cy="449.0" r="2.8" fill="#687caa"/>
+<circle cx="659.0" cy="458.9" r="2.8" fill="#687caa"/>
+<circle cx="660.3" cy="497.8" r="2.8" fill="#687caa"/>
+<circle cx="626.0" cy="523.8" r="2.8" fill="#687caa"/>
+<circle cx="593.0" cy="497.1" r="2.8" fill="#687caa"/>
+<circle cx="599.6" cy="462.8" r="2.8" fill="#687caa"/>
+<rect x="836.0" y="344.0" width="388" height="230" rx="12" fill="#ffffff" stroke="#dce5ec"/>
+<text x="1030.0" y="369.0" fill="#183149" font-family="Arial,sans-serif" font-size="15" font-weight="700" text-anchor="middle">Dr. Claw</text>
+<polygon points="1030.0,417.0 1082.8,447.5 1082.8,508.5 1030.0,539.0 977.2,508.5 977.2,447.5" fill="#ffffff" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="1030.0,432.2 1069.6,455.1 1069.6,500.9 1030.0,523.8 990.4,500.9 990.4,455.1" fill="#f4f8fb" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="1030.0,447.5 1056.4,462.8 1056.4,493.2 1030.0,508.5 1003.6,493.2 1003.6,462.8" fill="#ffffff" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="1030.0,462.8 1043.2,470.4 1043.2,485.6 1030.0,493.2 1016.8,485.6 1016.8,470.4" fill="#f4f8fb" stroke="#dce5ec" stroke-width="1"/>
+<line x1="1030.0" y1="478.0" x2="1030.0" y2="417.0" stroke="#dce5ec"/>
+<text x="1030.0" y="401.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="middle">PQ</text>
+<line x1="1030.0" y1="478.0" x2="1082.8" y2="447.5" stroke="#dce5ec"/>
+<text x="1100.1" y="441.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">PEA</text>
+<line x1="1030.0" y1="478.0" x2="1082.8" y2="508.5" stroke="#dce5ec"/>
+<text x="1100.1" y="522.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">ER</text>
+<line x1="1030.0" y1="478.0" x2="1030.0" y2="539.0" stroke="#dce5ec"/>
+<text x="1030.0" y="563.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="middle">OU</text>
+<line x1="1030.0" y1="478.0" x2="977.2" y2="508.5" stroke="#dce5ec"/>
+<text x="959.9" y="522.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">ECC</text>
+<line x1="1030.0" y1="478.0" x2="977.2" y2="447.5" stroke="#dce5ec"/>
+<text x="959.9" y="441.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">SC</text>
+<polygon points="1030.0,450.2 1056.4,462.8 1059.1,494.8 1030.0,523.8 991.7,500.1 986.4,452.8" fill="#9a763b" fill-opacity="0.16" stroke="#9a763b" stroke-width="2.4" stroke-opacity="0.9"/>
+<circle cx="1030.0" cy="450.2" r="2.8" fill="#9a763b"/>
+<circle cx="1056.4" cy="462.8" r="2.8" fill="#9a763b"/>
+<circle cx="1059.1" cy="494.8" r="2.8" fill="#9a763b"/>
+<circle cx="1030.0" cy="523.8" r="2.8" fill="#9a763b"/>
+<circle cx="991.7" cy="500.1" r="2.8" fill="#9a763b"/>
+<circle cx="986.4" cy="452.8" r="2.8" fill="#9a763b"/>
+<rect x="426.0" y="588.0" width="388" height="230" rx="12" fill="#ffffff" stroke="#dce5ec"/>
+<text x="620.0" y="613.0" fill="#183149" font-family="Arial,sans-serif" font-size="15" font-weight="700" text-anchor="middle">EvoScientist</text>
+<polygon points="620.0,661.0 672.8,691.5 672.8,752.5 620.0,783.0 567.2,752.5 567.2,691.5" fill="#ffffff" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="620.0,676.2 659.6,699.1 659.6,744.9 620.0,767.8 580.4,744.9 580.4,699.1" fill="#f4f8fb" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="620.0,691.5 646.4,706.8 646.4,737.2 620.0,752.5 593.6,737.2 593.6,706.8" fill="#ffffff" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="620.0,706.8 633.2,714.4 633.2,729.6 620.0,737.2 606.8,729.6 606.8,714.4" fill="#f4f8fb" stroke="#dce5ec" stroke-width="1"/>
+<line x1="620.0" y1="722.0" x2="620.0" y2="661.0" stroke="#dce5ec"/>
+<text x="620.0" y="645.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="middle">PQ</text>
+<line x1="620.0" y1="722.0" x2="672.8" y2="691.5" stroke="#dce5ec"/>
+<text x="690.1" y="685.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">PEA</text>
+<line x1="620.0" y1="722.0" x2="672.8" y2="752.5" stroke="#dce5ec"/>
+<text x="690.1" y="766.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="start">ER</text>
+<line x1="620.0" y1="722.0" x2="620.0" y2="783.0" stroke="#dce5ec"/>
+<text x="620.0" y="807.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="middle">OU</text>
+<line x1="620.0" y1="722.0" x2="567.2" y2="752.5" stroke="#dce5ec"/>
+<text x="549.9" y="766.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">ECC</text>
+<line x1="620.0" y1="722.0" x2="567.2" y2="691.5" stroke="#dce5ec"/>
+<text x="549.9" y="685.5" fill="#4f6576" font-family="Arial,sans-serif" font-size="10" font-weight="700" text-anchor="end">SC</text>
+<polygon points="620.0,692.7 655.7,701.4 658.3,744.1 620.0,769.3 585.7,741.8 584.3,701.4" fill="#667682" fill-opacity="0.16" stroke="#667682" stroke-width="2.4" stroke-opacity="0.9"/>
+<circle cx="620.0" cy="692.7" r="2.8" fill="#667682"/>
+<circle cx="655.7" cy="701.4" r="2.8" fill="#667682"/>
+<circle cx="658.3" cy="744.1" r="2.8" fill="#667682"/>
+<circle cx="620.0" cy="769.3" r="2.8" fill="#667682"/>
+<circle cx="585.7" cy="741.8" r="2.8" fill="#667682"/>
+<circle cx="584.3" cy="701.4" r="2.8" fill="#667682"/>
+<text x="30.0" y="855.0" fill="#183149" font-family="Arial,sans-serif" font-size="14" font-weight="700" text-anchor="start">Dimension key</text>
+<text x="30.0" y="883.0" fill="#397e78" font-family="Arial,sans-serif" font-size="11" font-weight="700" text-anchor="start">PQ</text>
+<text x="68.0" y="883.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="11" font-weight="400" text-anchor="start">Plan quality</text>
+<text x="440.0" y="883.0" fill="#397e78" font-family="Arial,sans-serif" font-size="11" font-weight="700" text-anchor="start">PEA</text>
+<text x="478.0" y="883.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="11" font-weight="400" text-anchor="start">Plan–execution alignment</text>
+<text x="850.0" y="883.0" fill="#397e78" font-family="Arial,sans-serif" font-size="11" font-weight="700" text-anchor="start">ER</text>
+<text x="888.0" y="883.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="11" font-weight="400" text-anchor="start">Execution robustness</text>
+<text x="30.0" y="919.0" fill="#397e78" font-family="Arial,sans-serif" font-size="11" font-weight="700" text-anchor="start">OU</text>
+<text x="68.0" y="919.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="11" font-weight="400" text-anchor="start">Observation use</text>
+<text x="440.0" y="919.0" fill="#397e78" font-family="Arial,sans-serif" font-size="11" font-weight="700" text-anchor="start">ECC</text>
+<text x="478.0" y="919.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="11" font-weight="400" text-anchor="start">Evidence–conclusion closure</text>
+<text x="850.0" y="919.0" fill="#397e78" font-family="Arial,sans-serif" font-size="11" font-weight="700" text-anchor="start">SC</text>
+<text x="888.0" y="919.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="11" font-weight="400" text-anchor="start">State consistency</text>
+<text x="30.0" y="968.0" fill="#667d8d" font-family="Arial,sans-serif" font-size="11" font-weight="400" text-anchor="start">Ordinal process scores describe profiles; they are not a combined ranking.</text>
+</svg>

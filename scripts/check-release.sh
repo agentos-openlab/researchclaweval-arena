@@ -132,14 +132,14 @@ is_public_catalog_file() {
     README.md|README.zh-CN.md|.env.example|THIRD_PARTY_NOTICES.md|CONTRIBUTING.md|adapters/README.md|.github/ISSUE_TEMPLATE/*.yml|docs/*.md|contracts/*|adapters/*/*|\
     scripts/arena.py|scripts/setup_datasets.sh|scripts/render_leaderboard.py|\
     scoring/*|tests/*.py|templates/example-adapter/*|\
-    results/*|assets/leaderboard-snapshot.svg|website/*) return 0 ;;
+    results/*|assets/leaderboard-snapshot.svg|assets/framework-radar-cards.svg|website/*) return 0 ;;
   esac
   return 1
 }
 
 is_historical_model_file() {
   case "$1" in
-    results/historical-evidence.json|results/leaderboard.csv|results/leaderboard.md|results/leaderboard.zh-CN.md|assets/leaderboard-snapshot.svg|\
+    results/historical-evidence.json|results/leaderboard.csv|results/leaderboard.md|results/leaderboard.zh-CN.md|assets/leaderboard-snapshot.svg|assets/framework-radar-cards.svg|\
     website/data/*.json|website/components/leaderboard*.tsx|website/lib/data.ts|\
     website/scripts/*.mjs) return 0 ;;
   esac
@@ -157,7 +157,7 @@ scan_text() {
     if is_exempt "$rel"; then continue; fi
     case "$pattern" in
       'jianbiao|guanghao|betterrrrr')
-        case "$rel" in website/README.md|website/lib/participation.ts) continue ;; esac
+        case "$rel" in README.md|README.zh-CN.md|website/README.md|website/lib/participation.ts) continue ;; esac
         ;;
       '\b(babylm|BabyLM|mountaincar|MountainCar|topic2|Topic2|gave2|GAVE2|Task2)\b'|\
       '\b(AI-?Researcher|AI-?Scientist|AutoResearchClaw|DeepScientist|dr-?claw|EvoScientist)\b'|\

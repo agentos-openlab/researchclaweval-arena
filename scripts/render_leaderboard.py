@@ -265,6 +265,112 @@ def readme_figure_svg(snapshot: dict) -> str:
     return "\n".join(pieces) + "\n"
 
 
+def framework_radar_cards_svg(snapshot: dict) -> str:
+    """Render one compact six-dimensional process profile per framework."""
+    width, height = 1240, 1000
+    profile_data = json.loads((ROOT / "website/data/leaderboard.json").read_text(encoding="utf-8"))["items"]
+    framework_data = json.loads((ROOT / "website/data/frameworks.json").read_text(encoding="utf-8"))["items"]
+    framework_names = {entry["id"]: entry["name"] for entry in framework_data}
+    profiles = profile_data["profiles"]
+    dimensions = [
+        ("PQ", "Plan quality"),
+        ("PEA", "Plan–execution alignment"),
+        ("ER", "Execution robustness"),
+        ("OU", "Observation use"),
+        ("ECC", "Evidence–conclusion closure"),
+        ("SC", "State consistency"),
+    ]
+    colors = ["#1a4b7c", "#a76931", "#457d71", "#854b68", "#687caa", "#9a763b", "#667682"]
+
+    def text(
+        x: float,
+        y: float,
+        value: str,
+        *,
+        size: int = 13,
+        color: str = "#24384a",
+        weight: str = "400",
+        anchor: str = "start",
+    ) -> str:
+        return (
+            f'<text x="{x:.1f}" y="{y:.1f}" fill="{color}" font-family="Arial,sans-serif" '
+            f'font-size="{size}" font-weight="{weight}" text-anchor="{anchor}">{html.escape(value)}</text>'
+        )
+
+    pieces = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="cards-title cards-desc">',
+        '<title id="cards-title">Seven framework process profiles</title>',
+        '<desc id="cards-desc">Seven individual radar charts compare historical Judge-coded scores on the same six ordinal dimensions and 0 to 1 scale. They do not form an overall ranking.</desc>',
+        '<rect width="100%" height="100%" fill="#f4f7fa"/>',
+        text(30, 38, "Individual framework profiles", size=26, color="#183149", weight="700"),
+        text(30, 66, "Judge-coded · six ordinal dimensions · scale 0–1 · common cohort of 10 conditions", size=14, color="#61788a"),
+    ]
+
+    card_width, card_height, gap_x, gap_y = 388, 230, 16, 14
+    grid_left, grid_top = 28, 100
+    angles = [-math.pi / 2 + index * math.tau / len(dimensions) for index in range(len(dimensions))]
+
+    for index, profile in enumerate(profiles):
+        row, column = divmod(index, 3)
+        x = grid_left + column * (card_width + gap_x)
+        if row == 2:
+            x = (width - card_width) / 2
+        y = grid_top + row * (card_height + gap_y)
+        center_x, center_y, radius = x + card_width / 2, y + 134, 61.0
+        framework = framework_names[profile["frameworkId"]]
+        if framework == "DrClaw":
+            framework = "Dr. Claw"
+        color = colors[index % len(colors)]
+        pieces.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{card_width}" height="{card_height}" rx="12" fill="#ffffff" stroke="#dce5ec"/>')
+        pieces.append(text(center_x, y + 25, framework, size=15, color="#183149", weight="700", anchor="middle"))
+
+        for step in range(4, 0, -1):
+            scale = step / 4
+            ring_points = " ".join(
+                f"{center_x + radius * scale * math.cos(angle):.1f},{center_y + radius * scale * math.sin(angle):.1f}"
+                for angle in angles
+            )
+            fill = "#f4f8fb" if step % 2 else "#ffffff"
+            pieces.append(f'<polygon points="{ring_points}" fill="{fill}" stroke="#dce5ec" stroke-width="1"/>')
+
+        for axis_index, angle in enumerate(angles):
+            x_end = center_x + radius * math.cos(angle)
+            y_end = center_y + radius * math.sin(angle)
+            pieces.append(f'<line x1="{center_x:.1f}" y1="{center_y:.1f}" x2="{x_end:.1f}" y2="{y_end:.1f}" stroke="#dce5ec"/>')
+            label_radius = radius + 20
+            label_x = center_x + label_radius * math.cos(angle)
+            label_y = center_y + label_radius * math.sin(angle) + 4
+            anchor = "start" if math.cos(angle) > 0.2 else "end" if math.cos(angle) < -0.2 else "middle"
+            pieces.append(text(label_x, label_y, dimensions[axis_index][0], size=10, color="#4f6576", weight="700", anchor=anchor))
+
+        values = profile["values"]
+        polygon_points = " ".join(
+            f"{center_x + radius * value * math.cos(angle):.1f},{center_y + radius * value * math.sin(angle):.1f}"
+            for value, angle in zip(values, angles, strict=True)
+        )
+        pieces.append(
+            f'<polygon points="{polygon_points}" fill="{color}" fill-opacity="0.16" '
+            f'stroke="{color}" stroke-width="2.4" stroke-opacity="0.9"/>'
+        )
+        for value, angle in zip(values, angles, strict=True):
+            point_x = center_x + radius * value * math.cos(angle)
+            point_y = center_y + radius * value * math.sin(angle)
+            pieces.append(f'<circle cx="{point_x:.1f}" cy="{point_y:.1f}" r="2.8" fill="{color}"/>')
+
+    pieces.extend([
+        text(30, 855, "Dimension key", size=14, color="#183149", weight="700"),
+    ])
+    legend_positions = [(30, 883), (440, 883), (850, 883), (30, 919), (440, 919), (850, 919)]
+    for (code, label), (x, y) in zip(dimensions, legend_positions, strict=True):
+        pieces.append(text(x, y, code, size=11, color="#397e78", weight="700"))
+        pieces.append(text(x + 38, y, label, size=11, color="#4f6576"))
+    pieces.extend([
+        text(30, 968, "Ordinal process scores describe profiles; they are not a combined ranking.", size=11, color="#667d8d"),
+        '</svg>',
+    ])
+    return "\n".join(pieces) + "\n"
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="fail if committed outputs are stale")
@@ -291,6 +397,14 @@ def main() -> int:
     else:
         figure_path.parent.mkdir(parents=True, exist_ok=True)
         figure_path.write_text(figure_content, encoding="utf-8")
+    cards_path = ROOT / "assets" / "framework-radar-cards.svg"
+    cards_content = framework_radar_cards_svg(snapshot)
+    if args.check:
+        if not cards_path.is_file() or cards_path.read_text(encoding="utf-8") != cards_content:
+            parser.exit(1, f"stale leaderboard output: {cards_path.relative_to(ROOT)}\n")
+    else:
+        cards_path.parent.mkdir(parents=True, exist_ok=True)
+        cards_path.write_text(cards_content, encoding="utf-8")
     return 0
 
 

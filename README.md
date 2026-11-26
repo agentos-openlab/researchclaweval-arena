@@ -9,6 +9,14 @@ ResearchClawEval Arena provides a common way to run research-agent frameworks on
 </p>
 <p align="center"><sub>Historical Judge-coded process profiles across seven frameworks. Click the chart to view the full leaderboard.</sub></p>
 
+<h2 align="center">Framework profiles</h2>
+<p align="center">
+  <a href="https://betterrrrr.github.io/researchclaweval-arena/leaderboard/">
+    <img src="https://raw.githubusercontent.com/betterrrrr/researchclaweval-arena/main/assets/framework-radar-cards.svg" alt="Seven individual six-dimensional radar charts, one per framework" width="100%">
+  </a>
+</p>
+<p align="center"><sub>Each card shows one framework's six Judge-coded scores on the same 0–1 scale. The profiles describe process scores and do not form an overall ranking. Click the charts to view the full leaderboard.</sub></p>
+
 [中文说明](README.zh-CN.md) · [Competition rules](docs/rules.md) · [Quickstart](docs/participant_quickstart.md) · [All benchmark results](results/leaderboard.md) · [Result review method](results/README.md) · [Historical website](website/README.md)
 
 ## Scope
