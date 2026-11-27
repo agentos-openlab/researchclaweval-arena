@@ -110,6 +110,8 @@ def test_self_test_model_recommendation_is_limited_to_participant_docs() -> None
             "Example: ``configure `deepseek-v4.1-flash` in the file``.\n",
             "Model `deepseek-v4.1-flash`-internal.\n",
             "```bash\nmodel = `deepseek-v4.1-flash`\n```\n",
+            "````markdown\n```\n\nOptional model: `deepseek-v4.1-flash`.\n\n````\n",
+            "``Example starts\nOptional model: `deepseek-v4.1-flash`.\nExample ends``.\n",
         ):
             write(readme, content)
             r = run_check(d, check=check)
