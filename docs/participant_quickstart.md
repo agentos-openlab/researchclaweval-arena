@@ -21,6 +21,8 @@ OPENAI_API_KEY=
 OPENAI_MODEL=
 ```
 
+For competition self-testing, you may use any compatible model. We recommend `deepseek-v4.1-flash`. The organizer supplies the model for official evaluation.
+
 Keep `.env` local. Do not put credentials in adapter files, command-line arguments, reports, or commits. The runner redacts the configured API Key from its saved container log. Some frameworks or topics may not use a model API; check the adapter route and framework requirements first.
 
 ## Inspect the catalogue

@@ -20,6 +20,8 @@
 
 ## §2 模型 API
 
+自测模型由参赛者提供，推荐使用 `deepseek-v4.1-flash`，也可选择其他兼容模型。正式评测的模型由主办方统一提供。
+
 需要模型 API 的框架从运行者本地环境读取 `OPENAI_BASE_URL`、`OPENAI_API_KEY` 和 `OPENAI_MODEL`。使用者自行选择与框架兼容的服务：
 
 ```dotenv

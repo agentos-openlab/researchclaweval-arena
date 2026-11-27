@@ -31,5 +31,10 @@
     "ajv": "^8.20.0",
     "tailwindcss": "^4.1.0",
     "typescript": "^5.8.0"
+  },
+  "overrides": {
+    "next": {
+      "postcss": "^8.5.32"
+    }
   }
 }

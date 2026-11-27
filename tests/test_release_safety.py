@@ -19,9 +19,9 @@ ROOT = Path(__file__).resolve().parent.parent
 CHECK = ROOT / "scripts" / "check-release.sh"
 
 
-def run_check(target: Path) -> subprocess.CompletedProcess:
+def run_check(target: Path, *, check: Path = CHECK) -> subprocess.CompletedProcess:
     return subprocess.run(
-        ["bash", str(CHECK), "--path", str(target)],
+        ["bash", str(check), "--path", str(target)],
         capture_output=True,
         text=True,
     )
@@ -94,6 +94,37 @@ def test_rack_file_name_allowed() -> None:
         assert r.returncode == 0, "prose mention of results must pass"
 
 
+def test_self_test_model_recommendation_is_limited_to_participant_docs() -> None:
+    with tempfile.TemporaryDirectory() as td:
+        d = Path(td)
+        # Use the real scanner with this fixture as its repository root.
+        check = d / "scripts/check-release.sh"
+        write(check, CHECK.read_text(encoding="utf-8"))
+        readme = d / "README.md"
+        write(readme, "Optional model for self-testing: `deepseek-v4.1-flash`.\n")
+        r = run_check(d, check=check)
+        assert r.returncode == 0, r.stderr
+
+        for content in (
+            "Optional models: `deepseek-v4.1-flash` and `deepseek-other`.\n",
+            "Example: ``configure `deepseek-v4.1-flash` in the file``.\n",
+            "Model `deepseek-v4.1-flash`-internal.\n",
+            "```bash\nmodel = `deepseek-v4.1-flash`\n```\n",
+            "````markdown\n```\n\nOptional model: `deepseek-v4.1-flash`.\n\n````\n",
+            "```markdown\n    ```\n\nOptional model: `deepseek-v4.1-flash`.\n\n```\n",
+            "```invalid `info`\n\n```\n\nOptional model: `deepseek-v4.1-flash`.\n\n```\n",
+            "``Example starts\nOptional model: `deepseek-v4.1-flash`.\nExample ends``.\n",
+        ):
+            write(readme, content)
+            r = run_check(d, check=check)
+            assert r.returncode != 0 and "README.md" in r.stderr, content + r.stderr
+
+        write(readme, "Optional model for self-testing: `deepseek-v4.1-flash`.\n")
+        write(d / "configs/provider.example.toml", 'model = "deepseek-v4.1-flash"\n')
+        r = run_check(d, check=check)
+        assert r.returncode != 0 and "configs/provider.example.toml" in r.stderr, r.stderr
+
+
 def main() -> None:
     tests = [
         test_clean_dir_passes,
@@ -103,6 +134,7 @@ def main() -> None:
         test_results_file_name_fails,
         test_forbidden_host_fails,
         test_rack_file_name_allowed,
+        test_self_test_model_recommendation_is_limited_to_participant_docs,
     ]
     failures = 0
     for t in tests:

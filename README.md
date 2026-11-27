@@ -23,6 +23,8 @@ ResearchClawEval Arena provides a common way to run research-agent frameworks on
 
 The three competition self-test topics are ARC-WBE-2026, PsyDefDetect, and TDC-ADMET-Tox. They let participants check integration and iterate locally; self-test scores do not determine the competition standings. Official competition scoring uses other topics and is run by the organizer. The historical rankings in this repository are reviewed records from a paper snapshot, not the official standings of a competition.
 
+Participants supply their own model for self-testing. We recommend `deepseek-v4.1-flash`, and participants may use any compatible model. The organizer supplies the model for official evaluation.
+
 The public Arena currently provides five runnable topics. Each has its own data boundary, primary metric, and execution limits in its contract.
 
 ## Topics

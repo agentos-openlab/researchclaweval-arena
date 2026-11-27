@@ -201,17 +201,66 @@ if [[ -s /tmp/rce-codex-hits.txt ]]; then
   failed=1
 fi
 
-# DeepSeek appears only as a model label in the reviewed historical exports
-# and the already-published paper snapshot. It is not a default for new runs.
+# Reviewed historical exports can contain historical model labels. Participant
+# docs may also mention the exact model recommended for optional self-testing.
 found_ds=$(list_files | while IFS= read -r f; do
   [[ -n "$f" ]] || continue
   rel="${f#"$ROOT"/}"; rel="${rel#./}"
   if is_exempt "$rel"; then continue; fi
   is_historical_model_file "$rel" && continue
-  if grep -qi 'deepseek' "$f" 2>/dev/null; then echo "  $rel"; fi
+  case "$rel" in
+    README.md|README.zh-CN.md|docs/FAQ.md|docs/FAQ.zh-CN.md|docs/announcement.md|\
+    docs/participant_quickstart.md|docs/participant_quickstart.zh-CN.md|docs/rules.md)
+      # Accept the exact inline identifier in a single paragraph of prose.
+      # A shorter fence inside a longer code block does not close it.
+      if awk '
+        function standalone_recommendation(line, parts) {
+          return line ~ /^[^[:blank:]`>]/ && split(line, parts, "`") == 3 &&
+            parts[1] ~ /[[:blank:]]$/ && parts[2] == "deepseek-v4.1-flash" &&
+            parts[3] ~ /^($|[[:blank:]，。]|[,.]([[:blank:]]|$))/ &&
+            tolower(parts[1] parts[3]) !~ /deepseek/
+        }
+        BEGIN { previous_blank = 1 }
+        /^ ? ? ?(```|~~~)/ {
+          marker = $0
+          sub(/^ */, "", marker)
+          match(marker, /^(`+|~+)/)
+          marker_width = RLENGTH
+          marker_char = substr(marker, 1, 1)
+          info = substr(marker, marker_width + 1)
+          if (!fence_width && (marker_char == "~" || info !~ /`/)) {
+            fence_width = marker_width
+            fence_char = marker_char
+          } else if (fence_width && marker_char == fence_char &&
+                     marker_width >= fence_width && info ~ /^[[:space:]]*$/) {
+            fence_width = 0
+          }
+        }
+        {
+          blank = ($0 ~ /^[[:space:]]*$/)
+          if (pending_recommendation && !blank) found = 1
+          pending_recommendation = 0
+          if (tolower($0) ~ /deepseek/) {
+            if (!fence_width && previous_blank && standalone_recommendation($0)) {
+              pending_recommendation = 1
+            } else {
+              found = 1
+            }
+          }
+          previous_blank = blank
+        }
+        END { exit !found }
+      ' "$f"; then
+        echo "  $rel"
+      fi
+      ;;
+    *)
+      if grep -qiF 'deepseek' "$f" 2>/dev/null; then echo "  $rel"; fi
+      ;;
+  esac
 done)
 if [[ -n "$found_ds" ]]; then
-  echo "FINDING: 'deepseek' outside reviewed historical model exports:" >&2
+  echo "FINDING: unapproved DeepSeek model reference:" >&2
   echo "$found_ds" >&2
   failed=1
 fi

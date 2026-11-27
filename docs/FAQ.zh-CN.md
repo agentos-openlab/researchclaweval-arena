@@ -30,7 +30,9 @@ python3 scripts/arena.py run --topic all --framework all
 
 **应配置哪种模型 API？**
 
-仓库不指定模型 API 服务商。请根据所用框架选择兼容的服务，并在本地 `.env` 中填写服务地址、API Key 和模型名；不要提交密钥。详见[快速开始](participant_quickstart.zh-CN.md#配置模型-api)。
+自测时由参赛者自行选择兼容的服务，并在本地 `.env` 中填写服务地址、API Key 和模型名。密钥应保存在本机。详见[快速开始](participant_quickstart.zh-CN.md#配置模型-api)。
+
+推荐使用 `deepseek-v4.1-flash` 自测，也可选择其他兼容模型。正式评测的模型由主办方统一提供。
 
 **如何准备数据？**
 
