@@ -211,7 +211,13 @@ found_ds=$(list_files | while IFS= read -r f; do
   case "$rel" in
     README.md|README.zh-CN.md|docs/FAQ.md|docs/FAQ.zh-CN.md|docs/announcement.md|\
     docs/participant_quickstart.md|docs/participant_quickstart.zh-CN.md|docs/rules.md)
-      if sed 's/`deepseek-v4\.1-flash`//g' "$f" | grep -iF 'deepseek' >/dev/null; then
+      # Allow a standalone inline code span in prose. Leave fenced blocks
+      # and lines with additional backticks visible to the scan.
+      if sed -E \
+        -e '/^[[:blank:]]*```/,/^[[:blank:]]*```/b' \
+        -e '/^[[:blank:]]*~~~/,/^[[:blank:]]*~~~/b' \
+        -e 's/^([^[:blank:]`>][^`]*[[:blank:]])`deepseek-v4\.1-flash`([[:blank:]，。][^`]*|[,.]([[:blank:]][^`]*)?)?$/\1\2/' \
+        "$f" | grep -iF 'deepseek' >/dev/null; then
         echo "  $rel"
       fi
       ;;

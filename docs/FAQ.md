@@ -30,7 +30,9 @@ Yes. Add an `adapter.json` in a local directory and pass it with `--adapter`. Th
 
 **Which API should I configure?**
 
-Choose a compatible provider for self-testing and enter its endpoint, API key, and model name in a local `.env` file. We recommend `deepseek-v4.1-flash`, and you may choose any compatible model. The organizer supplies the model for official evaluation. Keep credentials local. See the [quickstart](participant_quickstart.md#configure-the-model-api).
+Choose a compatible provider for self-testing and enter its endpoint, API key, and model name in a local `.env` file. Keep credentials local. See the [quickstart](participant_quickstart.md#configure-the-model-api).
+
+We recommend `deepseek-v4.1-flash` for self-testing, and you may choose any compatible model. The organizer supplies the model for official evaluation.
 
 **How are datasets prepared?**
 

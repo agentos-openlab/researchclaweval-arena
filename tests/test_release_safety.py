@@ -105,9 +105,15 @@ def test_self_test_model_recommendation_is_limited_to_participant_docs() -> None
         r = run_check(d, check=check)
         assert r.returncode == 0, r.stderr
 
-        write(readme, "Optional models: `deepseek-v4.1-flash` and `deepseek-other`.\n")
-        r = run_check(d, check=check)
-        assert r.returncode != 0 and "README.md" in r.stderr, r.stderr
+        for content in (
+            "Optional models: `deepseek-v4.1-flash` and `deepseek-other`.\n",
+            "Example: ``configure `deepseek-v4.1-flash` in the file``.\n",
+            "Model `deepseek-v4.1-flash`-internal.\n",
+            "```bash\nmodel = `deepseek-v4.1-flash`\n```\n",
+        ):
+            write(readme, content)
+            r = run_check(d, check=check)
+            assert r.returncode != 0 and "README.md" in r.stderr, content + r.stderr
 
         write(readme, "Optional model for self-testing: `deepseek-v4.1-flash`.\n")
         write(d / "configs/provider.example.toml", 'model = "deepseek-v4.1-flash"\n')
