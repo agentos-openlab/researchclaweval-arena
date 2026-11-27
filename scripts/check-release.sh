@@ -221,17 +221,18 @@ found_ds=$(list_files | while IFS= read -r f; do
             tolower(parts[1] parts[3]) !~ /deepseek/
         }
         BEGIN { previous_blank = 1 }
-        /^[[:blank:]]*(```|~~~)/ {
+        /^ ? ? ?(```|~~~)/ {
           marker = $0
-          sub(/^[[:blank:]]*/, "", marker)
+          sub(/^ */, "", marker)
           match(marker, /^(`+|~+)/)
           marker_width = RLENGTH
           marker_char = substr(marker, 1, 1)
-          if (!fence_width) {
+          info = substr(marker, marker_width + 1)
+          if (!fence_width && (marker_char == "~" || info !~ /`/)) {
             fence_width = marker_width
             fence_char = marker_char
-          } else if (marker_char == fence_char && marker_width >= fence_width &&
-                     substr(marker, marker_width + 1) ~ /^[[:space:]]*$/) {
+          } else if (fence_width && marker_char == fence_char &&
+                     marker_width >= fence_width && info ~ /^[[:space:]]*$/) {
             fence_width = 0
           }
         }
