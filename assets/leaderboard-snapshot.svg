@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="930" viewBox="0 0 1440 930" role="img" aria-labelledby="title desc">
+<title id="title">ResearchClawEval six-dimensional process profiles</title>
+<desc id="desc">A radar chart showing six historical Judge-coded process-profile dimensions for seven frameworks. The dimensions are descriptive and do not form an overall ranking.</desc>
+<rect width="100%" height="100%" fill="#f4f7fa"/>
+<text x="60.0" y="48.0" fill="#397e78" font-family="Arial,sans-serif" font-size="12" font-weight="700" text-anchor="start">RESEARCHCLAW EVAL ARENA · HISTORICAL RESULTS</text>
+<text x="60.0" y="96.0" fill="#183149" font-family="Arial,sans-serif" font-size="36" font-weight="700" text-anchor="start">Research process profiles</text>
+<text x="60.0" y="128.0" fill="#61788a" font-family="Arial,sans-serif" font-size="15" font-weight="400" text-anchor="start">Paper snapshot 2026-10-30 · seven frameworks · scale 0–1</text>
+<rect x="60" y="158" width="1320" height="744" rx="14" fill="#ffffff" stroke="#dce5ec"/>
+<text x="90.0" y="202.0" fill="#61788a" font-family="Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">Six Judge-coded dimensions · common cohort of 10 conditions</text>
+<polygon points="720.0,273.0 920.9,389.0 920.9,621.0 720.0,737.0 519.1,621.0 519.1,389.0" fill="#f4f8fb" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="720.0,319.4 880.7,412.2 880.7,597.8 720.0,690.6 559.3,597.8 559.3,412.2" fill="#ffffff" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="720.0,365.8 840.6,435.4 840.6,574.6 720.0,644.2 599.4,574.6 599.4,435.4" fill="#f4f8fb" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="720.0,412.2 800.4,458.6 800.4,551.4 720.0,597.8 639.6,551.4 639.6,458.6" fill="#ffffff" stroke="#dce5ec" stroke-width="1"/>
+<polygon points="720.0,458.6 760.2,481.8 760.2,528.2 720.0,551.4 679.8,528.2 679.8,481.8" fill="#f4f8fb" stroke="#dce5ec" stroke-width="1"/>
+<line x1="720.0" y1="505.0" x2="720.0" y2="273.0" stroke="#dce5ec"/>
+<text x="720.0" y="243.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="14" font-weight="700" text-anchor="middle">Plan quality</text>
+<line x1="720.0" y1="505.0" x2="920.9" y2="389.0" stroke="#dce5ec"/>
+<text x="950.4" y="376.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="14" font-weight="700" text-anchor="start">Plan–execution alignment</text>
+<line x1="720.0" y1="505.0" x2="920.9" y2="621.0" stroke="#dce5ec"/>
+<text x="950.4" y="642.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="14" font-weight="700" text-anchor="start">Execution robustness</text>
+<line x1="720.0" y1="505.0" x2="720.0" y2="737.0" stroke="#dce5ec"/>
+<text x="720.0" y="775.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="14" font-weight="700" text-anchor="middle">Observation use</text>
+<line x1="720.0" y1="505.0" x2="519.1" y2="621.0" stroke="#dce5ec"/>
+<text x="489.6" y="642.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="14" font-weight="700" text-anchor="end">Evidence–conclusion closure</text>
+<line x1="720.0" y1="505.0" x2="519.1" y2="389.0" stroke="#dce5ec"/>
+<text x="489.6" y="376.0" fill="#4f6576" font-family="Arial,sans-serif" font-size="14" font-weight="700" text-anchor="end">State consistency</text>
+<polygon points="720.0,422.6 880.7,412.2 850.6,580.4 720.0,673.2 604.5,571.7 629.6,452.8" fill="#1a4b7c" fill-opacity="0.07" stroke="#1a4b7c" stroke-width="2" stroke-opacity="0.82"/>
+<circle cx="720.0" cy="422.6" r="2.8" fill="#1a4b7c"/>
+<circle cx="880.7" cy="412.2" r="2.8" fill="#1a4b7c"/>
+<circle cx="850.6" cy="580.4" r="2.8" fill="#1a4b7c"/>
+<circle cx="720.0" cy="673.2" r="2.8" fill="#1a4b7c"/>
+<circle cx="604.5" cy="571.7" r="2.8" fill="#1a4b7c"/>
+<circle cx="629.6" cy="452.8" r="2.8" fill="#1a4b7c"/>
+<circle cx="210" cy="828" r="4" fill="#1a4b7c"/>
+<text x="220.0" y="832.0" fill="#40576a" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">AI-Researcher</text>
+<polygon points="720.0,370.4 790.3,464.4 795.3,548.5 720.0,661.6 614.5,565.9 644.7,461.5" fill="#a76931" fill-opacity="0.07" stroke="#a76931" stroke-width="2" stroke-opacity="0.82"/>
+<circle cx="720.0" cy="370.4" r="2.8" fill="#a76931"/>
+<circle cx="790.3" cy="464.4" r="2.8" fill="#a76931"/>
+<circle cx="795.3" cy="548.5" r="2.8" fill="#a76931"/>
+<circle cx="720.0" cy="661.6" r="2.8" fill="#a76931"/>
+<circle cx="614.5" cy="565.9" r="2.8" fill="#a76931"/>
+<circle cx="644.7" cy="461.5" r="2.8" fill="#a76931"/>
+<circle cx="510" cy="828" r="4" fill="#a76931"/>
+<text x="520.0" y="832.0" fill="#40576a" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">AI-Scientist-v2</text>
+<polygon points="720.0,380.9 870.7,418.0 850.6,580.4 720.0,673.2 579.4,586.2 604.5,438.3" fill="#457d71" fill-opacity="0.07" stroke="#457d71" stroke-width="2" stroke-opacity="0.82"/>
+<circle cx="720.0" cy="380.9" r="2.8" fill="#457d71"/>
+<circle cx="870.7" cy="418.0" r="2.8" fill="#457d71"/>
+<circle cx="850.6" cy="580.4" r="2.8" fill="#457d71"/>
+<circle cx="720.0" cy="673.2" r="2.8" fill="#457d71"/>
+<circle cx="579.4" cy="586.2" r="2.8" fill="#457d71"/>
+<circle cx="604.5" cy="438.3" r="2.8" fill="#457d71"/>
+<circle cx="810" cy="828" r="4" fill="#457d71"/>
+<text x="820.0" y="832.0" fill="#40576a" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">ARIS</text>
+<polygon points="720.0,421.5 805.4,455.7 755.2,525.3 720.0,615.2 619.5,563.0 694.9,490.5" fill="#854b68" fill-opacity="0.07" stroke="#854b68" stroke-width="2" stroke-opacity="0.82"/>
+<circle cx="720.0" cy="421.5" r="2.8" fill="#854b68"/>
+<circle cx="805.4" cy="455.7" r="2.8" fill="#854b68"/>
+<circle cx="755.2" cy="525.3" r="2.8" fill="#854b68"/>
+<circle cx="720.0" cy="615.2" r="2.8" fill="#854b68"/>
+<circle cx="619.5" cy="563.0" r="2.8" fill="#854b68"/>
+<circle cx="694.9" cy="490.5" r="2.8" fill="#854b68"/>
+<circle cx="1110" cy="828" r="4" fill="#854b68"/>
+<text x="1120.0" y="832.0" fill="#40576a" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">AutoResearchClaw</text>
+<polygon points="720.0,394.8 845.6,432.5 850.6,580.4 720.0,679.0 594.4,577.5 619.5,447.0" fill="#687caa" fill-opacity="0.07" stroke="#687caa" stroke-width="2" stroke-opacity="0.82"/>
+<circle cx="720.0" cy="394.8" r="2.8" fill="#687caa"/>
+<circle cx="845.6" cy="432.5" r="2.8" fill="#687caa"/>
+<circle cx="850.6" cy="580.4" r="2.8" fill="#687caa"/>
+<circle cx="720.0" cy="679.0" r="2.8" fill="#687caa"/>
+<circle cx="594.4" cy="577.5" r="2.8" fill="#687caa"/>
+<circle cx="619.5" cy="447.0" r="2.8" fill="#687caa"/>
+<circle cx="360" cy="858" r="4" fill="#687caa"/>
+<text x="370.0" y="862.0" fill="#40576a" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">DeepScientist</text>
+<polygon points="720.0,399.4 820.5,447.0 830.5,568.8 720.0,679.0 574.3,589.1 554.2,409.3" fill="#9a763b" fill-opacity="0.07" stroke="#9a763b" stroke-width="2" stroke-opacity="0.82"/>
+<circle cx="720.0" cy="399.4" r="2.8" fill="#9a763b"/>
+<circle cx="820.5" cy="447.0" r="2.8" fill="#9a763b"/>
+<circle cx="830.5" cy="568.8" r="2.8" fill="#9a763b"/>
+<circle cx="720.0" cy="679.0" r="2.8" fill="#9a763b"/>
+<circle cx="574.3" cy="589.1" r="2.8" fill="#9a763b"/>
+<circle cx="554.2" cy="409.3" r="2.8" fill="#9a763b"/>
+<circle cx="660" cy="858" r="4" fill="#9a763b"/>
+<text x="670.0" y="862.0" fill="#40576a" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Dr. Claw</text>
+<polygon points="720.0,393.6 855.6,426.7 865.7,589.1 720.0,684.8 589.4,580.4 584.4,426.7" fill="#667682" fill-opacity="0.07" stroke="#667682" stroke-width="2" stroke-opacity="0.82"/>
+<circle cx="720.0" cy="393.6" r="2.8" fill="#667682"/>
+<circle cx="855.6" cy="426.7" r="2.8" fill="#667682"/>
+<circle cx="865.7" cy="589.1" r="2.8" fill="#667682"/>
+<circle cx="720.0" cy="684.8" r="2.8" fill="#667682"/>
+<circle cx="589.4" cy="580.4" r="2.8" fill="#667682"/>
+<circle cx="584.4" cy="426.7" r="2.8" fill="#667682"/>
+<circle cx="960" cy="858" r="4" fill="#667682"/>
+<text x="970.0" y="862.0" fill="#40576a" font-family="Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">EvoScientist</text>
+<text x="90.0" y="890.0" fill="#667d8d" font-family="Arial,sans-serif" font-size="11" font-weight="400" text-anchor="start">Ordinal process means; descriptive profiles, not an overall ranking.</text>
+</svg>

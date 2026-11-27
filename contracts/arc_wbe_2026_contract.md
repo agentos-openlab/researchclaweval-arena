@@ -49,7 +49,7 @@ Record each experiment's self-evaluation result under `framework_visible_validat
 - Keep raw weights, complete tensor arrays, `all_layer_means`, and `final_means` out of logs and prompts. The visible-validation subset above **is** readable by the framework for self-evaluation, but its arrays must not be pasted into logs, prompts, or reports — record only the scalar metrics.
 - Use the configured provider and model for framework reasoning. Framework-internal clients must not substitute another model or public provider.
 - Framework-internal OpenAI-compatible clients must read `OPENAI_BASE_URL`, `OPENAI_API_KEY`, and `OPENAI_MODEL` from the injected environment. Do not hardcode an endpoint or model.
-- Follow `contracts/arc_wbe_2026_execution_budget.md`. Immediately promote the selected experiment after the final allowed experiment.
+- Follow the [Execution Budget](#execution-budget) section below. Immediately promote the selected experiment after the final allowed experiment.
 - Treat tool-call scoring as out of scope unless the official ARC adapter explicitly supports it; preserve trace evidence instead.
 - Do not claim successful scoring without a real local score artifact or official-format evidence.
 - The host must not generate, repair, promote, or backfill framework-authored research artifacts.
@@ -58,3 +58,18 @@ Record each experiment's self-evaluation result under `framework_visible_validat
 
 - Every evaluation uses a fresh physical workspace under `<RUN_ROOT>/<run_id>/<framework>/workspace`. The runner injects this path to the framework as the `WORKSPACE` env var — never hardcode it.
 - Fixed framework repositories are templates only and must not receive generated artifacts.
+
+## Execution Budget
+
+This budget is mandatory for ARC-WBE-2026 native framework evaluation runs.
+
+1. Before the first experiment, write and lock `/workspace/research_idea.json` with the hypothesis, method rationale, expected failure modes, and comparison logic.
+2. The framework owns method choice. The host does not prescribe an algorithm family, feature representation, architecture, hyperparameters, experiment sequence, baseline, or selected method.
+3. Run 2 to 4 materially different, framework-native experiments chosen from the framework-authored idea, counted as strategy lines (docs/rules.md §5.8). Do not start a fifth experiment or a fifth strategy line.
+4. Keep only a compact experiment ledger in context: experiment id, artifact path, framework-visible validation result, and decision. Do not paste dataset rows, weights, tensor arrays, or verbose tool outputs into the conversation.
+5. Each framework-internal API client must use the injected `OPENAI_BASE_URL`, `OPENAI_API_KEY`, and `OPENAI_MODEL`. Do not hardcode a public provider, another provider, or a model name.
+6. Immediately after the final permitted experiment, select one valid result and promote the selected framework artifacts. Do not continue exploration after finalization begins.
+7. Before exit, write `/workspace/experiment_trace.json` with `framework_native_execution: true`, `consumed_topic_input: true`, `workspace_trace_root: "/workspace"`, `experiments`, `selected_experiment_id`, `estimator_artifact`, `framework_internal_model`, `framework_internal_api_base_url`, `idea_artifact: "research_idea.json"`, and `idea_locked_before_experiments: true`.
+8. A valid native handoff requires framework-produced root-level `/workspace/research_idea.json`, `/workspace/estimator.py`, `/workspace/submission.json`, `/workspace/experiment_trace.json`, and `/workspace/final_report.md`. The host creates `/workspace/score.json` only after the native framework exits.
+9. If the framework cannot finish within its execution budget, exit with a concrete blocker. Do not fabricate metrics, score files, or traces.
+10. A score is admissible only when the official adapter executes the framework estimator against the labeled host dataset. Adapter scalar/1-D broadcasting, zero/synthetic/placeholder predictions, stale score discovery, explicit-score copying, and fallback estimator paths are forbidden.

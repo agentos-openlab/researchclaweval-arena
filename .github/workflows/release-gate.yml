@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
@@ -27,6 +27,7 @@ jobs:
       - name: smoke tests
         run: |
           python3 -m py_compile scoring/*.py
+          python3 -m py_compile scripts/arena.py scripts/render_leaderboard.py adapters/*/*.py
           bash -n scripts/*.sh scripts/runner/*.sh
           python3 -c "import json,glob; [json.load(open(f)) for f in glob.glob('schemas/*.json')+glob.glob('scoring/*.json')+glob.glob('templates/**/*.json',recursive=True)]"
           python3 scripts/validate_schemas.py --all-repo
@@ -34,6 +35,10 @@ jobs:
           bash scripts/check-release.sh --path schemas
           python3 tests/test_release_safety.py
           python3 tests/test_validate_golden.py
+          python3 tests/test_arena.py
+          python3 tests/test_builtin_adapters.py
+          python3 tests/test_public_topic_packages.py
+          python3 tests/test_render_leaderboard.py
           python3 tests/test_runner_smoke.py
           python3 tests/test_native_marker.py
           python3 tests/test_validate_schemas.py

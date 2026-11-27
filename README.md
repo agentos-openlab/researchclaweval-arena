@@ -1,121 +1,107 @@
 # ResearchClawEval Arena
 
-Submit your research-agent framework for the organizer to run and score.
-The framework should plan the research, write code, run and compare experiments,
-and produce a final report.
+ResearchClawEval Arena provides a common way to run research-agent frameworks on five research tasks. The repository includes seven framework adapters, task-specific contracts and scorers, a local batch runner, and reviewed historical results. Frameworks run through their native workflows in isolated Docker containers. Users choose and configure a compatible model API locally.
 
-**The three topics in this repository are for participant self-testing.
-Final scoring will use other topics. Self-test scores do not count toward
-final rankings.**
+<p align="center">
+  <a href="https://betterrrrr.github.io/researchclaweval-arena/leaderboard/">
+    <img src="https://raw.githubusercontent.com/betterrrrr/researchclaweval-arena/1e313591facd7f12bf04e52a9cdf7f81d0dae79f/assets/leaderboard-snapshot.svg" alt="Historical six-dimensional research process profiles across seven frameworks" width="100%">
+  </a>
+</p>
+<p align="center"><sub>Historical Judge-coded process profiles across seven frameworks. Click the chart to view the full leaderboard.</sub></p>
 
-Registration open · 1-month competition
+<h2 align="center">Framework profiles</h2>
+<p align="center">
+  <a href="https://betterrrrr.github.io/researchclaweval-arena/leaderboard/">
+    <img src="https://raw.githubusercontent.com/betterrrrr/researchclaweval-arena/main/assets/framework-radar-cards.svg" alt="Seven individual six-dimensional radar charts, one per framework" width="100%">
+  </a>
+</p>
+<p align="center"><sub>Each card shows one framework's six Judge-coded scores on the same 0–1 scale. The profiles describe process scores and do not form an overall ranking. Click the charts to view the full leaderboard.</sub></p>
 
-[中文说明](README.zh-CN.md) · [比赛公告](docs/announcement.md) · [Rules](docs/rules.md)
+[中文说明](README.zh-CN.md) · [Competition rules](docs/rules.md) · [Quickstart](docs/participant_quickstart.md) · [All benchmark results](results/leaderboard.md) · [Result review method](results/README.md) · [Historical website](website/README.md)
 
----
+## Scope
 
-## What this is
+The three competition self-test topics are ARC-WBE-2026, PsyDefDetect, and TDC-ADMET-Tox. They let participants check integration and iterate locally; self-test scores do not determine the competition standings. Official competition scoring uses other topics and is run by the organizer. The historical rankings in this repository are reviewed records from a paper snapshot, not the official standings of a competition.
 
-ResearchClawEval Arena is a competition for research-agent frameworks.
-Use the public self-test topics to develop your adapter and check the full
-workflow. After submission, the organizer runs your framework on other topics
-and calculates the final scores. All participants in official evaluation use
-the same task requirements, model, data splits, and budgets:
+Participants supply their own model for self-testing. We recommend `deepseek-v4.1-flash`, and participants may use any compatible model. The organizer supplies the model for official evaluation.
 
-| Fixed | How |
-|---|---|
-| Task contracts | one per topic: question, metric, data visibility, compute budget |
-| Data splits | frozen, sha256 published in advance; a wrong split is rejected |
-| Official scorer | the same frozen code and data for every submission |
-| Model | Self-testing: participant-provided; `deepseek-v4.1-flash` is recommended, not required. Official evaluation: supplied by the organizer via environment variables (rules §4). |
-| Experiment count | 2–4 (strategy lines — rules §5.8), written into each contract |
-| Runtime | a unified runner template with container isolation |
+The public Arena currently provides five runnable topics. Each has its own data boundary, primary metric, and execution limits in its contract.
 
-The self-test contracts, dataset download scripts, scoring tools, and
-submission formats are public. You can repeat self-tests as often as needed
-before submitting. Official evaluation uses other topics.
+## Topics
 
----
+| Topic | Main metric | Direction | Contract |
+|---|---|---:|---|
+| ARC-WBE-2026 | Adjusted final-layer score | Lower is better | [Contract](contracts/arc_wbe_2026_contract.md) |
+| BabyLM-10M | Validation perplexity | Lower is better | [Contract](contracts/babylm_contract.md) |
+| MountainCar-Continuous | Mean reward | Higher is better | [Contract](contracts/mountaincar_continuous_contract.md) |
+| PsyDefDetect | Macro-F1 | Higher is better | [Contract](contracts/psydefdetect_contract.md) |
+| TDC-ADMET-Tox | Macro-AUROC | Higher is better | [Contract](contracts/tdc_admet_tox_contract.md) |
 
-## Three self-test tasks
-
-These topics help you test your integration. They are not the topics used
-for final scoring.
-
-| Task | Goal | Official metric | Data |
-|---|---|---|---|
-| [TDC-ADMET-Tox](contracts/tdc_admet_tox_contract.md) | Predict three toxicity endpoints (AMES / hERG / DILI) from molecular structure | macro-AUROC ↑ | 1.4 MB |
-| [PsyDefDetect](contracts/psydefdetect_contract.md) | Detect psychological defense mechanisms in supportive conversations | macro-F1 ↑ | 5.4 MB |
-| [ARC-WBE-2026](contracts/arc_wbe_2026_contract.md) | Estimate per-layer activations from a Transformer's weight matrices | adjusted final-layer score ↓ | 907 MB |
-
-Final rankings use the organizer's scores on other topics. The competition
-awards an **overall champion** and also publishes per-topic rankings:
-
-- Normalize each official topic score to 0–100 using reference values fixed
-  and published before official evaluation, then take the equal-weight mean.
-- The highest total wins. Tied totals are resolved by the number of topic
-  first places; if that also ties, the overall rank is shared.
-- Failed or missing valid results contribute 0 and remain in the fixed topic
-  count. Reference values do not depend on competitors' scores.
-
-See [rules §6.3](docs/rules.md#63-排名) for the formula and tie rules.
-
----
-
-## Quick start
+Prepare only the dataset you need. The setup script checks downloaded files against their published hashes:
 
 ```bash
-# 1. Get the self-test datasets (verified against published sha256)
-bash scripts/setup_datasets.sh --dataset tdc_admet_tox
 bash scripts/setup_datasets.sh --dataset psydefdetect
-bash scripts/setup_datasets.sh --dataset arc_wbe_2026
-
-# 2. Read the three contracts (contracts/) and the rules (docs/rules.md)
-
-# 3. Copy the example adapter and fill in the TODOs
-cp -r templates/example-adapter/ <your-framework>/
-
-# 4. Run through the runner template
-export RUN_ROOT=/tmp/my-run
-bash scripts/runner/<your-id>_<your-framework>_<topic>_fullrun.sh
 ```
 
-Full walkthrough: [`docs/participant_quickstart.md`](docs/participant_quickstart.md)
+## Historical results
 
----
+The complete historical tables are public for all five topics. Results are grouped by topic, model, and evaluation protocol; scores from different groups are not combined into an overall ranking. Only records that meet the review criteria receive a rank. Missing, unverified, and self-reported records remain visible with their status. BabyLM values are currently self-reported and are not ranked.
+
+| Topic | Ranking table |
+|---|---|
+| ARC-WBE-2026 | [View results](results/leaderboard.md#arc-wbe-2026) |
+| BabyLM-10M | [View results](results/leaderboard.md#babylm-10m) |
+| MountainCar-Continuous | [View results](results/leaderboard.md#mountaincar-continuous) |
+| PsyDefDetect | [View results](results/leaderboard.md#psydefdetect) |
+| TDC-ADMET-Tox | [View results](results/leaderboard.md#tdc-admet-tox) |
+
+Download the [complete CSV](results/leaderboard.csv), including missing and unverified rows, or inspect the [reviewed evidence data](results/historical-evidence.json). The [review method](results/README.md) explains the source records, verification criteria, and limits of the archive. Local runs do not enter the published tables automatically.
+
+## Frameworks
+
+Seven adapters are included: AI-Researcher, AI-Scientist-v2, ARIS, AutoResearchClaw, DeepScientist, Dr. Claw, and EvoScientist. Each has a launch command for all five topics, for 35 routes total. All routes remain experimental until public end-to-end verification. The catalogue lists their status:
+
+```bash
+python3 scripts/arena.py list
+```
+
+An `experimental` route has not completed public end-to-end verification. An unsupported route is reported and skipped. See [adapter notes](adapters/README.md) for framework-specific requirements.
+
+## Run a batch
+
+Install Docker and Python 3.10 or later. If a framework needs a model API, copy [`.env.example`](.env.example) to `.env` and configure a compatible provider locally. The repository does not prescribe a provider or include credentials.
+
+Run one topic with all built-in adapters, one framework across all topics, or the complete 35-route matrix:
+
+```bash
+python3 scripts/arena.py run --topic psydefdetect --framework all
+python3 scripts/arena.py run --topic all --framework autoresearchclaw
+python3 scripts/arena.py run --topic all --framework all
+```
+
+The complete matrix runs sequentially. Use `--dry-run` to inspect the selected routes without Docker, dataset downloads, or API configuration. Each batch writes a separate directory under `runs/` and records route outcomes in `summary.json`. Local scoring starts only after the framework has produced its native execution marker and required artifacts.
+
+## Add a framework
+
+Start with [`templates/example-adapter/`](templates/example-adapter/). Add an `adapter.json` that pins the upstream source, declares the container image and native command, and lists only routes the framework can launch. Run it with `--adapter ./path/to/adapter`. The [quickstart](docs/participant_quickstart.md#add-an-adapter) describes the adapter format and checks.
 
 ## Repository layout
 
+```text
+adapters/     Built-in framework launch configurations
+configs/      Provider configuration template
+contracts/    Task inputs, outputs, data boundaries, and execution limits
+data/         Local datasets and caches (ignored by Git)
+docs/         Rules, participant guides, metric definitions, and FAQ
+judge/        Process-evaluation code and rubrics
+results/      Reviewed historical tables, CSV, and evidence data
+schemas/      JSON formats for adapters and run records
+scoring/      Dataset preparation and local scorers
+scripts/      Dataset setup, batch runner, and release checks
+splits/       Immutable task split manifests and checksums
+templates/    Adapter examples and submission artifacts
+tests/        Runner, scoring, and release checks
+website/      Bilingual site for the archived paper snapshot
 ```
-contracts/          Self-test task contracts + execution budgets + submission specs
-scoring/            Official-scorer glue and data preparation scripts
-scripts/            setup_datasets.sh · runner templates · release self-check
-judge/              (long-term community leaderboard, see docs/metric-system.md)
-schemas/            JSON schemas for adapter manifests and run records
-templates/          Anonymized example adapter · submission templates
-docs/               Rules · announcement · quickstart · metric system · FAQ
-results/            Result tables (published after the submission window)
-```
 
-## Why no result tables yet
-
-This repository provides materials for self-testing and integration.
-Final score tables will be posted after the submission window and official
-evaluation on other topics.
-We do not redistribute any dataset; competitors download and verify the data
-themselves.
-
-## Long-term community leaderboard
-
-After the competition, this harness stays open as a long-running community
-leaderboard with an extended 12-dimension metric system (objective scores +
-trajectory metrics + LLM-judge dimensions). See
-[`docs/metric-system.md`](docs/metric-system.md) and Appendix A of
-[`docs/rules.md`](docs/rules.md). The judge pipeline in `judge/` reads all
-credentials from environment variables (`JUDGE_API_KEY` / `JUDGE_MODEL` /
-`JUDGE_BASE_URL`) — the source holds no secrets.
-
-## License
-
-Code: MIT. Documentation: CC-BY-4.0. Third-party notices:
-[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+Code is MIT licensed. Documentation is CC BY 4.0. See [third-party notices](THIRD_PARTY_NOTICES.md).

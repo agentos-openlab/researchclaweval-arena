@@ -1,18 +1,18 @@
-name: New framework adapter
-description: Register a research-agent framework for the competition
+name: Framework adapter proposal
+description: Propose a portable adapter for the public benchmark
 title: "adapter: <framework name>"
 labels: [adapter]
 body:
   - type: markdown
     attributes:
       value: |
-        Fill in the TODO fields of `templates/example-adapter/manifest.json`
-        and link the resulting manifest. See `docs/participant_quickstart.md`.
+        Describe the adapter route and the framework's native launch flow.
+        Do not include API keys, private URLs, or local data paths. See
+        `docs/participant_quickstart.md` and `templates/example-adapter/`.
   - type: input
-    id: framework_id
     attributes:
-      label: Framework id (assigned by the organizer)
-      placeholder: "NN"
+      label: Proposed adapter ID
+      description: Lowercase slug matching the name used in adapter.json
     validations:
       required: true
   - type: input
@@ -31,8 +31,8 @@ body:
   - type: textarea
     id: entrypoint
     attributes:
-      label: Native entrypoint
-      description: The documented official CLI/skill/runner your framework must be launched through
+      label: Native launch command
+      description: Docker image, command, and source of the native marker
     validations:
       required: true
   - type: dropdown
@@ -41,9 +41,11 @@ body:
       label: Supported topics
       multiple: true
       options:
-        - tdc_admet_tox
-        - psydefdetect
+        - babylm
+        - mountaincar_continuous
         - arc_wbe_2026
+        - psydefdetect
+        - tdc_admet_tox
     validations:
       required: true
   - type: checkboxes
@@ -51,6 +53,11 @@ body:
     attributes:
       label: Native-execution guarantees
       options:
-        - label: The framework prints FRAMEWORK_NATIVE_LOG_MARKER from inside its own execution
-        - label: The framework reads OPENAI_BASE_URL / OPENAI_API_KEY / OPENAI_MODEL from the injected environment only
-        - label: The framework owns ideation, experiments, comparison, selection, and final report
+        - label: The framework emits its declared native marker itself
+        - label: The framework can read OPENAI_BASE_URL / OPENAI_API_KEY / OPENAI_MODEL from its environment
+        - label: The framework writes the topic's required artifacts in /workspace
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Verification status and evidence
+      description: State which topic routes were launched and what remains unverified.

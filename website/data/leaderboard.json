@@ -1,0 +1,1538 @@
+{
+  "meta": {
+    "schemaVersion": "1.0.0",
+    "snapshot": "2026-10-15",
+    "status": "historical validation snapshot",
+    "paperDataVersion": "2026-10-30",
+    "sourceFiles": [
+      {
+        "path": "generated/english/tables.json",
+        "sha256": "1ed521107ec18f1b0db1df5351f319d19694d8ef6acb9e368130a461fc8b1c2c"
+      },
+      {
+        "path": "results/snapshots/server-paper-20261025T105508Z/paper/experiments_20261019/source_provenance.json",
+        "sha256": "6837e2c4ffd3afaf5019cf62e8fc6774f564d4fbe8a31fc165b04a52b777aafe"
+      }
+    ],
+    "note": "The four JSON files are derived from frozen local evidence. Source roles can refer to different records; identity and final-artifact bindings are not established by this export."
+  },
+  "items": {
+    "runs": [
+      {
+        "id": "01:arc:GPT-6-Luna",
+        "frameworkId": "01",
+        "taskId": "arc",
+        "model": "GPT-6-Luna",
+        "value": 0.142,
+        "displayValue": "0.1420",
+        "protocol": null
+      },
+      {
+        "id": "01:arc:GPT-5.6-Luna",
+        "frameworkId": "01",
+        "taskId": "arc",
+        "model": "GPT-5.6-Luna",
+        "value": 0.0909,
+        "displayValue": "0.0909",
+        "protocol": null
+      },
+      {
+        "id": "01:arc:DeepSeek-V4",
+        "frameworkId": "01",
+        "taskId": "arc",
+        "model": "DeepSeek-V4",
+        "value": 0.0886,
+        "displayValue": "0.0886",
+        "protocol": null
+      },
+      {
+        "id": "01:arc:Kimi-K2.6",
+        "frameworkId": "01",
+        "taskId": "arc",
+        "model": "Kimi-K2.6",
+        "value": null,
+        "displayValue": null,
+        "protocol": null
+      },
+      {
+        "id": "02:arc:GPT-6-Luna",
+        "frameworkId": "02",
+        "taskId": "arc",
+        "model": "GPT-6-Luna",
+        "value": 0.138,
+        "displayValue": "0.1380",
+        "protocol": null
+      },
+      {
+        "id": "02:arc:GPT-5.6-Luna",
+        "frameworkId": "02",
+        "taskId": "arc",
+        "model": "GPT-5.6-Luna",
+        "value": 0.0988,
+        "displayValue": "0.0988",
+        "protocol": null
+      },
+      {
+        "id": "02:arc:DeepSeek-V4",
+        "frameworkId": "02",
+        "taskId": "arc",
+        "model": "DeepSeek-V4",
+        "value": 0.14,
+        "displayValue": "0.1400",
+        "protocol": null
+      },
+      {
+        "id": "02:arc:Kimi-K2.6",
+        "frameworkId": "02",
+        "taskId": "arc",
+        "model": "Kimi-K2.6",
+        "value": null,
+        "displayValue": null,
+        "protocol": null
+      },
+      {
+        "id": "03:arc:GPT-6-Luna",
+        "frameworkId": "03",
+        "taskId": "arc",
+        "model": "GPT-6-Luna",
+        "value": 0.0000948,
+        "displayValue": "9.48e-05",
+        "protocol": null
+      },
+      {
+        "id": "03:arc:GPT-5.6-Luna",
+        "frameworkId": "03",
+        "taskId": "arc",
+        "model": "GPT-5.6-Luna",
+        "value": 0.0909,
+        "displayValue": "0.0909",
+        "protocol": null
+      },
+      {
+        "id": "03:arc:DeepSeek-V4",
+        "frameworkId": "03",
+        "taskId": "arc",
+        "model": "DeepSeek-V4",
+        "value": 8.55e-7,
+        "displayValue": "8.55e-07",
+        "protocol": null
+      },
+      {
+        "id": "03:arc:Kimi-K2.6",
+        "frameworkId": "03",
+        "taskId": "arc",
+        "model": "Kimi-K2.6",
+        "value": 0.0665,
+        "displayValue": "0.0665",
+        "protocol": null
+      },
+      {
+        "id": "04:arc:GPT-6-Luna",
+        "frameworkId": "04",
+        "taskId": "arc",
+        "model": "GPT-6-Luna",
+        "value": 0.0882,
+        "displayValue": "0.0882",
+        "protocol": null
+      },
+      {
+        "id": "04:arc:GPT-5.6-Luna",
+        "frameworkId": "04",
+        "taskId": "arc",
+        "model": "GPT-5.6-Luna",
+        "value": 0.0866,
+        "displayValue": "0.0866",
+        "protocol": null
+      },
+      {
+        "id": "04:arc:DeepSeek-V4",
+        "frameworkId": "04",
+        "taskId": "arc",
+        "model": "DeepSeek-V4",
+        "value": 0.27,
+        "displayValue": "0.2700",
+        "protocol": null
+      },
+      {
+        "id": "04:arc:Kimi-K2.6",
+        "frameworkId": "04",
+        "taskId": "arc",
+        "model": "Kimi-K2.6",
+        "value": 0.0907,
+        "displayValue": "0.0907",
+        "protocol": null
+      },
+      {
+        "id": "05:arc:GPT-6-Luna",
+        "frameworkId": "05",
+        "taskId": "arc",
+        "model": "GPT-6-Luna",
+        "value": 0.0761,
+        "displayValue": "0.0761",
+        "protocol": null
+      },
+      {
+        "id": "05:arc:GPT-5.6-Luna",
+        "frameworkId": "05",
+        "taskId": "arc",
+        "model": "GPT-5.6-Luna",
+        "value": 0.084,
+        "displayValue": "0.0840",
+        "protocol": null
+      },
+      {
+        "id": "05:arc:DeepSeek-V4",
+        "frameworkId": "05",
+        "taskId": "arc",
+        "model": "DeepSeek-V4",
+        "value": 0.000214,
+        "displayValue": "2.14e-04",
+        "protocol": null
+      },
+      {
+        "id": "05:arc:Kimi-K2.6",
+        "frameworkId": "05",
+        "taskId": "arc",
+        "model": "Kimi-K2.6",
+        "value": 0.0661,
+        "displayValue": "0.0661",
+        "protocol": null
+      },
+      {
+        "id": "06:arc:GPT-6-Luna",
+        "frameworkId": "06",
+        "taskId": "arc",
+        "model": "GPT-6-Luna",
+        "value": 0.0852,
+        "displayValue": "0.0852",
+        "protocol": null
+      },
+      {
+        "id": "06:arc:GPT-5.6-Luna",
+        "frameworkId": "06",
+        "taskId": "arc",
+        "model": "GPT-5.6-Luna",
+        "value": 0.0909,
+        "displayValue": "0.0909",
+        "protocol": null
+      },
+      {
+        "id": "06:arc:DeepSeek-V4",
+        "frameworkId": "06",
+        "taskId": "arc",
+        "model": "DeepSeek-V4",
+        "value": 0.0000919,
+        "displayValue": "9.19e-05",
+        "protocol": null
+      },
+      {
+        "id": "06:arc:Kimi-K2.6",
+        "frameworkId": "06",
+        "taskId": "arc",
+        "model": "Kimi-K2.6",
+        "value": 0.0662,
+        "displayValue": "0.0662",
+        "protocol": null
+      },
+      {
+        "id": "07:arc:GPT-6-Luna",
+        "frameworkId": "07",
+        "taskId": "arc",
+        "model": "GPT-6-Luna",
+        "value": 0.0661,
+        "displayValue": "0.0661",
+        "protocol": null
+      },
+      {
+        "id": "07:arc:GPT-5.6-Luna",
+        "frameworkId": "07",
+        "taskId": "arc",
+        "model": "GPT-5.6-Luna",
+        "value": 0.0909,
+        "displayValue": "0.0909",
+        "protocol": null
+      },
+      {
+        "id": "07:arc:DeepSeek-V4",
+        "frameworkId": "07",
+        "taskId": "arc",
+        "model": "DeepSeek-V4",
+        "value": 0.0661,
+        "displayValue": "0.0661",
+        "protocol": null
+      },
+      {
+        "id": "07:arc:Kimi-K2.6",
+        "frameworkId": "07",
+        "taskId": "arc",
+        "model": "Kimi-K2.6",
+        "value": 17000000,
+        "displayValue": "1.70e+07",
+        "protocol": null
+      },
+      {
+        "id": "01:mc:GPT-6-Luna",
+        "frameworkId": "01",
+        "taskId": "mc",
+        "model": "GPT-6-Luna",
+        "value": -11.3,
+        "displayValue": "-11.30",
+        "protocol": null
+      },
+      {
+        "id": "01:mc:GPT-5.6-Luna",
+        "frameworkId": "01",
+        "taskId": "mc",
+        "model": "GPT-5.6-Luna",
+        "value": null,
+        "displayValue": null,
+        "protocol": null
+      },
+      {
+        "id": "01:mc:DeepSeek-V4",
+        "frameworkId": "01",
+        "taskId": "mc",
+        "model": "DeepSeek-V4",
+        "value": -13.44,
+        "displayValue": "-13.44",
+        "protocol": null
+      },
+      {
+        "id": "01:mc:Kimi-K2.6",
+        "frameworkId": "01",
+        "taskId": "mc",
+        "model": "Kimi-K2.6",
+        "value": -95.3,
+        "displayValue": "-95.30",
+        "protocol": null
+      },
+      {
+        "id": "02:mc:GPT-6-Luna",
+        "frameworkId": "02",
+        "taskId": "mc",
+        "model": "GPT-6-Luna",
+        "value": -10.78,
+        "displayValue": "-10.78",
+        "protocol": null
+      },
+      {
+        "id": "02:mc:GPT-5.6-Luna",
+        "frameworkId": "02",
+        "taskId": "mc",
+        "model": "GPT-5.6-Luna",
+        "value": -10.78,
+        "displayValue": "-10.78",
+        "protocol": null
+      },
+      {
+        "id": "02:mc:DeepSeek-V4",
+        "frameworkId": "02",
+        "taskId": "mc",
+        "model": "DeepSeek-V4",
+        "value": null,
+        "displayValue": null,
+        "protocol": null
+      },
+      {
+        "id": "02:mc:Kimi-K2.6",
+        "frameworkId": "02",
+        "taskId": "mc",
+        "model": "Kimi-K2.6",
+        "value": null,
+        "displayValue": null,
+        "protocol": null
+      },
+      {
+        "id": "03:mc:GPT-6-Luna",
+        "frameworkId": "03",
+        "taskId": "mc",
+        "model": "GPT-6-Luna",
+        "value": 85.24,
+        "displayValue": "85.24",
+        "protocol": null
+      },
+      {
+        "id": "03:mc:GPT-5.6-Luna",
+        "frameworkId": "03",
+        "taskId": "mc",
+        "model": "GPT-5.6-Luna",
+        "value": 2.61,
+        "displayValue": "2.61",
+        "protocol": null
+      },
+      {
+        "id": "03:mc:DeepSeek-V4",
+        "frameworkId": "03",
+        "taskId": "mc",
+        "model": "DeepSeek-V4",
+        "value": 93.68,
+        "displayValue": "93.68",
+        "protocol": null
+      },
+      {
+        "id": "03:mc:Kimi-K2.6",
+        "frameworkId": "03",
+        "taskId": "mc",
+        "model": "Kimi-K2.6",
+        "value": 78.7,
+        "displayValue": "78.70",
+        "protocol": null
+      },
+      {
+        "id": "04:mc:GPT-6-Luna",
+        "frameworkId": "04",
+        "taskId": "mc",
+        "model": "GPT-6-Luna",
+        "value": -11.01,
+        "displayValue": "-11.01",
+        "protocol": null
+      },
+      {
+        "id": "04:mc:GPT-5.6-Luna",
+        "frameworkId": "04",
+        "taskId": "mc",
+        "model": "GPT-5.6-Luna",
+        "value": -10.57,
+        "displayValue": "-10.57",
+        "protocol": null
+      },
+      {
+        "id": "04:mc:DeepSeek-V4",
+        "frameworkId": "04",
+        "taskId": "mc",
+        "model": "DeepSeek-V4",
+        "value": -13.19,
+        "displayValue": "-13.19",
+        "protocol": null
+      },
+      {
+        "id": "04:mc:Kimi-K2.6",
+        "frameworkId": "04",
+        "taskId": "mc",
+        "model": "Kimi-K2.6",
+        "value": null,
+        "displayValue": null,
+        "protocol": null
+      },
+      {
+        "id": "05:mc:GPT-6-Luna",
+        "frameworkId": "05",
+        "taskId": "mc",
+        "model": "GPT-6-Luna",
+        "value": -9.68,
+        "displayValue": "-9.68",
+        "protocol": null
+      },
+      {
+        "id": "05:mc:GPT-5.6-Luna",
+        "frameworkId": "05",
+        "taskId": "mc",
+        "model": "GPT-5.6-Luna",
+        "value": 45.94,
+        "displayValue": "45.94",
+        "protocol": null
+      },
+      {
+        "id": "05:mc:DeepSeek-V4",
+        "frameworkId": "05",
+        "taskId": "mc",
+        "model": "DeepSeek-V4",
+        "value": -0.01,
+        "displayValue": "-0.01",
+        "protocol": null
+      },
+      {
+        "id": "05:mc:Kimi-K2.6",
+        "frameworkId": "05",
+        "taskId": "mc",
+        "model": "Kimi-K2.6",
+        "value": -10.61,
+        "displayValue": "-10.61",
+        "protocol": null
+      },
+      {
+        "id": "06:mc:GPT-6-Luna",
+        "frameworkId": "06",
+        "taskId": "mc",
+        "model": "GPT-6-Luna",
+        "value": -9.02,
+        "displayValue": "-9.02",
+        "protocol": null
+      },
+      {
+        "id": "06:mc:GPT-5.6-Luna",
+        "frameworkId": "06",
+        "taskId": "mc",
+        "model": "GPT-5.6-Luna",
+        "value": -13.97,
+        "displayValue": "-13.97",
+        "protocol": null
+      },
+      {
+        "id": "06:mc:DeepSeek-V4",
+        "frameworkId": "06",
+        "taskId": "mc",
+        "model": "DeepSeek-V4",
+        "value": 56.47,
+        "displayValue": "56.47",
+        "protocol": null
+      },
+      {
+        "id": "06:mc:Kimi-K2.6",
+        "frameworkId": "06",
+        "taskId": "mc",
+        "model": "Kimi-K2.6",
+        "value": 74.63,
+        "displayValue": "74.63",
+        "protocol": null
+      },
+      {
+        "id": "07:mc:GPT-6-Luna",
+        "frameworkId": "07",
+        "taskId": "mc",
+        "model": "GPT-6-Luna",
+        "value": -1.63,
+        "displayValue": "-1.63",
+        "protocol": null
+      },
+      {
+        "id": "07:mc:GPT-5.6-Luna",
+        "frameworkId": "07",
+        "taskId": "mc",
+        "model": "GPT-5.6-Luna",
+        "value": 72.51,
+        "displayValue": "72.51",
+        "protocol": null
+      },
+      {
+        "id": "07:mc:DeepSeek-V4",
+        "frameworkId": "07",
+        "taskId": "mc",
+        "model": "DeepSeek-V4",
+        "value": 52.44,
+        "displayValue": "52.44",
+        "protocol": null
+      },
+      {
+        "id": "07:mc:Kimi-K2.6",
+        "frameworkId": "07",
+        "taskId": "mc",
+        "model": "Kimi-K2.6",
+        "value": 62.67,
+        "displayValue": "62.67",
+        "protocol": null
+      },
+      {
+        "id": "01:babylm:GPT-6-Luna",
+        "frameworkId": "01",
+        "taskId": "babylm",
+        "model": "GPT-6-Luna",
+        "value": 577.24,
+        "displayValue": "577.24",
+        "protocol": "framework-specific"
+      },
+      {
+        "id": "01:babylm:GPT-5.6-Luna",
+        "frameworkId": "01",
+        "taskId": "babylm",
+        "model": "GPT-5.6-Luna",
+        "value": 742.97,
+        "displayValue": "742.97",
+        "protocol": "framework-specific"
+      },
+      {
+        "id": "01:babylm:DeepSeek-V4",
+        "frameworkId": "01",
+        "taskId": "babylm",
+        "model": "DeepSeek-V4",
+        "value": 106.58,
+        "displayValue": "106.58",
+        "protocol": "framework-specific"
+      },
+      {
+        "id": "01:babylm:Kimi-K2.6",
+        "frameworkId": "01",
+        "taskId": "babylm",
+        "model": "Kimi-K2.6",
+        "value": null,
+        "displayValue": null,
+        "protocol": null
+      },
+      {
+        "id": "02:babylm:GPT-6-Luna",
+        "frameworkId": "02",
+        "taskId": "babylm",
+        "model": "GPT-6-Luna",
+        "value": 185.75,
+        "displayValue": "185.75",
+        "protocol": "shared-reference"
+      },
+      {
+        "id": "02:babylm:GPT-5.6-Luna",
+        "frameworkId": "02",
+        "taskId": "babylm",
+        "model": "GPT-5.6-Luna",
+        "value": 108.11,
+        "displayValue": "108.11",
+        "protocol": "shared-reference"
+      },
+      {
+        "id": "02:babylm:DeepSeek-V4",
+        "frameworkId": "02",
+        "taskId": "babylm",
+        "model": "DeepSeek-V4",
+        "value": 85.28,
+        "displayValue": "85.28",
+        "protocol": "shared-reference"
+      },
+      {
+        "id": "02:babylm:Kimi-K2.6",
+        "frameworkId": "02",
+        "taskId": "babylm",
+        "model": "Kimi-K2.6",
+        "value": null,
+        "displayValue": null,
+        "protocol": null
+      },
+      {
+        "id": "03:babylm:GPT-6-Luna",
+        "frameworkId": "03",
+        "taskId": "babylm",
+        "model": "GPT-6-Luna",
+        "value": 992.23,
+        "displayValue": "992.23",
+        "protocol": "framework-specific"
+      },
+      {
+        "id": "03:babylm:GPT-5.6-Luna",
+        "frameworkId": "03",
+        "taskId": "babylm",
+        "model": "GPT-5.6-Luna",
+        "value": 55.49,
+        "displayValue": "55.49",
+        "protocol": "framework-specific"
+      },
+      {
+        "id": "03:babylm:DeepSeek-V4",
+        "frameworkId": "03",
+        "taskId": "babylm",
+        "model": "DeepSeek-V4",
+        "value": 168.7,
+        "displayValue": "168.70",
+        "protocol": "framework-specific"
+      },
+      {
+        "id": "03:babylm:Kimi-K2.6",
+        "frameworkId": "03",
+        "taskId": "babylm",
+        "model": "Kimi-K2.6",
+        "value": 177.52,
+        "displayValue": "177.52",
+        "protocol": "framework-specific"
+      },
+      {
+        "id": "04:babylm:GPT-6-Luna",
+        "frameworkId": "04",
+        "taskId": "babylm",
+        "model": "GPT-6-Luna",
+        "value": 418.73,
+        "displayValue": "418.73",
+        "protocol": "framework-specific"
+      },
+      {
+        "id": "04:babylm:GPT-5.6-Luna",
+        "frameworkId": "04",
+        "taskId": "babylm",
+        "model": "GPT-5.6-Luna",
+        "value": 21.58,
+        "displayValue": "21.58",
+        "protocol": "framework-specific"
+      },
+      {
+        "id": "04:babylm:DeepSeek-V4",
+        "frameworkId": "04",
+        "taskId": "babylm",
+        "model": "DeepSeek-V4",
+        "value": 597.46,
+        "displayValue": "597.46",
+        "protocol": "framework-specific"
+      },
+      {
+        "id": "04:babylm:Kimi-K2.6",
+        "frameworkId": "04",
+        "taskId": "babylm",
+        "model": "Kimi-K2.6",
+        "value": 62.66,
+        "displayValue": "62.66",
+        "protocol": "framework-specific"
+      },
+      {
+        "id": "05:babylm:GPT-6-Luna",
+        "frameworkId": "05",
+        "taskId": "babylm",
+        "model": "GPT-6-Luna",
+        "value": 236.11,
+        "displayValue": "236.11",
+        "protocol": "framework-specific"
+      },
+      {
+        "id": "05:babylm:GPT-5.6-Luna",
+        "frameworkId": "05",
+        "taskId": "babylm",
+        "model": "GPT-5.6-Luna",
+        "value": 47.08,
+        "displayValue": "47.08",
+        "protocol": "framework-specific"
+      },
+      {
+        "id": "05:babylm:DeepSeek-V4",
+        "frameworkId": "05",
+        "taskId": "babylm",
+        "model": "DeepSeek-V4",
+        "value": 20.01,
+        "displayValue": "20.01",
+        "protocol": "framework-specific"
+      },
+      {
+        "id": "05:babylm:Kimi-K2.6",
+        "frameworkId": "05",
+        "taskId": "babylm",
+        "model": "Kimi-K2.6",
+        "value": null,
+        "displayValue": null,
+        "protocol": null
+      },
+      {
+        "id": "06:babylm:GPT-6-Luna",
+        "frameworkId": "06",
+        "taskId": "babylm",
+        "model": "GPT-6-Luna",
+        "value": 219.2,
+        "displayValue": "219.20",
+        "protocol": "framework-specific"
+      },
+      {
+        "id": "06:babylm:GPT-5.6-Luna",
+        "frameworkId": "06",
+        "taskId": "babylm",
+        "model": "GPT-5.6-Luna",
+        "value": null,
+        "displayValue": null,
+        "protocol": null
+      },
+      {
+        "id": "06:babylm:DeepSeek-V4",
+        "frameworkId": "06",
+        "taskId": "babylm",
+        "model": "DeepSeek-V4",
+        "value": 43.04,
+        "displayValue": "43.04",
+        "protocol": "framework-specific"
+      },
+      {
+        "id": "06:babylm:Kimi-K2.6",
+        "frameworkId": "06",
+        "taskId": "babylm",
+        "model": "Kimi-K2.6",
+        "value": 65.45,
+        "displayValue": "65.45",
+        "protocol": "framework-specific"
+      },
+      {
+        "id": "07:babylm:GPT-6-Luna",
+        "frameworkId": "07",
+        "taskId": "babylm",
+        "model": "GPT-6-Luna",
+        "value": 3021.99,
+        "displayValue": "3021.99",
+        "protocol": "framework-specific"
+      },
+      {
+        "id": "07:babylm:GPT-5.6-Luna",
+        "frameworkId": "07",
+        "taskId": "babylm",
+        "model": "GPT-5.6-Luna",
+        "value": null,
+        "displayValue": null,
+        "protocol": null
+      },
+      {
+        "id": "07:babylm:DeepSeek-V4",
+        "frameworkId": "07",
+        "taskId": "babylm",
+        "model": "DeepSeek-V4",
+        "value": null,
+        "displayValue": null,
+        "protocol": null
+      },
+      {
+        "id": "07:babylm:Kimi-K2.6",
+        "frameworkId": "07",
+        "taskId": "babylm",
+        "model": "Kimi-K2.6",
+        "value": 151.56,
+        "displayValue": "151.56",
+        "protocol": "framework-specific"
+      },
+      {
+        "id": "01:psydef:GPT-6-Luna",
+        "frameworkId": "01",
+        "taskId": "psydef",
+        "model": "GPT-6-Luna",
+        "value": 0.1294,
+        "displayValue": "0.1294",
+        "protocol": null
+      },
+      {
+        "id": "01:psydef:GPT-5.6-Luna",
+        "frameworkId": "01",
+        "taskId": "psydef",
+        "model": "GPT-5.6-Luna",
+        "value": 0.1393,
+        "displayValue": "0.1393",
+        "protocol": null
+      },
+      {
+        "id": "01:psydef:DeepSeek-V4",
+        "frameworkId": "01",
+        "taskId": "psydef",
+        "model": "DeepSeek-V4",
+        "value": null,
+        "displayValue": null,
+        "protocol": null
+      },
+      {
+        "id": "01:psydef:Kimi-K2.6",
+        "frameworkId": "01",
+        "taskId": "psydef",
+        "model": "Kimi-K2.6",
+        "value": 0.1782,
+        "displayValue": "0.1782",
+        "protocol": null
+      },
+      {
+        "id": "02:psydef:GPT-6-Luna",
+        "frameworkId": "02",
+        "taskId": "psydef",
+        "model": "GPT-6-Luna",
+        "value": 0.1848,
+        "displayValue": "0.1848",
+        "protocol": null
+      },
+      {
+        "id": "02:psydef:GPT-5.6-Luna",
+        "frameworkId": "02",
+        "taskId": "psydef",
+        "model": "GPT-5.6-Luna",
+        "value": 0.1445,
+        "displayValue": "0.1445",
+        "protocol": null
+      },
+      {
+        "id": "02:psydef:DeepSeek-V4",
+        "frameworkId": "02",
+        "taskId": "psydef",
+        "model": "DeepSeek-V4",
+        "value": 0.1746,
+        "displayValue": "0.1746",
+        "protocol": null
+      },
+      {
+        "id": "02:psydef:Kimi-K2.6",
+        "frameworkId": "02",
+        "taskId": "psydef",
+        "model": "Kimi-K2.6",
+        "value": 0.182,
+        "displayValue": "0.1820",
+        "protocol": null
+      },
+      {
+        "id": "03:psydef:GPT-6-Luna",
+        "frameworkId": "03",
+        "taskId": "psydef",
+        "model": "GPT-6-Luna",
+        "value": 0.2,
+        "displayValue": "0.2000",
+        "protocol": null
+      },
+      {
+        "id": "03:psydef:GPT-5.6-Luna",
+        "frameworkId": "03",
+        "taskId": "psydef",
+        "model": "GPT-5.6-Luna",
+        "value": 0.1904,
+        "displayValue": "0.1904",
+        "protocol": null
+      },
+      {
+        "id": "03:psydef:DeepSeek-V4",
+        "frameworkId": "03",
+        "taskId": "psydef",
+        "model": "DeepSeek-V4",
+        "value": 0.1847,
+        "displayValue": "0.1847",
+        "protocol": null
+      },
+      {
+        "id": "03:psydef:Kimi-K2.6",
+        "frameworkId": "03",
+        "taskId": "psydef",
+        "model": "Kimi-K2.6",
+        "value": 0.1874,
+        "displayValue": "0.1874",
+        "protocol": null
+      },
+      {
+        "id": "04:psydef:GPT-6-Luna",
+        "frameworkId": "04",
+        "taskId": "psydef",
+        "model": "GPT-6-Luna",
+        "value": 0.1292,
+        "displayValue": "0.1292",
+        "protocol": null
+      },
+      {
+        "id": "04:psydef:GPT-5.6-Luna",
+        "frameworkId": "04",
+        "taskId": "psydef",
+        "model": "GPT-5.6-Luna",
+        "value": null,
+        "displayValue": null,
+        "protocol": null
+      },
+      {
+        "id": "04:psydef:DeepSeek-V4",
+        "frameworkId": "04",
+        "taskId": "psydef",
+        "model": "DeepSeek-V4",
+        "value": 0.2223,
+        "displayValue": "0.2223",
+        "protocol": null
+      },
+      {
+        "id": "04:psydef:Kimi-K2.6",
+        "frameworkId": "04",
+        "taskId": "psydef",
+        "model": "Kimi-K2.6",
+        "value": 0.1741,
+        "displayValue": "0.1741",
+        "protocol": null
+      },
+      {
+        "id": "05:psydef:GPT-6-Luna",
+        "frameworkId": "05",
+        "taskId": "psydef",
+        "model": "GPT-6-Luna",
+        "value": 0.1552,
+        "displayValue": "0.1552",
+        "protocol": null
+      },
+      {
+        "id": "05:psydef:GPT-5.6-Luna",
+        "frameworkId": "05",
+        "taskId": "psydef",
+        "model": "GPT-5.6-Luna",
+        "value": 0.1261,
+        "displayValue": "0.1261",
+        "protocol": null
+      },
+      {
+        "id": "05:psydef:DeepSeek-V4",
+        "frameworkId": "05",
+        "taskId": "psydef",
+        "model": "DeepSeek-V4",
+        "value": 0.2053,
+        "displayValue": "0.2053",
+        "protocol": null
+      },
+      {
+        "id": "05:psydef:Kimi-K2.6",
+        "frameworkId": "05",
+        "taskId": "psydef",
+        "model": "Kimi-K2.6",
+        "value": 0.1835,
+        "displayValue": "0.1835",
+        "protocol": null
+      },
+      {
+        "id": "06:psydef:GPT-6-Luna",
+        "frameworkId": "06",
+        "taskId": "psydef",
+        "model": "GPT-6-Luna",
+        "value": 0.1368,
+        "displayValue": "0.1368",
+        "protocol": null
+      },
+      {
+        "id": "06:psydef:GPT-5.6-Luna",
+        "frameworkId": "06",
+        "taskId": "psydef",
+        "model": "GPT-5.6-Luna",
+        "value": 0.1368,
+        "displayValue": "0.1368",
+        "protocol": null
+      },
+      {
+        "id": "06:psydef:DeepSeek-V4",
+        "frameworkId": "06",
+        "taskId": "psydef",
+        "model": "DeepSeek-V4",
+        "value": 0.1512,
+        "displayValue": "0.1512",
+        "protocol": null
+      },
+      {
+        "id": "06:psydef:Kimi-K2.6",
+        "frameworkId": "06",
+        "taskId": "psydef",
+        "model": "Kimi-K2.6",
+        "value": 0.2282,
+        "displayValue": "0.2282",
+        "protocol": null
+      },
+      {
+        "id": "07:psydef:GPT-6-Luna",
+        "frameworkId": "07",
+        "taskId": "psydef",
+        "model": "GPT-6-Luna",
+        "value": 0.1067,
+        "displayValue": "0.1067",
+        "protocol": null
+      },
+      {
+        "id": "07:psydef:GPT-5.6-Luna",
+        "frameworkId": "07",
+        "taskId": "psydef",
+        "model": "GPT-5.6-Luna",
+        "value": 0.1729,
+        "displayValue": "0.1729",
+        "protocol": null
+      },
+      {
+        "id": "07:psydef:DeepSeek-V4",
+        "frameworkId": "07",
+        "taskId": "psydef",
+        "model": "DeepSeek-V4",
+        "value": 0.1787,
+        "displayValue": "0.1787",
+        "protocol": null
+      },
+      {
+        "id": "07:psydef:Kimi-K2.6",
+        "frameworkId": "07",
+        "taskId": "psydef",
+        "model": "Kimi-K2.6",
+        "value": 0.1385,
+        "displayValue": "0.1385",
+        "protocol": null
+      },
+      {
+        "id": "01:tdc:GPT-6-Luna",
+        "frameworkId": "01",
+        "taskId": "tdc",
+        "model": "GPT-6-Luna",
+        "value": 0.8213,
+        "displayValue": "0.8213",
+        "protocol": null
+      },
+      {
+        "id": "01:tdc:GPT-5.6-Luna",
+        "frameworkId": "01",
+        "taskId": "tdc",
+        "model": "GPT-5.6-Luna",
+        "value": 0.6312,
+        "displayValue": "0.6312",
+        "protocol": null
+      },
+      {
+        "id": "01:tdc:DeepSeek-V4",
+        "frameworkId": "01",
+        "taskId": "tdc",
+        "model": "DeepSeek-V4",
+        "value": 0.7134,
+        "displayValue": "0.7134",
+        "protocol": null
+      },
+      {
+        "id": "01:tdc:Kimi-K2.6",
+        "frameworkId": "01",
+        "taskId": "tdc",
+        "model": "Kimi-K2.6",
+        "value": null,
+        "displayValue": null,
+        "protocol": null
+      },
+      {
+        "id": "02:tdc:GPT-6-Luna",
+        "frameworkId": "02",
+        "taskId": "tdc",
+        "model": "GPT-6-Luna",
+        "value": 0.7697,
+        "displayValue": "0.7697",
+        "protocol": null
+      },
+      {
+        "id": "02:tdc:GPT-5.6-Luna",
+        "frameworkId": "02",
+        "taskId": "tdc",
+        "model": "GPT-5.6-Luna",
+        "value": 0.7949,
+        "displayValue": "0.7949",
+        "protocol": null
+      },
+      {
+        "id": "02:tdc:DeepSeek-V4",
+        "frameworkId": "02",
+        "taskId": "tdc",
+        "model": "DeepSeek-V4",
+        "value": 0.8046,
+        "displayValue": "0.8046",
+        "protocol": null
+      },
+      {
+        "id": "02:tdc:Kimi-K2.6",
+        "frameworkId": "02",
+        "taskId": "tdc",
+        "model": "Kimi-K2.6",
+        "value": 0.7963,
+        "displayValue": "0.7963",
+        "protocol": null
+      },
+      {
+        "id": "03:tdc:GPT-6-Luna",
+        "frameworkId": "03",
+        "taskId": "tdc",
+        "model": "GPT-6-Luna",
+        "value": 0.785,
+        "displayValue": "0.7850",
+        "protocol": null
+      },
+      {
+        "id": "03:tdc:GPT-5.6-Luna",
+        "frameworkId": "03",
+        "taskId": "tdc",
+        "model": "GPT-5.6-Luna",
+        "value": 0.822,
+        "displayValue": "0.8220",
+        "protocol": null
+      },
+      {
+        "id": "03:tdc:DeepSeek-V4",
+        "frameworkId": "03",
+        "taskId": "tdc",
+        "model": "DeepSeek-V4",
+        "value": 0.8285,
+        "displayValue": "0.8285",
+        "protocol": null
+      },
+      {
+        "id": "03:tdc:Kimi-K2.6",
+        "frameworkId": "03",
+        "taskId": "tdc",
+        "model": "Kimi-K2.6",
+        "value": 0.7867,
+        "displayValue": "0.7867",
+        "protocol": null
+      },
+      {
+        "id": "04:tdc:GPT-6-Luna",
+        "frameworkId": "04",
+        "taskId": "tdc",
+        "model": "GPT-6-Luna",
+        "value": 0.8199,
+        "displayValue": "0.8199",
+        "protocol": null
+      },
+      {
+        "id": "04:tdc:GPT-5.6-Luna",
+        "frameworkId": "04",
+        "taskId": "tdc",
+        "model": "GPT-5.6-Luna",
+        "value": 0.8177,
+        "displayValue": "0.8177",
+        "protocol": null
+      },
+      {
+        "id": "04:tdc:DeepSeek-V4",
+        "frameworkId": "04",
+        "taskId": "tdc",
+        "model": "DeepSeek-V4",
+        "value": 0.7328,
+        "displayValue": "0.7328",
+        "protocol": null
+      },
+      {
+        "id": "04:tdc:Kimi-K2.6",
+        "frameworkId": "04",
+        "taskId": "tdc",
+        "model": "Kimi-K2.6",
+        "value": 0.7995,
+        "displayValue": "0.7995",
+        "protocol": null
+      },
+      {
+        "id": "05:tdc:GPT-6-Luna",
+        "frameworkId": "05",
+        "taskId": "tdc",
+        "model": "GPT-6-Luna",
+        "value": 0.8206,
+        "displayValue": "0.8206",
+        "protocol": null
+      },
+      {
+        "id": "05:tdc:GPT-5.6-Luna",
+        "frameworkId": "05",
+        "taskId": "tdc",
+        "model": "GPT-5.6-Luna",
+        "value": 0.8205,
+        "displayValue": "0.8205",
+        "protocol": null
+      },
+      {
+        "id": "05:tdc:DeepSeek-V4",
+        "frameworkId": "05",
+        "taskId": "tdc",
+        "model": "DeepSeek-V4",
+        "value": 0.838,
+        "displayValue": "0.8380",
+        "protocol": null
+      },
+      {
+        "id": "05:tdc:Kimi-K2.6",
+        "frameworkId": "05",
+        "taskId": "tdc",
+        "model": "Kimi-K2.6",
+        "value": 0.828,
+        "displayValue": "0.8280",
+        "protocol": null
+      },
+      {
+        "id": "06:tdc:GPT-6-Luna",
+        "frameworkId": "06",
+        "taskId": "tdc",
+        "model": "GPT-6-Luna",
+        "value": 0.7872,
+        "displayValue": "0.7872",
+        "protocol": null
+      },
+      {
+        "id": "06:tdc:GPT-5.6-Luna",
+        "frameworkId": "06",
+        "taskId": "tdc",
+        "model": "GPT-5.6-Luna",
+        "value": 0.8039,
+        "displayValue": "0.8039",
+        "protocol": null
+      },
+      {
+        "id": "06:tdc:DeepSeek-V4",
+        "frameworkId": "06",
+        "taskId": "tdc",
+        "model": "DeepSeek-V4",
+        "value": 0.8493,
+        "displayValue": "0.8493",
+        "protocol": null
+      },
+      {
+        "id": "06:tdc:Kimi-K2.6",
+        "frameworkId": "06",
+        "taskId": "tdc",
+        "model": "Kimi-K2.6",
+        "value": 0.7765,
+        "displayValue": "0.7765",
+        "protocol": null
+      },
+      {
+        "id": "07:tdc:GPT-6-Luna",
+        "frameworkId": "07",
+        "taskId": "tdc",
+        "model": "GPT-6-Luna",
+        "value": 0.7945,
+        "displayValue": "0.7945",
+        "protocol": null
+      },
+      {
+        "id": "07:tdc:GPT-5.6-Luna",
+        "frameworkId": "07",
+        "taskId": "tdc",
+        "model": "GPT-5.6-Luna",
+        "value": 0.7974,
+        "displayValue": "0.7974",
+        "protocol": null
+      },
+      {
+        "id": "07:tdc:DeepSeek-V4",
+        "frameworkId": "07",
+        "taskId": "tdc",
+        "model": "DeepSeek-V4",
+        "value": 0.8365,
+        "displayValue": "0.8365",
+        "protocol": null
+      },
+      {
+        "id": "07:tdc:Kimi-K2.6",
+        "frameworkId": "07",
+        "taskId": "tdc",
+        "model": "Kimi-K2.6",
+        "value": 0.8317,
+        "displayValue": "0.8317",
+        "protocol": null
+      }
+    ],
+    "profiles": [
+      {
+        "frameworkId": "01",
+        "values": [
+          0.355,
+          0.8,
+          0.65,
+          0.725,
+          0.575,
+          0.45
+        ],
+        "conditions": 10
+      },
+      {
+        "frameworkId": "02",
+        "values": [
+          0.58,
+          0.35,
+          0.375,
+          0.675,
+          0.525,
+          0.375
+        ],
+        "conditions": 10
+      },
+      {
+        "frameworkId": "03",
+        "values": [
+          0.535,
+          0.75,
+          0.65,
+          0.725,
+          0.7,
+          0.575
+        ],
+        "conditions": 10
+      },
+      {
+        "frameworkId": "04",
+        "values": [
+          0.36,
+          0.425,
+          0.175,
+          0.475,
+          0.5,
+          0.125
+        ],
+        "conditions": 10
+      },
+      {
+        "frameworkId": "05",
+        "values": [
+          0.475,
+          0.625,
+          0.65,
+          0.75,
+          0.625,
+          0.5
+        ],
+        "conditions": 10
+      },
+      {
+        "frameworkId": "06",
+        "values": [
+          0.455,
+          0.5,
+          0.55,
+          0.75,
+          0.725,
+          0.825
+        ],
+        "conditions": 10
+      },
+      {
+        "frameworkId": "07",
+        "values": [
+          0.48,
+          0.675,
+          0.725,
+          0.775,
+          0.65,
+          0.675
+        ],
+        "conditions": 10
+      }
+    ],
+    "availability": [
+      {
+        "frameworkId": "01",
+        "percent": 75
+      },
+      {
+        "frameworkId": "02",
+        "percent": 80
+      },
+      {
+        "frameworkId": "03",
+        "percent": 100
+      },
+      {
+        "frameworkId": "04",
+        "percent": 90
+      },
+      {
+        "frameworkId": "05",
+        "percent": 95
+      },
+      {
+        "frameworkId": "06",
+        "percent": 95
+      },
+      {
+        "frameworkId": "07",
+        "percent": 90
+      }
+    ],
+    "trajectory": [
+      {
+        "frameworkId": "01",
+        "values": [
+          0.272,
+          0.272,
+          0.071,
+          0,
+          0.837
+        ]
+      },
+      {
+        "frameworkId": "02",
+        "values": [
+          0.275,
+          0.362,
+          0.625,
+          0.433,
+          0.495
+        ]
+      },
+      {
+        "frameworkId": "03",
+        "values": [
+          0.363,
+          0.45,
+          0.321,
+          0.436,
+          0.827
+        ]
+      },
+      {
+        "frameworkId": "04",
+        "values": [
+          0.359,
+          0.367,
+          0.198,
+          0.229,
+          0.883
+        ]
+      },
+      {
+        "frameworkId": "05",
+        "values": [
+          0.319,
+          0.41,
+          0.302,
+          0.396,
+          0.786
+        ]
+      },
+      {
+        "frameworkId": "06",
+        "values": [
+          0.409,
+          0.418,
+          0.255,
+          0.361,
+          0.829
+        ]
+      },
+      {
+        "frameworkId": "07",
+        "values": [
+          0.352,
+          0.377,
+          0.307,
+          0.463,
+          0.87
+        ]
+      }
+    ],
+    "reliability": [
+      {
+        "dimension": "PQ",
+        "n": 133,
+        "exact": 0.594,
+        "kappa": 0.415,
+        "low": 0.279,
+        "high": 0.54
+      },
+      {
+        "dimension": "PEA",
+        "n": 131,
+        "exact": 0.634,
+        "kappa": 0.694,
+        "low": 0.586,
+        "high": 0.778
+      },
+      {
+        "dimension": "ER",
+        "n": 77,
+        "exact": 0.623,
+        "kappa": 0.355,
+        "low": 0.172,
+        "high": 0.512
+      },
+      {
+        "dimension": "OU",
+        "n": 130,
+        "exact": 0.515,
+        "kappa": 0.49,
+        "low": 0.363,
+        "high": 0.601
+      },
+      {
+        "dimension": "ECC",
+        "n": 131,
+        "exact": 0.527,
+        "kappa": 0.526,
+        "low": 0.398,
+        "high": 0.63
+      },
+      {
+        "dimension": "SC",
+        "n": 120,
+        "exact": 0.625,
+        "kappa": 0.533,
+        "low": 0.381,
+        "high": 0.664
+      }
+    ],
+    "referencePpl": [
+      {
+        "framework": "AI-Scientist-v2",
+        "model": "DeepSeek-V4",
+        "value": "85.278238"
+      },
+      {
+        "framework": "AI-Scientist-v2",
+        "model": "GPT-5.6-Luna",
+        "value": "108.105714"
+      },
+      {
+        "framework": "AI-Scientist-v2",
+        "model": "GPT-6-Luna",
+        "value": "185.754922"
+      }
+    ]
+  }
+}

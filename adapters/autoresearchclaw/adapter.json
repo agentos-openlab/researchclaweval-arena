@@ -1,0 +1,65 @@
+{
+  "id": "autoresearchclaw",
+  "name": "AutoResearchClaw",
+  "upstream_url": "https://github.com/aiming-lab/AutoResearchClaw.git",
+  "upstream_commit": "ea77ec19fefe9198ac1364d2cdb4f9e928cf0705",
+  "license_spdx": "MIT",
+  "native_docs": "https://github.com/aiming-lab/AutoResearchClaw/blob/ea77ec19fefe9198ac1364d2cdb4f9e928cf0705/README.md",
+  "topics": {
+    "babylm": {
+      "image": "arena-autoresearchclaw:ea77ec19fefe",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python3",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "Pipeline complete:",
+      "status": "experimental",
+      "gpu": true
+    },
+    "mountaincar_continuous": {
+      "image": "arena-autoresearchclaw:ea77ec19fefe",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python3",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "Pipeline complete:",
+      "status": "experimental",
+      "gpu": false
+    },
+    "arc_wbe_2026": {
+      "image": "arena-autoresearchclaw:ea77ec19fefe",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python3",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "Pipeline complete:",
+      "status": "experimental",
+      "gpu": false
+    },
+    "psydefdetect": {
+      "image": "arena-autoresearchclaw:ea77ec19fefe",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python3",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "Pipeline complete:",
+      "status": "experimental",
+      "gpu": false
+    },
+    "tdc_admet_tox": {
+      "image": "arena-autoresearchclaw:ea77ec19fefe",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python3",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "Pipeline complete:",
+      "status": "experimental",
+      "gpu": false
+    }
+  }
+}

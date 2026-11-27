@@ -1,161 +1,77 @@
-# Frequently Asked Questions
+# FAQ
 
-[中文](FAQ.zh-CN.md). This page explains participation and self-testing.
-The rules in `docs/rules.md` take precedence.
+[中文](FAQ.zh-CN.md). See [`rules.md`](rules.md) for the complete run and scoring requirements.
 
-## Competition
+## Tasks and runs
 
-**Are the three public topics used for final scoring?**
+**Which topics and frameworks are included?**
 
-The public topics are for development and self-testing and may be run
-repeatedly. Official evaluation uses other topics, run and scored by the
-organizer. Self-test scores do not count toward final rankings. See rules
-§0 and §2.
+There are five topics: BabyLM-10M, MountainCar-Continuous, ARC-WBE-2026, PsyDefDetect, and TDC-ADMET-Tox. Seven built-in framework adapters are listed by `python3 scripts/arena.py list`, together with their route status.
 
-**How are the overall score and champion determined?**
+**Can I run all topics and frameworks with one command?**
 
-Normalize each official topic score to 0–100 using reference values fixed
-before evaluation, then take the equal-weight mean. The highest total wins.
-Tied totals are resolved by topic first-place count; if that also ties, the
-rank is shared. Per-topic rankings are also published. See rules §6.3 for
-the formula and comparison precision.
+Yes. All seven built-in adapters declare launch commands for all five topics. Run the complete 35-route matrix sequentially with:
 
-**How are failed or missing results handled?**
+```bash
+python3 scripts/arena.py run --topic all --framework all
+```
 
-The topic contributes 0 to the total and remains in the fixed topic count.
-Record the raw score as `null` and retain the outcome status. Do not average
-only successful topics. At least one valid official result is required for
-the overall board; disqualified frameworks are excluded.
+Use `--dry-run` to inspect the selected routes first. Routes remain `experimental` until public end-to-end verification. Unsupported routes in custom adapters are recorded and make the batch exit nonzero.
 
-**Who provides the model?**
+**Can I connect my own framework?**
 
-Participants provide their model for self-testing. `deepseek-v4.1-flash` is
-recommended but not required (rules §4). For official evaluation, the organizer
-supplies `OPENAI_BASE_URL`, `OPENAI_API_KEY`, and `OPENAI_MODEL`. An alternative model
-or endpoint is not permitted at that stage. Neither stage permits model IDs
-or endpoints to be hardcoded in framework code.
+Yes. Add an `adapter.json` in a local directory and pass it with `--adapter`. The adapter must launch the framework's native workflow, produce its declared native marker, and meet the task contract. See the [adapter guide](participant_quickstart.md#add-an-adapter).
 
-**Do LLM-judge scores affect competition rankings?**
+**What do `experimental` and `unsupported` mean?**
 
-Competition rankings use official objective scores. The seven LLM-judge
-dimensions and ED belong to the community leaderboard. Their use is subject
-to evaluation cost, scoring variability, and evidence provenance. See rules
-§6.2 and Appendix A.
+`experimental` means a launch configuration exists but has not completed full public verification. `unsupported` means that no launch command is declared for that task. Neither status represents a verified score.
 
-## Data
+## API and data
 
-**How are datasets obtained?**
+**Which API should I configure?**
 
-Use `scripts/setup_datasets.sh` to download from the original sources and
-verify SHA-256. The organizer does not redistribute datasets. If
-`huggingface.co` is unreachable, set `HF_ENDPOINT=https://hf-mirror.com`.
-See rules §3.2.
+Choose a compatible provider for self-testing and enter its endpoint, API key, and model name in a local `.env` file. We recommend `deepseek-v4.1-flash`, and you may choose any compatible model. The organizer supplies the model for official evaluation. Keep credentials local. See the [quickstart](participant_quickstart.md#configure-the-model-api).
 
-**What license applies to PsyDefDetect?**
+**How are datasets prepared?**
 
-The data uses `cc-by-nc-4.0`. The competition is non-commercial, and
-participants' data use must comply with the license.
+Run `bash scripts/setup_datasets.sh --dataset <topic-id>`. The script downloads only the requested task, verifies published file hashes, and stores the data locally under `data/`. The repository does not include the raw datasets.
 
-**Which data split is required?**
+**Can a framework see evaluation labels?**
 
-Use the frozen canonical split. `split_sha256` must match the published
-value exactly. PsyDefDetect uses a dialogue-level split, distinct from the
-dataset's record-level split. See rules §3.3.
+No. The runner follows each topic's data boundary. It removes evaluation labels from PsyDefDetect input, separates TDC test labels for host-side scoring, and does not mount ARC's scoring split into the framework container. See each task contract.
 
-## Scoring and validation
+**Are BabyLM scores independently checked?**
 
-**How should a TDC sample-ID mismatch be resolved?**
+Not by the current diagnostic scorer. It reads the framework's reported validation perplexity, marks it `framework_self_reported`, and excludes it from ranking until independently reproduced.
 
-Use `sample_id` directly from `public/test.csv`; do not reconstruct it.
-The `hERG` endpoint uses the `HERG_` ID prefix. The prediction ID and endpoint
-keys must match the test file exactly. A mismatch is rejected by validation
-or scoring and does not produce a valid raw score of 0. See rules §5.6.
+## Scores and ranking
 
-**What output must an ARC estimator produce?**
+**How are results ranked?**
 
-`predict(mlp)` must return a `(32, 256)` numeric array satisfying the
-contract. The adapter supports implementations with or without a `budget`
-parameter. It rejects incorrect shapes, non-finite values, constants,
-zero-filled, broadcast, scalar, and placeholder outputs. See the ARC
-contract's Required Outputs.
+Verified results are ranked within the same topic, model, and evaluation protocol. Raw scores from different tasks or protocols are not combined into an overall total. Ties share a rank.
 
-**What should be checked when ARC `b0` or `bT` is missing?**
+**Are the published historical rankings the official competition standings?**
 
-Check for numeric `framework_visible_validation` records in
-`experiment_trace.json`. ARC provides ground truth for visible validation;
-scoring-set ground truth remains organizer-side. Without numeric records,
-`b0` and `bT` cannot be computed from those records, and extended evaluation
-uses the judge's ordinal path. See rules §3.4.
+No. They reproduce reviewed records from an archived paper snapshot. The three public competition self-test topics are ARC-WBE-2026, PsyDefDetect, and TDC-ADMET-Tox; their self-test scores do not determine the official result. The organizer evaluates the submitted frameworks on other topics. Browse all five historical tables in the [English leaderboard](../results/leaderboard.md) or [Chinese leaderboard](../results/leaderboard.zh-CN.md).
 
-**Does exit code 0 establish a valid run?**
+**What does a blank rank mean?**
 
-Exit status does not replace artifact and native-execution validation.
-`FRAMEWORK_NATIVE_LOG_MARKER` must be emitted early by the framework itself,
-not by its outer wrapper. Check with
-`bash scripts/check_native_marker.sh logs/e2e.log`. See rules §5.5.
+The result is unverified, missing, or self-reported. Such a record can be displayed with its status, but does not enter ranking. See the [review method](../results/README.md).
 
-**How are the 2–4 experiments counted?**
+**Will a local run appear on the published leaderboard?**
 
-Count strategy lines that differ materially in algorithm family, feature
-representation, architecture, or overall hyperparameter-search design.
-Retries, seed-only repeats, and minor tuning within a line do not add a
-line. Setup attempts without training or evaluation are logged only.
-Configurations evaluated before a crash or timeout still count within their
-line. See rules §5.8.
+No. New results require evidence review before publication. A local score or model-generated report alone is not sufficient.
 
-**Are participant-computed scores accepted?**
+**How is ARC-WBE scored?**
 
-Self-scores support development and debugging only. The organizer computes
-official results using the required metrics and fixed splits. See rules
-§6.1 and §8.
+The batch runner evaluates the estimator in a network-isolated Docker container against the framework-visible validation split. It does not expose the separate scoring split to the framework.
 
-## Tools and execution
+## Troubleshooting
 
-**Are release bundles available?**
+**What if a batch exits nonzero?**
 
-GitHub Releases provides `researchclaweval-arena-<version>.zip` and `.tar.gz`
-for the tagged source tree, with checksums in the release notes. Extract a
-bundle and follow `docs/participant_quickstart.md`. Datasets are not bundled
-and must be obtained through the download scripts.
+Open the printed batch directory and inspect `summary.json` and the route's `logs/e2e.log`. A nonzero exit may indicate an unsupported route, missing API configuration, an upstream download or image-build failure, an incomplete native run, or a scoring error. Each run's actual status is retained.
 
-**What does the runner do?**
+**Where should I report a problem?**
 
-Templates in `scripts/runner/` mount contracts and datasets read-only,
-inject model configuration, export `WORKSPACE` and `DATASET_ROOT`, compose
-`input/prompt.txt`, launch the framework in a fresh workspace, and collect
-`logs/e2e.log` and artifacts. Runs must use the official template. See rules
-§5.4 and §5.7.
-
-**What belongs in the adapter manifest?**
-
-`templates/example-adapter/manifest.json` declares the framework ID, name,
-upstream repository, license, native entrypoint, required environment
-variables, images, and patches. Replace the placeholders and validate with
-`python3 scripts/validate_schemas.py --manifest <manifest-path>` against
-`schemas/adapter.schema.json`.
-
-**How should trace `resource_budget` be populated?**
-
-Use the complete budget object specified by the contract. For TDC, the
-requirements and example are in `contracts/tdc_admet_tox_compute_budget.md`;
-the machine-readable value is in `scoring/resource_budget.anchors.json`.
-It includes `network_policy: "injected_llm_relay_only"`. Validation requires
-an exact match; error messages should not be used to reconstruct the object.
-
-**Does a network interruption pause the budget?**
-
-Contract wall-clock limits continue to apply, without extra time. Verify
-connectivity before self-testing, save checkpoints, and configure retries,
-backoff, and recovery in the framework client. The injected relay has no
-shared retry setting; the community judge has its own retry mechanism.
-See rules §5.4.
-
-**Who configures judge credentials?**
-
-The organizer runs the judge with `JUDGE_API_KEY`, `JUDGE_MODEL`, and
-`JUDGE_BASE_URL`. Source files contain no credentials or default model ID.
-
-**How should a scoring-tool issue be reported?**
-
-Open an issue with the topic, script name, and minimal reproduction steps.
-Do not include raw datasets or credentials in reproduction material.
+Open a repository issue with the topic, adapter ID, command, summary status, and a minimal reproduction. Remove API Keys, private URLs, and raw dataset rows before sharing logs.

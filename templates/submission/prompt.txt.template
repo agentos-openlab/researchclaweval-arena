@@ -1,17 +1,13 @@
-# Task input: tdc_admet_tox (organizer-provided, rules §5.7)
+# Task input: tdc_admet_tox (Arena runner input, rules §5.7)
 
 ## Task summary
 
 Predict three molecular toxicity endpoints (AMES / hERG / DILI) from the
-given molecular structure, following the contract and execution budget.
+given molecular structure, following the task contract and its execution budget.
 
-## Contract (read-only, authoritative)
+## Task Contract (read-only, authoritative; includes execution budget)
 
 <the runner embeds the full contract here>
-
-## Execution Budget (read-only)
-
-<the runner embeds the full execution budget here>
 
 ---
 

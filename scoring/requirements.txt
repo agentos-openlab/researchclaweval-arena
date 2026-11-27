@@ -1,11 +1,5 @@
-# Third-party packages used by the ARC glue in scoring/. Everything else in
-# this repository is standard-library only (CONTRIBUTING.md; this file is
-# the documented exception, so core files stay dependency-free by rule).
-#
-# Pin exact versions for the release bundle per the official toolkit pages —
-# in particular https://huggingface.co/datasets/aicrowd/arc-whestbench-public-2026
-# (the TDC/psydef scorers and the validator never import these packages;
-# installing this file is optional and only needed for ARC glue).
-whestbench
-datasets
-pyarrow
+# ARC scorer runtime. Keep package versions fixed and run estimator code only
+# inside the isolated ARC scorer container.
+whestbench==0.16.1
+datasets==5.2.0
+pyarrow==26.0.1

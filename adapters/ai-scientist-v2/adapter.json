@@ -1,0 +1,60 @@
+{
+  "id": "ai-scientist-v2",
+  "name": "AI-Scientist-v2",
+  "upstream_url": "https://github.com/SakanaAI/AI-Scientist-v2.git",
+  "upstream_commit": "96bd51617cfdbb494a9fc283af00fe090edfae48",
+  "license_spdx": "LicenseRef-AI-Scientist-Source-Code-1.0",
+  "native_docs": "https://github.com/SakanaAI/AI-Scientist-v2/blob/96bd51617cfdbb494a9fc283af00fe090edfae48/README.md",
+  "topics": {
+    "babylm": {
+      "image": "researchclaweval/ai-scientist-v2:96bd51617cfd",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "Results will be saved in",
+      "status": "experimental"
+    },
+    "mountaincar_continuous": {
+      "image": "researchclaweval/ai-scientist-v2:96bd51617cfd",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "Results will be saved in",
+      "status": "experimental"
+    },
+    "arc_wbe_2026": {
+      "image": "researchclaweval/ai-scientist-v2:96bd51617cfd",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "Results will be saved in",
+      "status": "experimental"
+    },
+    "psydefdetect": {
+      "image": "researchclaweval/ai-scientist-v2:96bd51617cfd",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "Results will be saved in",
+      "status": "experimental"
+    },
+    "tdc_admet_tox": {
+      "image": "researchclaweval/ai-scientist-v2:96bd51617cfd",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "Results will be saved in",
+      "status": "experimental"
+    }
+  }
+}

@@ -1,46 +1,22 @@
 # Contributing
 
-Thanks for helping with ResearchClawEval Arena. The repository is small by
-design: contracts, official-scorer glue, templates, and documentation.
+Contributions may add or improve task contracts, framework adapters, scoring tools, data preparation, and documentation. Open a pull request against `main` with a short description of the change and the checks performed.
 
-## Ground rules
+## Repository requirements
 
-- **No sensitive content.** This repo is public and intentionally free of
-  credentials, datasets, run artifacts, and results. If your change mentions
-  a secret, a raw path, a private endpoint, or an undeclared dataset — fix
-  it locally first.
-- **Run the gate.** Every PR runs `.github/workflows/release-gate.yml`:
-  `scripts/check-release.sh` (allowlist + pattern scan), gitleaks, and a
-  smoke pass. If you added a file, add it to `scripts/allowlist.txt` in the
-  same PR — the gate fails otherwise, by design.
-- **Keep contracts authoritative.** Changes to `contracts/` or `docs/rules.md`
-  affect every participant; they are the product, not the appendage.
-- **Two languages, one ground truth.** `docs/` is split by language by design:
-  `rules.md` + `announcement.md` are Chinese; `FAQ.md`,
-  `participant_quickstart.md`, `metric-system.md`, `scorer-contracts.md`,
-  `validation-semantics.md` are English. A rule-level change must land in
-  *both* languages — translate it, or add a cross-reference line in the other
-  file — so neither version silently lags.
+- Do not commit API credentials, raw datasets, private endpoints, local machine paths, or unreviewed run artifacts.
+- Add every new tracked file to `scripts/allowlist.txt`. The release gate checks both for unlisted files and stale allowlist entries.
+- Keep each task's contract authoritative for its input boundary, metric, outputs, and runtime limits.
+- Keep the Chinese rules and quickstart consistent with their English counterparts where both are provided.
+- Declare adapter routes only when a framework has a native command for that task. Mark unverified launch configurations `experimental`.
+- Include upstream source and license details for framework code and data.
 
-## Style
+## Local review
 
-- Shell: `bash -n` clean, `set -euo pipefail` where applicable, POSIX-sh
-  friendly where easy.
-- Python: `python3 -m py_compile` clean; no third-party runtime dependencies
-  for the glue (the ARC scoring scripts may import whestbench / datasets /
-  pyarrow when installed by the user — see `scoring/requirements.txt` and
-  `docs/scorer-contracts.md`).
-- Docs: plain English or Chinese where the surrounding file uses it; no
-  internal vocabulary from competitor-facing text (see `docs/FAQ.md`).
+The pull request workflow runs the release gate and repository checks. Contributors should review the relevant task path, confirm that new manifests and references are valid, and read the generated diff before opening a pull request. The ARC scorer runs submitted Python code and must only be used in an isolated environment.
 
-## Process
-
-1. Open an issue for anything beyond a typo.
-2. Branch, change, add `scripts/allowlist.txt` lines, run
-   `bash scripts/check-release.sh` locally until PASS.
-3. PR against `main`; the release gate runs automatically.
+The project uses Python's standard library for the Arena runner and most local scorers. Use `uv` for Python environment work and `ruff` for linting and formatting. The MountainCar evaluator uses Docker; ARC tooling requires the packages listed in `scoring/requirements.txt`.
 
 ## Licensing
 
-By contributing you agree your contribution is licensed under the repository
-terms (code: MIT; docs: CC-BY-4.0 — see `LICENSE` and `NOTICE.md`).
+Contributed code is licensed under MIT and documentation under CC BY 4.0, subject to the repository notices and applicable upstream licenses.

@@ -1,0 +1,65 @@
+{
+  "id": "evoscientist",
+  "name": "EvoScientist",
+  "upstream_url": "https://github.com/EvoScientist/EvoScientist.git",
+  "upstream_commit": "690b903f850454c4ead3b0dda78ec82d02afc646",
+  "license_spdx": "Apache-2.0",
+  "native_docs": "https://github.com/EvoScientist/EvoScientist/blob/690b903f850454c4ead3b0dda78ec82d02afc646/README.md",
+  "topics": {
+    "babylm": {
+      "image": "arena-evoscientist:690b903f8504",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python3",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "\"type\": \"done\"",
+      "status": "experimental",
+      "gpu": true
+    },
+    "mountaincar_continuous": {
+      "image": "arena-evoscientist:690b903f8504",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python3",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "\"type\": \"done\"",
+      "status": "experimental",
+      "gpu": false
+    },
+    "arc_wbe_2026": {
+      "image": "arena-evoscientist:690b903f8504",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python3",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "\"type\": \"done\"",
+      "status": "experimental",
+      "gpu": false
+    },
+    "psydefdetect": {
+      "image": "arena-evoscientist:690b903f8504",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python3",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "\"type\": \"done\"",
+      "status": "experimental",
+      "gpu": false
+    },
+    "tdc_admet_tox": {
+      "image": "arena-evoscientist:690b903f8504",
+      "dockerfile": "Dockerfile",
+      "command": [
+        "python3",
+        "/arena-adapter/launch.py"
+      ],
+      "native_marker": "\"type\": \"done\"",
+      "status": "experimental",
+      "gpu": false
+    }
+  }
+}

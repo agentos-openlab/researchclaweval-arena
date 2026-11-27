@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "meta",
+    "items"
+  ],
+  "properties": {
+    "meta": {
+      "$ref": "common.schema.json#/$defs/meta"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "common.schema.json#/$defs/cell"
+          },
+          {
+            "type": "object",
+            "required": [
+              "metric",
+              "direction",
+              "source",
+              "paperBest",
+              "sourceValue"
+            ],
+            "properties": {
+              "metric": {
+                "type": "string"
+              },
+              "direction": {
+                "enum": [
+                  "lower",
+                  "higher"
+                ]
+              },
+              "source": {
+                "type": "object",
+                "required": [
+                  "official",
+                  "trajectory",
+                  "judge"
+                ],
+                "properties": {
+                  "official": {
+                    "$ref": "common.schema.json#/$defs/sourceRole"
+                  },
+                  "trajectory": {
+                    "$ref": "common.schema.json#/$defs/sourceRole"
+                  },
+                  "judge": {
+                    "$ref": "common.schema.json#/$defs/sourceRole"
+                  }
+                }
+              },
+              "paperBest": {
+                "type": "boolean"
+              },
+              "sourceValue": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

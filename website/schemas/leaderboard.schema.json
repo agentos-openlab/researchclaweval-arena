@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "meta",
+    "items"
+  ],
+  "properties": {
+    "meta": {
+      "$ref": "common.schema.json#/$defs/meta"
+    },
+    "items": {
+      "type": "object",
+      "required": [
+        "runs",
+        "profiles",
+        "availability",
+        "trajectory",
+        "reliability",
+        "referencePpl"
+      ],
+      "properties": {
+        "runs": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/cell"
+          }
+        },
+        "profiles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "frameworkId",
+              "values",
+              "conditions"
+            ],
+            "properties": {
+              "frameworkId": {
+                "$ref": "common.schema.json#/$defs/frameworkId"
+              },
+              "conditions": {
+                "const": 10
+              },
+              "values": {
+                "type": "array",
+                "minItems": 6,
+                "maxItems": 6,
+                "items": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              }
+            }
+          }
+        },
+        "availability": {
+          "type": "array",
+          "minItems": 7,
+          "maxItems": 7,
+          "items": {
+            "type": "object",
+            "required": [
+              "frameworkId",
+              "percent"
+            ],
+            "properties": {
+              "frameworkId": {
+                "$ref": "common.schema.json#/$defs/frameworkId"
+              },
+              "percent": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              }
+            }
+          }
+        },
+        "trajectory": {
+          "type": "array",
+          "minItems": 7,
+          "maxItems": 7,
+          "items": {
+            "type": "object",
+            "required": [
+              "frameworkId",
+              "values"
+            ],
+            "properties": {
+              "frameworkId": {
+                "type": "string"
+              },
+              "values": {
+                "type": "array",
+                "minItems": 5,
+                "maxItems": 5,
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
+        "reliability": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "required": [
+              "dimension",
+              "n",
+              "exact",
+              "kappa",
+              "low",
+              "high"
+            ],
+            "properties": {
+              "dimension": {
+                "enum": [
+                  "PQ",
+                  "PEA",
+                  "ER",
+                  "OU",
+                  "ECC",
+                  "SC"
+                ]
+              },
+              "n": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "exact": {
+                "type": "number"
+              },
+              "kappa": {
+                "type": "number"
+              },
+              "low": {
+                "type": "number"
+              },
+              "high": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "referencePpl": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "framework",
+              "model",
+              "value"
+            ],
+            "properties": {
+              "framework": {
+                "type": "string"
+              },
+              "model": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

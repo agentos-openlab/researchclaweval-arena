@@ -28,7 +28,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 ADAPTER_SCHEMA = ROOT / "schemas" / "adapter.schema.json"
 RUNS_SCHEMA = ROOT / "schemas" / "runs.schema.json"
-MANIFEST = ROOT / "templates" / "example-adapter" / "manifest.json"
+MANIFEST = ROOT / "templates" / "example-adapter" / "adapter.json"
 GOLDEN = ROOT / "templates" / "submission" / "golden_tdc_admet_tox"
 
 

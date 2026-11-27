@@ -1,0 +1,141 @@
+topic,model,protocol,framework,rank,value,status,reviewed_runs,source_sha256
+arc_wbe_2026,DeepSeek-V4,WHEST historical mini-100 / cff832e85bf1,DeepScientist,1,0.000214,verified,1,4bd6f5f6c0b3a29df4cd230883cbb8c0d869191a0820f9d26871862a87722e76
+arc_wbe_2026,DeepSeek-V4,WHEST historical mini-100 / cff832e85bf1,EvoScientist,2,0.0661,verified,1,a96940884461ac6b3beda3d674db4c7591e7453cb7f8d90289cc255054b4e10d
+arc_wbe_2026,DeepSeek-V4,WHEST historical mini-100 / cff832e85bf1,AutoResearchClaw,3,0.27,verified,1,d7fa69a7f1f9b33a598df1333d4b3f33b53e2793233e2a91fc2ea1a4abd42215
+arc_wbe_2026,DeepSeek-V4,WHEST historical mini-100 / cff832e85bf1,AI-Researcher,,,unverified,0,
+arc_wbe_2026,DeepSeek-V4,WHEST historical mini-100 / cff832e85bf1,AI-Scientist-v2,,,unverified,0,
+arc_wbe_2026,DeepSeek-V4,WHEST historical mini-100 / cff832e85bf1,ARIS,,,unverified,0,
+arc_wbe_2026,DeepSeek-V4,WHEST historical mini-100 / cff832e85bf1,Dr. Claw,,,unverified,0,
+arc_wbe_2026,GPT-5.6-Luna,WHEST historical mini-100 / cff832e85bf1,Dr. Claw,1,0.0909,verified,1,00e6dc2d5db6fe937e1ff9a7761899791f827a8ebab5b97c0d106d51b1cf9c4c
+arc_wbe_2026,GPT-5.6-Luna,WHEST historical mini-100 / cff832e85bf1,AI-Researcher,,,unverified,0,
+arc_wbe_2026,GPT-5.6-Luna,WHEST historical mini-100 / cff832e85bf1,AI-Scientist-v2,,,unverified,0,
+arc_wbe_2026,GPT-5.6-Luna,WHEST historical mini-100 / cff832e85bf1,ARIS,,,unverified,0,
+arc_wbe_2026,GPT-5.6-Luna,WHEST historical mini-100 / cff832e85bf1,AutoResearchClaw,,,unverified,0,
+arc_wbe_2026,GPT-5.6-Luna,WHEST historical mini-100 / cff832e85bf1,DeepScientist,,,unverified,0,
+arc_wbe_2026,GPT-5.6-Luna,WHEST historical mini-100 / cff832e85bf1,EvoScientist,,,unverified,0,
+arc_wbe_2026,GPT-6-Luna,WHEST historical mini-100 / cff832e85bf1,ARIS,1,9.48e-05,verified,1,0b94b7cfdb5828d184a39d75dd93bee272d1de600203bc8146dad416d75ca2e8
+arc_wbe_2026,GPT-6-Luna,WHEST historical mini-100 / cff832e85bf1,EvoScientist,2,0.0661,verified,1,1387a05f6af0cf3ecdf17fc0b5a094593938196265670cfe0dcd0f64169bd44d
+arc_wbe_2026,GPT-6-Luna,WHEST historical mini-100 / cff832e85bf1,DeepScientist,3,0.0761,verified,1,a81a9c52bc944a29ada89091d992db99b230ce4f25d9b67f66621740284de500
+arc_wbe_2026,GPT-6-Luna,WHEST historical mini-100 / cff832e85bf1,Dr. Claw,4,0.0852,verified,1,b5ca74112a4d0a69b46289eea388f87a735ce3a281de7e19b73c733c1d153a96
+arc_wbe_2026,GPT-6-Luna,WHEST historical mini-100 / cff832e85bf1,AutoResearchClaw,5,0.0882,verified,1,ec6b42e89273889ad8a00867b1d4973cb40c5c8b5187cc65330846750a3d6882
+arc_wbe_2026,GPT-6-Luna,WHEST historical mini-100 / cff832e85bf1,AI-Researcher,,,unverified,0,
+arc_wbe_2026,GPT-6-Luna,WHEST historical mini-100 / cff832e85bf1,AI-Scientist-v2,,,unverified,0,
+arc_wbe_2026,Kimi-K2.6,WHEST historical mini-100 / cff832e85bf1,DeepScientist,1,0.0661,verified,1,b9a44bf38dba7eaa03b3cb7e9e0ed218a6bff3604200df81471804f7a5d8c24a
+arc_wbe_2026,Kimi-K2.6,WHEST historical mini-100 / cff832e85bf1,Dr. Claw,2,0.0662,verified,1,5179f4a6ba7baef4f76dbd4a17225aaffeebd69f573a8d34e17bcd468255a3e6
+arc_wbe_2026,Kimi-K2.6,WHEST historical mini-100 / cff832e85bf1,ARIS,3,0.0665,verified,1,e3e156eee94f4ab4bcbb0d0dc56be025cf601433f2f141294faa057b4006e940
+arc_wbe_2026,Kimi-K2.6,WHEST historical mini-100 / cff832e85bf1,AI-Researcher,,,missing,0,
+arc_wbe_2026,Kimi-K2.6,WHEST historical mini-100 / cff832e85bf1,AI-Scientist-v2,,,missing,0,
+arc_wbe_2026,Kimi-K2.6,WHEST historical mini-100 / cff832e85bf1,AutoResearchClaw,,,unverified,0,
+arc_wbe_2026,Kimi-K2.6,WHEST historical mini-100 / cff832e85bf1,EvoScientist,,,unverified,0,
+babylm,DeepSeek-V4,Framework-specific validation,AI-Researcher,,106.57618186635331,self_reported,1,a11e426c5c9439122f5b87fb51cb2b77fec092b33c9151f702c69029f2590b89
+babylm,DeepSeek-V4,Framework-specific validation,ARIS,,,unverified,0,
+babylm,DeepSeek-V4,Framework-specific validation,AutoResearchClaw,,597.4640994670493,self_reported,1,322b61f9ca53b85c323ad02f588e9633513177c9560ef006ed0993d04b5859d2
+babylm,DeepSeek-V4,Framework-specific validation,DeepScientist,,,unverified,0,
+babylm,DeepSeek-V4,Framework-specific validation,Dr. Claw,,,unverified,0,
+babylm,DeepSeek-V4,Protocol not recorded,EvoScientist,,,missing,0,
+babylm,DeepSeek-V4,Shared-reference validation,AI-Scientist-v2,,85.2782377186871,self_reported,1,fbb2bf05851d4e0390292fc511e4992352fee8d62791f433a64b181312f4b7d8
+babylm,GPT-5.6-Luna,Framework-specific validation,AI-Researcher,,742.9706871824764,self_reported,1,10000b97c8e2bc148cc07ba467c9be1c3e491aa51b03bd045569acda1845278d
+babylm,GPT-5.6-Luna,Framework-specific validation,ARIS,,,unverified,0,
+babylm,GPT-5.6-Luna,Framework-specific validation,AutoResearchClaw,,21.579719639362395,self_reported,1,f47be0523600bde22c108728d8ba6a53209d579c884e0897a8028ebb7511c426
+babylm,GPT-5.6-Luna,Framework-specific validation,DeepScientist,,,unverified,0,
+babylm,GPT-5.6-Luna,Protocol not recorded,Dr. Claw,,,missing,0,
+babylm,GPT-5.6-Luna,Protocol not recorded,EvoScientist,,,missing,0,
+babylm,GPT-5.6-Luna,Shared-reference validation,AI-Scientist-v2,,108.10571361041116,self_reported,1,2b40580ea91ddbf3804a137a0ef1f24a6bc6f7d15819e1a9c411d7c31893a1fd
+babylm,GPT-6-Luna,Framework-specific validation,AI-Researcher,,577.2414134696867,self_reported,1,fe0078e1184ffd34bac2afbfb9464e7787ea779a4822dd215821496b98a8cc1e
+babylm,GPT-6-Luna,Framework-specific validation,ARIS,,992.2312684364555,self_reported,1,76c5b2de195c3480ff4821e86dcd027d1362db710342008c52bb58017dc51518
+babylm,GPT-6-Luna,Framework-specific validation,AutoResearchClaw,,418.734285402003,self_reported,1,66a003d97786d6c5e4c0e220e17fe04a277a400845e2a8f8a09fc8a39d35c90c
+babylm,GPT-6-Luna,Framework-specific validation,DeepScientist,,236.11229910913724,self_reported,1,273d0bc5d77481bdf16617d45b3c9e43d33d93d412e3439518310e92a97b7960
+babylm,GPT-6-Luna,Framework-specific validation,Dr. Claw,,219.19663306523273,self_reported,1,a52f1bbf2ec69be3eb69646421467f695bd0660f0cd9c1dde76d2e4b5d61b6f3
+babylm,GPT-6-Luna,Framework-specific validation,EvoScientist,,3021.987278194702,self_reported,1,c4b98cc1cdd29431b2b730bde399cc57ce825fe8d0b91ed0ea8e691840ecd0e0
+babylm,GPT-6-Luna,Shared-reference validation,AI-Scientist-v2,,185.75492216669167,self_reported,1,c325c23d43b9e2446dc44c4e2e60e3903780b7e76fdc0be665143f72b12fe247
+babylm,Kimi-K2.6,Framework-specific validation,ARIS,,,unverified,0,
+babylm,Kimi-K2.6,Framework-specific validation,AutoResearchClaw,,,unverified,0,
+babylm,Kimi-K2.6,Framework-specific validation,Dr. Claw,,,unverified,0,
+babylm,Kimi-K2.6,Framework-specific validation,EvoScientist,,,unverified,0,
+babylm,Kimi-K2.6,Protocol not recorded,AI-Researcher,,,missing,0,
+babylm,Kimi-K2.6,Protocol not recorded,AI-Scientist-v2,,,missing,0,
+babylm,Kimi-K2.6,Protocol not recorded,DeepScientist,,,missing,0,
+mountaincar_continuous,DeepSeek-V4,MLGym frozen evaluator,AI-Researcher,,,unverified,0,
+mountaincar_continuous,DeepSeek-V4,MLGym frozen evaluator,AI-Scientist-v2,,,missing,0,
+mountaincar_continuous,DeepSeek-V4,MLGym frozen evaluator,AutoResearchClaw,,,unverified,0,
+mountaincar_continuous,DeepSeek-V4,MLGym frozen evaluator / 57ae36653ea7,ARIS,1,93.67655944824219,verified,1,bccc62046e8f922d2a833ab7ffc0a17637e674070ee30d00777040c14f09a82d
+mountaincar_continuous,DeepSeek-V4,MLGym frozen evaluator / cbd09e27273b,Dr. Claw,1,56.47181701660156,verified,1,7fd36fc6a0b05fbb8154929d57e19dc43b38104fff40484017e401dce2a7e5c7
+mountaincar_continuous,DeepSeek-V4,MLGym frozen evaluator / cbd09e27273b,EvoScientist,2,52.438758850097656,verified,1,157fd3f3ce9bdb7157d169af0947c9103af45ddc02c4620f0dcbfad3fcd75439
+mountaincar_continuous,DeepSeek-V4,MLGym frozen evaluator / cbd09e27273b,DeepScientist,3,-0.010527188889682293,verified,1,20ead14a325b71368a33af08ff6a02362f8a75b6d0ddedf0a90015dc0b8a7a40
+mountaincar_continuous,GPT-5.6-Luna,MLGym frozen evaluator / 57ae36653ea7,EvoScientist,1,72.51118469238281,verified,1,cd62d248ee826af12ebf073b671a9dcebc3aab3fd3a88494b6942002a911ef00
+mountaincar_continuous,GPT-5.6-Luna,MLGym frozen evaluator / 57ae36653ea7,Dr. Claw,2,-13.969474792480469,verified,1,fd56be3f6f87673a54b8f6a4f2faa9bc9d775a7084a1e4f4d7aac430d7a3c116
+mountaincar_continuous,GPT-5.6-Luna,MLGym frozen evaluator / 57ae36653ea7,AI-Researcher,,,missing,0,
+mountaincar_continuous,GPT-5.6-Luna,MLGym frozen evaluator / 57ae36653ea7,AI-Scientist-v2,,,unverified,0,
+mountaincar_continuous,GPT-5.6-Luna,MLGym frozen evaluator / 57ae36653ea7,ARIS,,,unverified,0,
+mountaincar_continuous,GPT-5.6-Luna,MLGym frozen evaluator / 57ae36653ea7,AutoResearchClaw,,,unverified,0,
+mountaincar_continuous,GPT-5.6-Luna,MLGym frozen evaluator / 57ae36653ea7,DeepScientist,,,unverified,0,
+mountaincar_continuous,GPT-6-Luna,MLGym frozen evaluator,AI-Researcher,,,unverified,0,
+mountaincar_continuous,GPT-6-Luna,MLGym frozen evaluator,AI-Scientist-v2,,,unverified,0,
+mountaincar_continuous,GPT-6-Luna,MLGym frozen evaluator,ARIS,,,unverified,0,
+mountaincar_continuous,GPT-6-Luna,MLGym frozen evaluator,AutoResearchClaw,,,unverified,0,
+mountaincar_continuous,GPT-6-Luna,MLGym frozen evaluator,DeepScientist,,,unverified,0,
+mountaincar_continuous,GPT-6-Luna,MLGym frozen evaluator,Dr. Claw,,,unverified,0,
+mountaincar_continuous,GPT-6-Luna,MLGym frozen evaluator,EvoScientist,,,unverified,0,
+mountaincar_continuous,Kimi-K2.6,MLGym frozen evaluator,AI-Researcher,,,unverified,0,
+mountaincar_continuous,Kimi-K2.6,MLGym frozen evaluator,AI-Scientist-v2,,,missing,0,
+mountaincar_continuous,Kimi-K2.6,MLGym frozen evaluator,ARIS,,,unverified,0,
+mountaincar_continuous,Kimi-K2.6,MLGym frozen evaluator,AutoResearchClaw,,,missing,0,
+mountaincar_continuous,Kimi-K2.6,MLGym frozen evaluator / 57ae36653ea7,Dr. Claw,1,74.6320571899414,verified,1,cdf4150c1cdebd105d588edd653f133d43d3c4af9c7940bf89ab18667e6f343f
+mountaincar_continuous,Kimi-K2.6,MLGym frozen evaluator / 57ae36653ea7,DeepScientist,2,-10.605130195617676,verified,1,89377a505bdc7d5075152a2164ce8e78128a91661aa899b9c5b6af10561d3ca6
+mountaincar_continuous,Kimi-K2.6,MLGym frozen evaluator / cbd09e27273b,EvoScientist,1,62.6725959777832,verified,1,c9ee66290041fe89cddd5b32e741d8cacbdce19c4bb93ec810a313422b4b4236
+psydefdetect,DeepSeek-V4,Canonical dialogue split,AI-Researcher,,,missing,0,
+psydefdetect,DeepSeek-V4,Canonical dialogue split,AI-Scientist-v2,,,unverified,0,
+psydefdetect,DeepSeek-V4,Canonical dialogue split,ARIS,,,unverified,0,
+psydefdetect,DeepSeek-V4,Canonical dialogue split,AutoResearchClaw,,,unverified,0,
+psydefdetect,DeepSeek-V4,Canonical dialogue split,DeepScientist,,,unverified,0,
+psydefdetect,DeepSeek-V4,Canonical dialogue split,Dr. Claw,,,unverified,0,
+psydefdetect,DeepSeek-V4,Canonical dialogue split,EvoScientist,,,unverified,0,
+psydefdetect,GPT-5.6-Luna,Canonical dialogue split / fa0d1b4e0521,ARIS,1,0.19041278186114408,verified,1,227da2de0dc25c3c59590b9b040433763a95a8b23a921d3c56e2ca4052188105
+psydefdetect,GPT-5.6-Luna,Canonical dialogue split / fa0d1b4e0521,AI-Researcher,2,0.13932971957883322,verified,1,3826535c1cafcc08a25bbdaa6d1275db2a5e432f76b1d043c4034e8845bb1c1c
+psydefdetect,GPT-5.6-Luna,Canonical dialogue split / fa0d1b4e0521,Dr. Claw,3,0.13675435881151377,verified,1,e2ce01abd1902aae6bc5133a4b8fb602d4ffa0c64dd995c0282918309a5d51b7
+psydefdetect,GPT-5.6-Luna,Canonical dialogue split / fa0d1b4e0521,DeepScientist,4,0.12605264989386505,verified,1,ca09008e29933d8a834d1e773feadcedecf60df9ee7a0926a25f23a21efbdde0
+psydefdetect,GPT-5.6-Luna,Canonical dialogue split / fa0d1b4e0521,AI-Scientist-v2,,,unverified,0,
+psydefdetect,GPT-5.6-Luna,Canonical dialogue split / fa0d1b4e0521,AutoResearchClaw,,,missing,0,
+psydefdetect,GPT-5.6-Luna,Canonical dialogue split / fa0d1b4e0521,EvoScientist,,,unverified,0,
+psydefdetect,GPT-6-Luna,Canonical dialogue split / fa0d1b4e0521,ARIS,1,0.20000299395120366,verified,1,143ecb1a110c5af07f9cf475823c970d19ba1511b08b5c19bf38b9609fd8e540
+psydefdetect,GPT-6-Luna,Canonical dialogue split / fa0d1b4e0521,Dr. Claw,2,0.13680555555555554,verified,1,6d48885bb735f5c4b4e38a63971e479566d5f4aa7b34b2b20f70a2ee21eb9ce8
+psydefdetect,GPT-6-Luna,Canonical dialogue split / fa0d1b4e0521,AI-Researcher,3,0.1293855062520251,verified,1,1e62905e1e34fcde1b9c4006f9285ecdd39b73620ec615caee7251e0e46e9968
+psydefdetect,GPT-6-Luna,Canonical dialogue split / fa0d1b4e0521,EvoScientist,4,0.1066673683102668,verified,1,88713e3bc5f8d56209b59e8386663f864ad5192f78ef3082d05173915de1a865
+psydefdetect,GPT-6-Luna,Canonical dialogue split / fa0d1b4e0521,AI-Scientist-v2,,,unverified,0,
+psydefdetect,GPT-6-Luna,Canonical dialogue split / fa0d1b4e0521,AutoResearchClaw,,,unverified,0,
+psydefdetect,GPT-6-Luna,Canonical dialogue split / fa0d1b4e0521,DeepScientist,,,unverified,0,
+psydefdetect,Kimi-K2.6,Canonical dialogue split / fa0d1b4e0521,ARIS,1,0.18736871737061453,verified,1,430b67bf360ddc2292e3a4b4afbb775aedd6730315aca4ed8f5265fc3236fe9e
+psydefdetect,Kimi-K2.6,Canonical dialogue split / fa0d1b4e0521,AI-Researcher,,,unverified,0,
+psydefdetect,Kimi-K2.6,Canonical dialogue split / fa0d1b4e0521,AI-Scientist-v2,,,unverified,0,
+psydefdetect,Kimi-K2.6,Canonical dialogue split / fa0d1b4e0521,AutoResearchClaw,,,unverified,0,
+psydefdetect,Kimi-K2.6,Canonical dialogue split / fa0d1b4e0521,DeepScientist,,,unverified,0,
+psydefdetect,Kimi-K2.6,Canonical dialogue split / fa0d1b4e0521,Dr. Claw,,,unverified,0,
+psydefdetect,Kimi-K2.6,Canonical dialogue split / fa0d1b4e0521,EvoScientist,,,unverified,0,
+tdc_admet_tox,DeepSeek-V4,Frozen held-out test,AI-Researcher,,,unverified,0,
+tdc_admet_tox,DeepSeek-V4,Frozen held-out test,AI-Scientist-v2,,,unverified,0,
+tdc_admet_tox,DeepSeek-V4,Frozen held-out test,ARIS,,,unverified,0,
+tdc_admet_tox,DeepSeek-V4,Frozen held-out test,AutoResearchClaw,,,unverified,0,
+tdc_admet_tox,DeepSeek-V4,Frozen held-out test,DeepScientist,,,unverified,0,
+tdc_admet_tox,DeepSeek-V4,Frozen held-out test,Dr. Claw,,,unverified,0,
+tdc_admet_tox,DeepSeek-V4,Frozen held-out test,EvoScientist,,,unverified,0,
+tdc_admet_tox,GPT-5.6-Luna,Frozen held-out test / 7c8830e94d6c,ARIS,1,0.822022242699155,verified,1,e85f7bea66f2e9d904afc43b3760f45d4a2eeca26406c1b5a5104316ab04c6c3
+tdc_admet_tox,GPT-5.6-Luna,Frozen held-out test / 7c8830e94d6c,Dr. Claw,2,0.8038893754802926,verified,1,35e641fca6a8d5e178ed18573ec769c7801257ee0504e73a56e2e01dea1c0702
+tdc_admet_tox,GPT-5.6-Luna,Frozen held-out test / 7c8830e94d6c,AI-Researcher,,,unverified,0,
+tdc_admet_tox,GPT-5.6-Luna,Frozen held-out test / 7c8830e94d6c,AI-Scientist-v2,,,unverified,0,
+tdc_admet_tox,GPT-5.6-Luna,Frozen held-out test / 7c8830e94d6c,AutoResearchClaw,,,unverified,0,
+tdc_admet_tox,GPT-5.6-Luna,Frozen held-out test / 7c8830e94d6c,DeepScientist,,,unverified,0,
+tdc_admet_tox,GPT-5.6-Luna,Frozen held-out test / 7c8830e94d6c,EvoScientist,,,unverified,0,
+tdc_admet_tox,GPT-6-Luna,Frozen held-out test / 7c8830e94d6c,AI-Researcher,1,0.8212521416112334,verified,1,02460f69f587cc04069ecfdf254e2166e02b93d59216db7b99a15cf077f55829
+tdc_admet_tox,GPT-6-Luna,Frozen held-out test / 7c8830e94d6c,ARIS,2,0.7849937976862559,verified,1,42969ec703e39eab8a938c755d09df2c33cd04ebea6de710f9a852128bfb83ca
+tdc_admet_tox,GPT-6-Luna,Frozen held-out test / 7c8830e94d6c,AI-Scientist-v2,,,unverified,0,
+tdc_admet_tox,GPT-6-Luna,Frozen held-out test / 7c8830e94d6c,AutoResearchClaw,,,unverified,0,
+tdc_admet_tox,GPT-6-Luna,Frozen held-out test / 7c8830e94d6c,DeepScientist,,,unverified,0,
+tdc_admet_tox,GPT-6-Luna,Frozen held-out test / 7c8830e94d6c,Dr. Claw,,,unverified,0,
+tdc_admet_tox,GPT-6-Luna,Frozen held-out test / 7c8830e94d6c,EvoScientist,,,unverified,0,
+tdc_admet_tox,Kimi-K2.6,Frozen held-out test / 7c8830e94d6c,Dr. Claw,1,0.7765472892092098,verified,1,d1be29c9efb90f956fc8a2932a92577a6a7fc727b1672d541f8d3ac7f1228c2f
+tdc_admet_tox,Kimi-K2.6,Frozen held-out test / 7c8830e94d6c,AI-Researcher,,,missing,0,
+tdc_admet_tox,Kimi-K2.6,Frozen held-out test / 7c8830e94d6c,AI-Scientist-v2,,,unverified,0,
+tdc_admet_tox,Kimi-K2.6,Frozen held-out test / 7c8830e94d6c,ARIS,,,unverified,0,
+tdc_admet_tox,Kimi-K2.6,Frozen held-out test / 7c8830e94d6c,AutoResearchClaw,,,unverified,0,
+tdc_admet_tox,Kimi-K2.6,Frozen held-out test / 7c8830e94d6c,DeepScientist,,,unverified,0,
+tdc_admet_tox,Kimi-K2.6,Frozen held-out test / 7c8830e94d6c,EvoScientist,,,unverified,0,

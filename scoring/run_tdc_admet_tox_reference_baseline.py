@@ -18,7 +18,7 @@ SEED = 42
 
 def _load_resource_budget() -> dict:
     # same anchor file the validators load, so the baseline always declares
-    # exactly what the audit expects (contracts/tdc_admet_tox_compute_budget.md)
+    # exactly what the audit expects (contracts/tdc_admet_tox_contract.md#compute-budget)
     anchors_path = Path(__file__).resolve().parent / "resource_budget.anchors.json"
     anchors = json.loads(anchors_path.read_text(encoding="utf-8"))
     budget = anchors["topics"]["tdc_admet_tox"]

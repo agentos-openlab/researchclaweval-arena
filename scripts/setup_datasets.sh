@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 # ============================================================================
-# setup_datasets.sh — Download and prepare the competition datasets
+# setup_datasets.sh — Download and prepare the public benchmark inputs
 #
-# This script downloads the three public datasets and prepares them for
-# evaluation. Competitors obtain the data themselves; the organizer does
-# not redistribute data files.
+# This script downloads inputs from their published upstream sources and
+# prepares them for local evaluation.
 #
 # Usage:
 #   bash scripts/setup_datasets.sh                                    # Download all datasets
@@ -37,76 +36,60 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     --dataset) DATASET="$2"; shift 2 ;;
     --dir) DATA_DIR="$2"; shift 2 ;;
+    -h|--help)
+      echo "Usage: bash scripts/setup_datasets.sh [--dataset ID] [--dir PATH]"
+      echo "Topics: babylm mountaincar_continuous arc_wbe_2026 psydefdetect tdc_admet_tox"
+      exit 0 ;;
     *) error "Unknown option: $1"; exit 1 ;;
   esac
 done
 
 mkdir -p "$DATA_DIR"
+DATA_DIR="$(cd "$DATA_DIR" && pwd)"
 
 # ============================================================================
 # ARC-WBE-2026 (public, from AIcrowd via HuggingFace)
 # ============================================================================
-download_arc_wbe_2026() {
+download_arc_wbe_2026() (
   header "ARC-WBE-2026 Dataset"
-
   local target="$DATA_DIR/arc_white_box_estimation_2026"
-  if [[ -d "$target" ]] && [[ -f "$target/manifest.json" ]]; then
-    ok "ARC-WBE-2026 already downloaded at $target"
-    return 0
-  fi
-
-  info "This dataset is available from AIcrowd via HuggingFace."
-  info "You can download it using the preparation script:"
-  echo ""
-  echo "  # Install dependencies"
-  echo "  pip install datasets huggingface-hub"
-  echo ""
-  echo "  # Download and prepare the dataset"
-  echo "  python3 scoring/prepare_arc_wbe_2026_dataset.py \\"
-  echo "    --output-root $target \\"
-  echo "    --splits mini,full"
-  echo ""
-  echo "  # Or manually from HuggingFace:"
-  echo "  # https://huggingface.co/datasets/aicrowd/arc-whestbench-public-2026"
-  echo ""
-  echo "  # Then set:"
-  echo "  export ARC_WBE_2026_DATASET_ROOT=$target"
-  echo ""
-
-  # Try automated download if datasets is installed
-  local prepared=0
-  if python3 -c "import datasets" 2>/dev/null; then
-    info "datasets library found, attempting download..."
-    if python3 scoring/prepare_arc_wbe_2026_dataset.py \
-         --output-root "$target" \
-         --splits mini 2>/dev/null; then
-      ok "ARC-WBE-2026 downloaded (mini split)"
-      prepared=1
-    else
-      warn "ARC-WBE-2026 download failed (may need HuggingFace auth)"
-    fi
+  if [[ -f "$target/split_manifest.json" ]]; then
+    python3 "$ROOT/scoring/prepare_public_topic_data.py" --check-cache arc_wbe_2026 --root "$target"
   else
-    warn "datasets library not available. Install with: pip install datasets"
+    command -v uv >/dev/null || { error "ARC dataset preparation requires uv"; return 1; }
+    python3 "$ROOT/scoring/prepare_public_topic_data.py" --topic arc_wbe_2026 --root "$target"
+    local staging
+    staging="$(mktemp -d "$target/.split-build.XXXXXXXX")"
+    trap 'rm -rf -- "$staging"' EXIT
+    uv run --no-project --with pyarrow==20.0.0 python "$ROOT/scoring/make_arc_wbe_2026_visible_validation.py" \
+      --source-root "$target" --output-root "$staging"
+    for part in visible-validation scoring split_manifest.json; do
+      [[ ! -e "$target/$part" ]] || { error "Partial ARC split already exists: $target/$part"; return 1; }
+    done
+    for part in visible-validation scoring split_manifest.json; do
+      mv -- "$staging/$part" "$target/$part"
+    done
+    python3 "$ROOT/scoring/prepare_public_topic_data.py" --check-cache arc_wbe_2026 --root "$target"
   fi
+  ok "ARC-WBE-2026 visible validation and scoring splits are ready"
+  echo "  export ARC_WBE_2026_DATASET_ROOT=$target"
+)
 
-  # 可见验证集 / 评分集切分。arc 是唯一不给框架真值的 topic，
-  # 没有这个自评集，框架算不出 adjusted_final_layer_score，
-  # 扩展评估维度就落回裁判序数兜底。
-  if [[ -n "$(ls -A "$target/data" 2>/dev/null)" ]]; then
-    if [[ -d "$target/visible-validation/data" && -d "$target/scoring/data" ]]; then
-      ok "可见验证集/评分集切分已存在"
-    else
-      info "生成可见验证集（10 个 MLP，含真值）与评分集（90 个）"
-      python3 scoring/make_arc_wbe_2026_visible_validation.py \
-        --source-root "$target" --output-root "$target" \
-        && ok "切分已生成（sha256 见 $target/split_manifest.json）" \
-        || warn "切分生成失败 —— fullrun 会因为缺切分而 blocked"
-    fi
-  fi
-  echo ""
-  echo "  注：可见验证集与评分集按 mlp_id 互斥。前者给框架自评，"
-  echo "      后者是 host 侧评分集。切分冻结值见 split_manifest.json。"
-  echo ""
+# ============================================================================
+# BabyLM-10M and MountainCar-Continuous
+# ============================================================================
+download_babylm() {
+  header "BabyLM-10M Dataset"
+  local target="$DATA_DIR/babylm"
+  python3 "$ROOT/scoring/prepare_public_topic_data.py" --topic babylm --root "$target"
+  echo "  export BABYLM_DATASET_ROOT=$target"
+}
+
+download_mountaincar_continuous() {
+  header "MountainCar-Continuous Starter and Evaluator"
+  local target="$DATA_DIR/mountaincar_continuous"
+  python3 "$ROOT/scoring/prepare_public_topic_data.py" --topic mountaincar_continuous --root "$target"
+  echo "  export MOUNTAINCAR_CONTINUOUS_DATASET_ROOT=$target"
 }
 
 # ============================================================================
@@ -120,6 +103,11 @@ download_psydefdetect() {
   local dest="$DATA_DIR/psydefdetect"
   local out="$dest/PsyDefConv.json"
   mkdir -p "$dest"
+  if [[ -f "$out" ]] && [[ "$(sha256sum "$out" | cut -d' ' -f1)" == "$PSYDEF_FILE_SHA256" ]]; then
+    ok "Using the verified PsyDefDetect cache"
+    echo "  export PSYDEFDETECT_DATASET_ROOT=$dest"
+    return 0
+  fi
 
   # 直连 huggingface.co 在部分网络下不可达（或被 DNS 污染），
   # 因此依次尝试：显式 HF_ENDPOINT → 官方 → 镜像。
@@ -166,8 +154,8 @@ download_psydefdetect() {
 # ============================================================================
 # 归档含 22 个 ADMET endpoint；本评测使用 AMES / hERG / DILI。
 # 归档里每个 endpoint 有两份带标签文件：
-#   train_val.csv  → 需按冻结划分拆成 train / validation
-#   test.csv       → 官方测试集（标签由主办方持有）
+#   train_val.csv  → 按冻结划分拆成 train / validation
+#   test.csv       → 写入 public/ 时移除标签；归档原始标签留在主机缓存
 TDC_ARCHIVE_MD5="e3e4dda2f7f62268448fc813ceefccd5"
 TDC_ARCHIVE_SHA256="bd0005246cb6f1672333c28ad202112a8bf071ab65d847848715030308faf1f1"
 TDC_ARCHIVE_BYTES=1472501
@@ -177,6 +165,12 @@ download_tdc_admet_tox() {
   local dest="$DATA_DIR/tdc_admet_tox"
   local cache="$dest/.cache"
   local zip="$cache/admet_group.zip"
+  if [[ -d "$dest/public" ]]; then
+    python3 "$ROOT/scoring/prepare_public_topic_data.py" --check-cache tdc_admet_tox --root "$dest/public"
+    ok "Using the verified TDC-ADMET-Tox public dataset"
+    echo "  export TDC_ADMET_TOX_DATASET_ROOT=$dest/public"
+    return 0
+  fi
   mkdir -p "$cache"
 
   if [[ ! -f "$zip" ]] || [[ "$(sha256sum "$zip" 2>/dev/null | cut -d' ' -f1)" != "$TDC_ARCHIVE_SHA256" ]]; then
@@ -216,7 +210,7 @@ download_tdc_admet_tox() {
   ok "已生成 $dest/public/{train,validation,test}.csv"
   echo "  export TDC_ADMET_TOX_DATASET_ROOT=$dest/public"
   echo ""
-  echo "  注：test.csv 无标签；隐藏标签由主办方持有，用于统一评分。"
+  echo "  注：public/test.csv 不含标签；原始测试标签保留在主机缓存，不会挂载到框架容器。"
   echo ""
 }
 
@@ -227,12 +221,16 @@ header "Dataset Setup"
 
 if [[ -n "$DATASET" ]]; then
   case "$DATASET" in
+    babylm) download_babylm ;;
+    mountaincar_continuous) download_mountaincar_continuous ;;
     arc_wbe_2026) download_arc_wbe_2026 ;;
     psydefdetect) download_psydefdetect ;;
     tdc_admet_tox) download_tdc_admet_tox ;;
     *) error "Unknown dataset: $DATASET"; exit 1 ;;
   esac
 else
+  download_babylm
+  download_mountaincar_continuous
   download_arc_wbe_2026
   download_psydefdetect
   download_tdc_admet_tox
@@ -245,3 +243,5 @@ echo "Don't forget to set the corresponding environment variables:"
 echo "  export ARC_WBE_2026_DATASET_ROOT=$DATA_DIR/arc_white_box_estimation_2026"
 echo "  export PSYDEFDETECT_DATASET_ROOT=$DATA_DIR/psydefdetect"
 echo "  export TDC_ADMET_TOX_DATASET_ROOT=$DATA_DIR/tdc_admet_tox/public"
+echo "  export BABYLM_DATASET_ROOT=$DATA_DIR/babylm"
+echo "  export MOUNTAINCAR_CONTINUOUS_DATASET_ROOT=$DATA_DIR/mountaincar_continuous"

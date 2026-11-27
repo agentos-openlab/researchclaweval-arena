@@ -5,18 +5,18 @@
 ------------------
 `SOURCE.md` 记录的划分协议是 `pytdc=1.1.15` + `create_scaffold_split(seed=42)`，
 复现它要装 pytdc + 指定版本的 RDKit/NumPy/Python —— 一条随时会崩的依赖链，
-对参赛者是不可接受的入门成本。
+对本地运行者是过高的依赖成本。
 
 本脚本改用**行号**重建：官方归档 `admet_group.zip` 已被 sha256 冻结
 （`bd000524…`），因此 `train_val.csv` / `test.csv` 的行号是稳定唯一的键。
-划分冻结在 `tdc_admet_tox_split.canonical.json`（仓库根）。
+划分冻结在 `splits/tdc_admet_tox_split.canonical.json`。
 
 `sample_id` 的生成规则（自 canonical 文件生成，重建结果**逐字节一致**）：
 
     {endpoint.upper()}_{tv|test}_{归档行号:06d}
 
 注意 hERG 的 `endpoint` 列是 `hERG`，但 `sample_id` 前缀是 `HERG` —— 即
-前缀一律取大写。用 `{ep}` 会得到 `hERG_tv_…`，与主办方的隐藏标签对不上，
+前缀一律取大写。用 `{ep}` 会得到 `hERG_tv_…`，与评分文件中的标识不一致，
 predictions 会一行都匹配不到。
 
 键的选择（踩过的坑）
@@ -38,7 +38,7 @@ ENDPOINTS = ("AMES", "hERG", "DILI")
 # 归档目录名（小写）与 endpoint 名的映射
 ARCHIVE_DIR = {"AMES": "ames", "hERG": "herg", "DILI": "dili"}
 SPLIT_FILE = (
-    Path(__file__).resolve().parents[1] / "tdc_admet_tox_split.canonical.json"
+    Path(__file__).resolve().parents[1] / "splits" / "tdc_admet_tox_split.canonical.json"
 )
 
 
@@ -118,7 +118,7 @@ def main() -> int:
             record = [sid, endpoint, row["Drug"], int(float(row["Y"]))]
             (rows_val if i in val_idx else rows_train).append(record)
         for i, row in enumerate(test):
-            # 公开的 test 不带标签 —— 标签由主办方持有，用于统一评分
+            # framework-visible test 不带标签；标签单独保留给本机评分器。
             rows_test.append([f"{prefix}_test_{i:06d}", endpoint, row["Drug"]])
 
         written["train.csv"] = written.get("train.csv", []) + rows_train
@@ -137,7 +137,7 @@ def main() -> int:
             writer.writerow(header)
             writer.writerows(written[name])
 
-    # 冻结清单：参赛者据此自证拿到的数据是同一份
+    # 固定清单记录来源和切分，供运行者核对数据版本。
     manifest = {
         "task_id": "tdc_admet_tox",
         "source": "TDC ADMET Group / Tox normalized export",
@@ -160,7 +160,7 @@ def main() -> int:
         },
         "labels": {
             "public": ["train.csv", "validation.csv"],
-            "test_labels": "held by the organizers; test.csv carries no label column",
+            "test_labels": "kept outside public/test.csv for local host-side scoring",
         },
     }
     (public / "dataset_manifest.json").write_text(
